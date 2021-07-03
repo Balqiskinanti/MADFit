@@ -1,43 +1,46 @@
 package sg.edu.np.mad.madfit;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.WindowManager;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class WorkoutActivity extends AppCompatActivity {
 
     BottomNavigationView navigationView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_workout);
+
+        TextView title = (TextView) findViewById(R.id.activityTitle1);
+        title.setText("This is workout activity");
 
         navigationView = findViewById(R.id.bottom_navigation);
-        navigationView.setSelectedItemId(R.id.nav_home);
+        navigationView.setSelectedItemId(R.id.nav_workout);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
 
                     case R.id.nav_home:
-
+                        Intent intent0 = new Intent(WorkoutActivity.this,MainActivity.class);
+                        startActivity(intent0);
                         break;
 
                     case R.id.nav_workout:
-                        Intent intent1 = new Intent(MainActivity.this,WorkoutActivity.class);
-                        startActivity(intent1);
+
                         break;
 
                     case R.id.nav_food:
-                        Intent intent2 = new Intent(MainActivity.this,FoodActivity.class);
+                        Intent intent2 = new Intent(WorkoutActivity.this,FoodActivity.class);
                         startActivity(intent2);
                         break;
 
