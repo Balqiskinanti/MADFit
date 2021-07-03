@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MADFit</string>
+
+    <string name="workout_text">Workout</string>
+    <string name="home_text">Home</string>
+    <string name="food_text">Food</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
