@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -31,19 +32,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        TextView exploreMusic_btn = findViewById(R.id.exploreMusic_btn);
-        exploreMusic_btn.setOnTouchListener(new View.OnTouchListener() {
+        Button exploreMusic_btn = findViewById(R.id.exploreMusic_btn);
+        exploreMusic_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return false;
+            public void onClick(View v) {
+
             }
         });
 
-        TextView setNotification_btn = findViewById(R.id.setNotification_btn);
-        setNotification_btn.setOnTouchListener(new View.OnTouchListener() {
+        Button setNotification_btn = findViewById(R.id.setNotification_btn);
+        setNotification_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return false;
+            public void onClick(View v) {
+
             }
         });
 
