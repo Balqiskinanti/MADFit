@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         calBMI_btn.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                Intent intent = new Intent(MainActivity.this, BmiActivity.class);
+                startActivity(intent);
                 return false;
             }
         });
