@@ -16,7 +16,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class WorkoutActivity extends AppCompatActivity {
 
     BottomNavigationView navigationView;
-    Button workStartButton;
+    Button workStartButton,workSettingButton,workCalendarButton;
 
     @Override
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
