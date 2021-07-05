@@ -5,7 +5,6 @@
     android:id="@+id/body_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="80dp"
     android:background="@color/white"
     tools:context=".MainActivity">
 
@@ -24,13 +23,44 @@
         app:labelVisibilityMode="unlabeled"
         app:menu="@menu/menu" />
 
-    <TextView
-        android:id="@+id/activityTitle1"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/workStartBtn"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        android:text="Workout" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="126dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginEnd="125dp"
+        android:text="Start"
+        app:backgroundTint="#807F7F" />
+
+    <Button
+        android:id="@+id/workSettingBtn"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/workStartBtn"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="126dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="125dp"
+        android:text="Setting"
+        app:backgroundTint="#807F7F" />
+
+    <Button
+        android:id="@+id/workCalendarBtn"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/workSettingBtn"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="126dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="125dp"
+        android:text="Calendar"
+        app:backgroundTint="#807F7F" />
+
 
 </RelativeLayout>

@@ -3,6 +3,8 @@ package sg.edu.np.mad.madfit;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,14 +16,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class WorkoutActivity extends AppCompatActivity {
 
     BottomNavigationView navigationView;
+    Button workStartButton,workSettingButton,workCalendarButton;
 
     @Override
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout);
-
-        TextView title = (TextView) findViewById(R.id.activityTitle1);
-        title.setText("This is workout activity");
 
         navigationView = findViewById(R.id.bottom_navigation);
         navigationView.setSelectedItemId(R.id.nav_workout);
@@ -48,6 +48,15 @@ public class WorkoutActivity extends AppCompatActivity {
                 return false;
             }
 
+        });
+
+        workStartButton = findViewById(R.id.workStartBtn);
+        workStartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WorkoutActivity.this,ListExercises.class);
+                startActivity(intent);
+            }
         });
     }
 }
