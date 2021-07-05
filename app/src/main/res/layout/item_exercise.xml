@@ -14,13 +14,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
-
-        <ImageView
+        <pl.droidsonroids.gif.GifImageView
             android:id="@+id/ex_img"
             android:scaleType="centerInside"
             android:layout_width="100dp"
-            android:layout_height="100dp"></ImageView>
+            android:layout_height="100dp"></pl.droidsonroids.gif.GifImageView>
+
 
         <TextView
             android:id="@+id/ex_name"

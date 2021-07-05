@@ -17,6 +17,7 @@ import org.w3c.dom.Text;
 
 import java.util.List;
 
+import pl.droidsonroids.gif.GifImageView;
 import sg.edu.np.mad.madfit.Interface.ItemClickListener;
 import sg.edu.np.mad.madfit.ListExercises;
 import sg.edu.np.mad.madfit.Model.Exercise;
@@ -24,14 +25,15 @@ import sg.edu.np.mad.madfit.R;
 
 class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-    public ImageView image;
+    public GifImageView image;
+    //public ImageView image;
     public TextView text;
 
     private ItemClickListener itemClickListener;
 
     public RecyclerViewHolder(@NonNull @NotNull View itemView) {
         super(itemView);
-        image = (ImageView)itemView.findViewById(R.id.ex_img);
+        image = (GifImageView)itemView.findViewById(R.id.ex_img);
         text = (TextView) itemView.findViewById(R.id.ex_name);
 
         itemView.setOnClickListener(this);
