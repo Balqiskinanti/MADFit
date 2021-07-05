@@ -39,7 +39,8 @@ public class MusicActivity extends AppCompatActivity {
                 switch (item.getItemId()){
 
                     case R.id.nav_home:
-
+                        Intent intent0 = new Intent(MusicActivity.this,MainActivity.class);
+                        startActivity(intent0);
                         break;
 
                     case R.id.nav_workout:
@@ -51,7 +52,6 @@ public class MusicActivity extends AppCompatActivity {
                         Intent intent2 = new Intent(MusicActivity.this,FoodActivity.class);
                         startActivity(intent2);
                         break;
-
                 }
                 return false;
             }
