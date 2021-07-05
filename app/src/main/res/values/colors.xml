@@ -10,6 +10,7 @@
 
     <!-- Custom Color -->
     <color name="light_white">#D2D2D2</color>
+    <color name="dark_blue">#2D2363</color>
     <color name="card_1">#A3E4D7</color>
     <color name="card_2">#F9E79F</color>
     <color name="card_3">#D7BDE2</color>
