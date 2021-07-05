@@ -9,6 +9,224 @@
     tools:context=".MainActivity">
 
 
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        tools:layout_editor_absoluteX="252dp"
+        tools:layout_editor_absoluteY="132dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".MainActivity">
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="269dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="156dp"
+                android:text="Healthy Body, Healthy Life"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/box5"
+                android:layout_width="181dp"
+                android:layout_height="127dp"
+                android:layout_marginTop="240dp"
+                android:background="@drawable/box"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.94"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/box6"
+                android:layout_width="181dp"
+                android:layout_height="127dp"
+                android:layout_marginTop="240dp"
+                android:background="@drawable/box"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.059"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/box3"
+                android:layout_width="288dp"
+                android:layout_height="59dp"
+                android:layout_marginTop="492dp"
+                android:background="@drawable/box"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/box4"
+                android:layout_width="288dp"
+                android:layout_height="59dp"
+                android:layout_marginTop="628dp"
+                android:layout_marginBottom="120dp"
+                android:background="@drawable/box"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/myWorkout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 min"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="@+id/box5"
+                app:layout_constraintEnd_toEndOf="@+id/box5"
+                app:layout_constraintStart_toStartOf="@+id/box5"
+                app:layout_constraintTop_toTopOf="@+id/box5"
+                app:layout_constraintVertical_bias="0.689" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BMI"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/box6"
+                app:layout_constraintEnd_toEndOf="@+id/box6"
+                app:layout_constraintStart_toStartOf="@+id/box6"
+                app:layout_constraintTop_toTopOf="@+id/box6"
+                app:layout_constraintVertical_bias="0.194" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recent Workout"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/box5"
+                app:layout_constraintEnd_toEndOf="@+id/box5"
+                app:layout_constraintHorizontal_bias="0.481"
+                app:layout_constraintStart_toStartOf="@+id/box5"
+                app:layout_constraintTop_toTopOf="@+id/box5"
+                app:layout_constraintVertical_bias="0.194" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="200dp"
+                android:text="Your Profile"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/box6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.045"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="448dp"
+                android:text="Music"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.04"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="588dp"
+                android:text="Notifications"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.04"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/myBMI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="@+id/box6"
+                app:layout_constraintEnd_toEndOf="@+id/box6"
+                app:layout_constraintStart_toStartOf="@+id/box6"
+                app:layout_constraintTop_toTopOf="@+id/box6"
+                app:layout_constraintVertical_bias="0.701" />
+
+            <TextView
+                android:id="@+id/calBMI_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="388dp"
+                android:text="Calculate BMI here"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/setNotification_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Set Notifications here"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="@+id/box4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/box4" />
+
+            <TextView
+                android:id="@+id/exploreMusic_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Explore Music here"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="@+id/box3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/box3" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="HELLO!"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
