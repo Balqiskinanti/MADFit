@@ -77,7 +77,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onClick(View view, int position) {
-                //Intent intent
                 Toast.makeText(context, "Click to " + exerciseList.get(position).getName(),Toast.LENGTH_SHORT).show();
             }
         });
