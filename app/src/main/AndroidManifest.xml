@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MADFit">
-        <activity android:name=".BmiActivity"></activity>
+        <activity android:name=".BmiCalculatorActivity"></activity>
+        <activity android:name=".BmiActivity" />
         <activity
             android:name=".SplashActivity"
             android:theme="@style/Theme.MADFit.Splashscreen">
