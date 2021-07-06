@@ -29,6 +29,8 @@ public class BmiActivity extends AppCompatActivity {
             }
         });
 
+        // Get BMI data from storage and display to User
+
         navigationView = findViewById(R.id.bottom_navigation);
         navigationView.setSelectedItemId(R.id.nav_home);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
