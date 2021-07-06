@@ -50,7 +50,7 @@ public class ViewExercise extends AppCompatActivity {
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ViewExercise.this,ListExercises.class);
+                Intent intent = new Intent(ViewExercise.this,ViewExerciseTimer.class);
                 startActivity(intent);
             }
         });
