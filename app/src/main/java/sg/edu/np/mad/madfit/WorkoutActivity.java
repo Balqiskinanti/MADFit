@@ -58,5 +58,14 @@ public class WorkoutActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        workSettingButton = findViewById(R.id.workSettingBtn);
+        workSettingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WorkoutActivity.this,WorkoutSetting.class);
+                startActivity(intent);
+            }
+        });
     }
 }
