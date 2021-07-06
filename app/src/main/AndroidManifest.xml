@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MADFit">
-        <activity android:name=".NotificationActivity"/>
+        <activity android:name=".ViewExercise"></activity>
+        <activity android:name=".NotificationActivity" />
         <activity android:name=".MusicPlayerActivity" />
         <activity android:name=".MusicActivity" />
         <activity android:name=".BmiCalculatorActivity" />
@@ -20,7 +21,9 @@
         <activity android:name=".ListExercises" />
         <activity android:name=".WorkoutActivity" />
         <activity android:name=".FoodActivity" />
-        <receiver android:name=".ReminderBroadcast"/>
+
+        <receiver android:name=".ReminderBroadcast" />
+
         <activity
             android:name=".SplashActivity"
             android:theme="@style/Theme.MADFit.Splashscreen">
@@ -38,4 +41,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>
