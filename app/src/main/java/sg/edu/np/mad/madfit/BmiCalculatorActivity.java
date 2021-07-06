@@ -36,7 +36,6 @@ public class BmiCalculatorActivity extends AppCompatActivity {
                 } else {
                     myHeight = Double.parseDouble(myH);
                 }
-
                 if(myW.isEmpty()){
                     myWeight = 0.0;
                 } else {
@@ -46,7 +45,6 @@ public class BmiCalculatorActivity extends AppCompatActivity {
                 //calculate BMI, check Status & Alert Dialog
                 double myBMI = calBMI(myHeight, myWeight);
                 String myStatus = bmiStatus(myBMI);
-
             }
         });
 
@@ -65,7 +63,7 @@ public class BmiCalculatorActivity extends AppCompatActivity {
     */
     private double calBMI(double myHeight, double myWeight){
         double bmi = myWeight / (myHeight * myHeight);
-
+        // to return BMI in one decimal format
         DecimalFormat oneDForm = new DecimalFormat("#.#");
         return Double.valueOf(oneDForm.format(bmi));
     }
