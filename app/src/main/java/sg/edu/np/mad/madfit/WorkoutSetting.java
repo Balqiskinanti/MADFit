@@ -7,20 +7,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class ViewExerciseTimer extends AppCompatActivity {
+public class WorkoutSetting extends AppCompatActivity {
 
-    Button btnFinished;
+    Button turnOnReminderBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_exercise_timer);
+        setContentView(R.layout.activity_workout_setting);
 
-        btnFinished = (Button)findViewById(R.id.wFinishBtn);
-        btnFinished.setOnClickListener(new View.OnClickListener() {
+        turnOnReminderBtn = findViewById(R.id.turnOnReminderBtn);
+        turnOnReminderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ViewExerciseTimer.this,ExerciseFinished.class);
+                Intent intent = new Intent(WorkoutSetting.this,NotificationActivity.class);
                 startActivity(intent);
             }
         });
