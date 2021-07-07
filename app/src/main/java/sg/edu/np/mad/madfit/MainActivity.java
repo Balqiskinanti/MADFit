@@ -24,6 +24,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //set hello text with emoji
+        TextView helloTxt = findViewById(R.id.textView16);
+        int unicode = 0x1F44B;
+        String emoji = getEmoji(unicode);
+        String txt = "HELLO! "+ emoji;
+        helloTxt.setText(txt);
+
         TextView calBMI_btn = findViewById(R.id.calBMI_btn);
         calBMI_btn.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -78,5 +85,9 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+    }
+
+    public String getEmoji(int uni){
+        return new String(Character.toChars(uni));
     }
 }
