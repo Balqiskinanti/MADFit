@@ -1,10 +1,15 @@
 package sg.edu.np.mad.madfit;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +23,7 @@ public class ListExercises extends AppCompatActivity {
     RecyclerView.LayoutManager layoutManager;
     RecyclerView recyclerView;
     RecyclerViewAdapter adapter;
+    BottomNavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +36,32 @@ public class ListExercises extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+
+        navigationView = findViewById(R.id.bottom_navigation);
+        navigationView.setSelectedItemId(R.id.nav_workout);
+        navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+
+                    case R.id.nav_home:
+                        Intent intent0 = new Intent(ListExercises.this,MainActivity.class);
+                        startActivity(intent0);
+                        break;
+
+                    case R.id.nav_workout:
+                        Intent intent1 = new Intent(ListExercises.this,WorkoutActivity.class);
+                        startActivity(intent1);
+                        break;
+
+                    case R.id.nav_food:
+                        Intent intent2 = new Intent(ListExercises.this,FoodActivity.class);
+                        startActivity(intent2);
+                        break;
+                }
+                return false;
+            }
+        });
     }
 
     private void initData() {
