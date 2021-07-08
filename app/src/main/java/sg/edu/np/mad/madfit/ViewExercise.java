@@ -47,7 +47,8 @@ public class ViewExercise extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                Toast.makeText(ViewExercise.this, "Skipped",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ViewExercise.this,ViewExerciseTimer.class);
+                startActivity(intent);
                 finish();
             }
         }.start();
@@ -57,6 +58,7 @@ public class ViewExercise extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ViewExercise.this,ViewExerciseTimer.class);
                 startActivity(intent);
+                Toast.makeText(ViewExercise.this, "Skipped",Toast.LENGTH_SHORT).show();
             }
         });
 

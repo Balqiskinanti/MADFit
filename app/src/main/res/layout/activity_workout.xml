@@ -9,6 +9,65 @@
     tools:context=".MainActivity">
 
 
+
+    <Button
+        android:id="@+id/workStartBtn"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="126dp"
+        android:layout_marginTop="340dp"
+        android:layout_marginEnd="125dp"
+        android:text="Start"
+        android:textStyle="bold"
+        app:backgroundTint="#5868E0" />
+
+    <Button
+        android:id="@+id/workSettingBtn"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/workStartBtn"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="126dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="125dp"
+        android:text="Setting"
+        android:textStyle="bold"
+        app:backgroundTint="#5868E0" />
+
+    <Button
+        android:id="@+id/workCalendarBtn"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/workSettingBtn"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="126dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="125dp"
+        android:text="Calendar"
+        android:textStyle="bold"
+        app:backgroundTint="#5868E0" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/workoutMainImage"
+        android:layout_width="331dp"
+        android:layout_height="230dp"
+        android:layout_alignTop="@+id/textView3"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="258dp"
+        android:background="@drawable/vegetable"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
@@ -23,44 +82,20 @@
         app:labelVisibilityMode="unlabeled"
         app:menu="@menu/menu" />
 
-    <Button
-        android:id="@+id/workStartBtn"
-        android:layout_width="160dp"
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="143dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="126dp"
-        android:layout_marginTop="300dp"
-        android:layout_marginEnd="125dp"
-        android:text="Start"
-        app:backgroundTint="#807F7F" />
-
-    <Button
-        android:id="@+id/workSettingBtn"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/workStartBtn"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="126dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="125dp"
-        android:text="Setting"
-        app:backgroundTint="#807F7F" />
-
-    <Button
-        android:id="@+id/workCalendarBtn"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/workSettingBtn"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="126dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="125dp"
-        android:text="Calendar"
-        app:backgroundTint="#807F7F" />
-
+        android:layout_marginStart="153dp"
+        android:layout_marginTop="81dp"
+        android:layout_marginEnd="115dp"
+        android:layout_marginBottom="258dp"
+        android:text="Workout"
+        android:textColor="#5868E0"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>
