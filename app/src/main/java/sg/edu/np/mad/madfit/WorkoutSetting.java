@@ -21,6 +21,7 @@ public class WorkoutSetting extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_setting);
 
+        // Go to notification activity
         turnOnReminderBtn = findViewById(R.id.turnOnReminderBtn);
         turnOnReminderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,6 +31,7 @@ public class WorkoutSetting extends AppCompatActivity {
             }
         });
 
+        // Bottom navigation
         navigationView = findViewById(R.id.bottom_navigation);
         navigationView.setSelectedItemId(R.id.nav_workout);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

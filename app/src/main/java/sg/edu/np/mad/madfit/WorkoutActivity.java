@@ -23,6 +23,7 @@ public class WorkoutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout);
 
+        // Bottom navigation
         navigationView = findViewById(R.id.bottom_navigation);
         navigationView.setSelectedItemId(R.id.nav_workout);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -43,13 +44,12 @@ public class WorkoutActivity extends AppCompatActivity {
                         Intent intent2 = new Intent(WorkoutActivity.this,FoodActivity.class);
                         startActivity(intent2);
                         break;
-
                 }
                 return false;
             }
-
         });
 
+        // Go to list exercises
         workStartButton = findViewById(R.id.workStartBtn);
         workStartButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +59,7 @@ public class WorkoutActivity extends AppCompatActivity {
             }
         });
 
+        // Go to workout settings
         workSettingButton = findViewById(R.id.workSettingBtn);
         workSettingButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +69,7 @@ public class WorkoutActivity extends AppCompatActivity {
             }
         });
 
+        // Go to workout calendar
         workCalendarButton = findViewById(R.id.workCalendarBtn);
         workCalendarButton.setOnClickListener(new View.OnClickListener() {
             @Override

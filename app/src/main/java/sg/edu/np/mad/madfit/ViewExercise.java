@@ -36,10 +36,9 @@ public class ViewExercise extends AppCompatActivity {
         title = (TextView)findViewById(R.id.workTitle);
         detail_image = (GifImageView)findViewById(R.id.detail_image);
 
-        btnSkip = (Button)findViewById(R.id.wSkipBtn);
-
+        // Display countdown timer
+        // Go to view exercise timer when finish
         new CountDownTimer(5000,1000){
-
             @Override
             public void onTick(long millisUntilFinished) {
                 timer.setText(""+millisUntilFinished/1000);
@@ -53,6 +52,8 @@ public class ViewExercise extends AppCompatActivity {
             }
         }.start();
 
+        // Go to view exercise timer
+        btnSkip = (Button)findViewById(R.id.wSkipBtn);
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +63,7 @@ public class ViewExercise extends AppCompatActivity {
             }
         });
 
+        // Display image, title
         if(getIntent() != null){
             image_id = getIntent().getIntExtra("image_id",-1);
             name = getIntent().getStringExtra("name");
@@ -70,6 +72,7 @@ public class ViewExercise extends AppCompatActivity {
             title.setText(name);
         }
 
+        // Bottom navigation
         navigationView = findViewById(R.id.bottom_navigation);
         navigationView.setSelectedItemId(R.id.nav_workout);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

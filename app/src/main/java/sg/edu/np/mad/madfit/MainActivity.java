@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         String txt = "HELLO! "+ emoji;
         helloTxt.setText(txt);
 
+        // Go to bmi activity
         TextView calBMI_btn = findViewById(R.id.calBMI_btn);
         calBMI_btn.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Go to music activity
         Button exploreMusic_btn = findViewById(R.id.exploreMusic_btn);
         exploreMusic_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Go to notification activity
         Button setNotification_btn = findViewById(R.id.setNotification_btn);
         setNotification_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Bottom navigation
         navigationView = findViewById(R.id.bottom_navigation);
         navigationView.setSelectedItemId(R.id.nav_home);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -83,10 +87,12 @@ public class MainActivity extends AppCompatActivity {
                 }
                 return false;
             }
-
         });
     }
 
+    /*
+    Unicode integer -> String
+     */
     public String getEmoji(int uni){
         return new String(Character.toChars(uni));
     }
