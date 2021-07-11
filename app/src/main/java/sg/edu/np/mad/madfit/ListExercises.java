@@ -30,6 +30,7 @@ public class ListExercises extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_exercises);
 
+        // Initialise and pass data to recycler view
         initData();
         recyclerView = (RecyclerView) findViewById(R.id.list_ex);
         adapter = new RecyclerViewAdapter(exerciseList,getBaseContext());
@@ -37,6 +38,7 @@ public class ListExercises extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
+        // Bottom navigation
         navigationView = findViewById(R.id.bottom_navigation);
         navigationView.setSelectedItemId(R.id.nav_workout);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -64,6 +66,9 @@ public class ListExercises extends AppCompatActivity {
         });
     }
 
+    /*
+    Populate exercise list
+    */
     private void initData() {
         exerciseList.add(new Exercise(R.drawable.exersice_1,"Push Up"));
         exerciseList.add(new Exercise(R.drawable.exersice_2,"Crunches"));

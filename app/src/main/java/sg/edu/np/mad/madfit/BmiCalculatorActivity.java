@@ -24,6 +24,7 @@ public class BmiCalculatorActivity extends AppCompatActivity {
         myHeightInput = findViewById(R.id.height_input);
         myWeightInput = findViewById(R.id.weight_input);
 
+        //calculate BMI, check Status & Alert Dialog
         calBtn = findViewById(R.id.cal_btn);
         calBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,12 +43,12 @@ public class BmiCalculatorActivity extends AppCompatActivity {
                     myWeight = Double.parseDouble(myW);
                 }
 
-                //calculate BMI, check Status & Alert Dialog
                 double myBMI = calBMI(myHeight, myWeight);
                 String myStatus = bmiStatus(myBMI);
             }
         });
 
+        // Go to bmi activity
         cancelBtn = findViewById(R.id.cancel_btn);
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -21,6 +21,7 @@ public class MusicActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music);
 
+        // Go to music player activity
         TextView chillRun_btn = findViewById(R.id.chillRun_btn);
         chillRun_btn.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -31,6 +32,7 @@ public class MusicActivity extends AppCompatActivity {
             }
         });
 
+        // Bottom navigation
         navigationView = findViewById(R.id.bottom_navigation);
         navigationView.setSelectedItemId(R.id.nav_home);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

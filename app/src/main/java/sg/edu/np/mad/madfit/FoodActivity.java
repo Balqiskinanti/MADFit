@@ -23,6 +23,7 @@ public class FoodActivity extends AppCompatActivity {
         TextView title = (TextView) findViewById(R.id.activityTitle2);
         title.setText("This is food activity");
 
+        // Bottom navigation
         navigationView = findViewById(R.id.bottom_navigation);
         navigationView.setSelectedItemId(R.id.nav_food);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -43,11 +44,9 @@ public class FoodActivity extends AppCompatActivity {
                     case R.id.nav_food:
 
                         break;
-
                 }
                 return false;
             }
-
         });
     }
 }

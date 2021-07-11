@@ -28,7 +28,7 @@ public class NotificationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
 
-        // Create channel
+        // Create notification channel
         createNotificationChannel();
 
         //Send notification 10 seconds after button clicked
@@ -47,6 +47,7 @@ public class NotificationActivity extends AppCompatActivity {
             }
         });
 
+        // Bottom navigation
         navigationView = findViewById(R.id.bottom_navigation);
         navigationView.setSelectedItemId(R.id.nav_home);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -74,7 +75,9 @@ public class NotificationActivity extends AppCompatActivity {
         });
     }
 
-    // Create notification Channel
+    /*
+    Create notification channel
+     */
     private void createNotificationChannel(){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             String name = "MADFit Exercise Reminder Channel";

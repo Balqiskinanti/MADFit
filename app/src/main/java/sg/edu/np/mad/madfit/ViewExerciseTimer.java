@@ -21,6 +21,7 @@ public class ViewExerciseTimer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_exercise_timer);
 
+        // Go to exercise finished
         btnFinished = (Button)findViewById(R.id.wFinishBtn);
         btnFinished.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,6 +31,7 @@ public class ViewExerciseTimer extends AppCompatActivity {
             }
         });
 
+        // Bottom navigation
         navigationView = findViewById(R.id.bottom_navigation);
         navigationView.setSelectedItemId(R.id.nav_workout);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

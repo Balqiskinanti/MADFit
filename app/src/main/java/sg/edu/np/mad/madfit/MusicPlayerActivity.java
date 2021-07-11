@@ -13,7 +13,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music_player);
 
-        // load music from https://www.mixcloud.com/
+        // Music dataUrl from https://www.mixcloud.com/
         WebView webView = findViewById(R.id.webView1);
         String dataUrl = "<iframe width=\"100%\" height=\"400\" src=\"https://www.mixcloud.com/widget/iframe/?dark=1&feed=%2Fakeymusicfactory%2Fall-sza-selection%2F\" frameborder=\"0\" ></iframe>";
         loadMusicPlayer(webView, dataUrl);
@@ -27,6 +27,9 @@ public class MusicPlayerActivity extends AppCompatActivity {
         loadMusicPlayer(webView3, dataUrl3);
     }
 
+    /*
+    Load music player to respective web view
+    */
     private void loadMusicPlayer(WebView webView, String dataUrl){
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
