@@ -1,7 +1,11 @@
 # MADFit :muscle:
 
-MADFit is a health & wellness mobile application that motivates users to take care of their health.
-The aim is to encourage people to watch their diet and exercise. The audience for our application would be for people interested in fitness.
+MADFit is a health & wellness mobile application that motivates users to take care of their health.  The aim is to encourage people to watch their diet and exercise. The audience for our application would be for people interested in fitness.
+
+By:
+* Balqis Kinanti Haldi Heryputri : S10204973
+* Keith Toh : S10202764
+* Lim Xuan Qing : S10207455
 
 ## Table of Contents
 * [Design Process](https://github.com/Balqiskinanti/MADFit#design-process)
@@ -15,7 +19,7 @@ The aim is to encourage people to watch their diet and exercise. The audience fo
 ### User Stories
 
 ### Logo, Layout & Interface
-* Logo: ![MADFit Logo](https://github.com/Balqiskinanti/MADFit/blob/main/app/src/main/ic_launcher-playstore.png)
+* Logo: ![MADFit Logo](https://github.com/Balqiskinanti/MADFit/blob/main/app/src/main/res/mipmap-xhdpi/ic_launcher.png)
 * Wireframe: https://xd.adobe.com/view/bbe237a4-5c01-440e-a3d7-17a2fb9658b5-eeb1/
 
 ## User Guide
@@ -24,32 +28,26 @@ The aim is to encourage people to watch their diet and exercise. The audience fo
 ### Existing Features
 
 ### Features Left To Implement
-* Lim Xuan Qing
-    * Exercise guide
-    * Exercise timer
-    * Exercise calendar
-* Keith Toh
-    * Exercise plan
-    * BMI calculator
-    * Calorie counter
-    * Calorie dashboard
-* Balqis Kinanti
-    * Music player
-    * Workout reminder
-    * Email Notification
+1.  Exercise guide
+2.  Exercise timer
+3.  Exercise history records
+4.  Exercise progress calendar
+5.  Exercise plan
+6.  BMI calculator
+7.  Calorie counter
+8.  Calorie dashboard
+9.  Music player
+10.  Workout reminder
+11. Email Notification
 
 ## Contributions
+### Proposed Contributions
+* Xuan Qing: Exercise home page, features 1-4
+* Keith: Home page, features 5-8
+* Balqis: App logo, splash screen , features 9-11
+* Everyone: Maintaining consistent UI, responsive layout, working intents
 
 ## Concepts Used
-* Navigation
-* RecyclerView
-* Responsive layout
-* Intent
-* Touch & Input
-* Web-based content
-* Persistent memory (SharedPreferences and SQLite)
-* Multimedia (image)
-* Notification
 
 ## Credits
 ### Media
