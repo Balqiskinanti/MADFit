@@ -38,7 +38,7 @@ public class ViewExercise extends AppCompatActivity {
 
         // Display countdown timer
         // Go to view exercise timer when finish
-        new CountDownTimer(5000,1000){
+        CountDownTimer skipTimer = new CountDownTimer(5000,1000){
             @Override
             public void onTick(long millisUntilFinished) {
                 timer.setText(""+millisUntilFinished/1000);
@@ -57,6 +57,7 @@ public class ViewExercise extends AppCompatActivity {
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                skipTimer.cancel();
                 Intent intent = new Intent(ViewExercise.this,ViewExerciseTimer.class);
                 startActivity(intent);
                 Toast.makeText(ViewExercise.this, "Skipped",Toast.LENGTH_SHORT).show();
