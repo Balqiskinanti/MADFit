@@ -25,8 +25,6 @@ public class ViewExercise extends AppCompatActivity {
     Button btnSkip;
     BottomNavigationView navigationView;
 
-    boolean isRunning = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,22 +45,12 @@ public class ViewExercise extends AppCompatActivity {
             @Override
             public void onFinish() {
                 Intent intent = new Intent(ViewExercise.this,ViewExerciseTimer.class);
+                intent.putExtra("image_id",image_id);
+                intent.putExtra("name",name);
                 startActivity(intent);
                 finish();
             }
         }.start();
-
-        // Go to view exercise timer
-        btnSkip = (Button)findViewById(R.id.wSkipBtn);
-        btnSkip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                skipTimer.cancel();
-                Intent intent = new Intent(ViewExercise.this,ViewExerciseTimer.class);
-                startActivity(intent);
-                Toast.makeText(ViewExercise.this, "Skipped",Toast.LENGTH_SHORT).show();
-            }
-        });
 
         // Display image, title
         if(getIntent() != null){
@@ -72,6 +60,20 @@ public class ViewExercise extends AppCompatActivity {
             detail_image.setImageResource(image_id);
             title.setText(name);
         }
+
+        // Go to view exercise timer
+        btnSkip = (Button)findViewById(R.id.wSkipBtn);
+        btnSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                skipTimer.cancel();
+                Intent intent = new Intent(ViewExercise.this,ViewExerciseTimer.class);
+                intent.putExtra("image_id",image_id);
+                intent.putExtra("name",name);
+                startActivity(intent);
+                Toast.makeText(ViewExercise.this, "Skipped",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         // Bottom navigation
         navigationView = findViewById(R.id.bottom_navigation);
