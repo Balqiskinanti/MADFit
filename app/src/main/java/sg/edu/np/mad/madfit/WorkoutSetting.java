@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,15 +12,48 @@ import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import sg.edu.np.mad.madfit.Database.MADFitDBHandler;
+
 public class WorkoutSetting extends AppCompatActivity {
 
-    Button turnOnReminderBtn;
+    Button turnOnReminderBtn, easyBtn, mediumBtn, hardBtn;
     BottomNavigationView navigationView;
+    MADFitDBHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_setting);
+
+        easyBtn = findViewById(R.id.easyBtn);
+        mediumBtn = findViewById(R.id.mediumBtn);
+        hardBtn = findViewById(R.id.hardBtn);
+
+        /*
+        dbHandler = new MADFitDBHandler(this);
+        int mode = dbHandler.getSettingMode(1);
+        setButton(mode);
+
+        easyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dbHandler.saveSettingMode(0);
+            }
+        });
+        mediumBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dbHandler.saveSettingMode(1);
+            }
+        });
+        hardBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dbHandler.saveSettingMode(2);
+            }
+        });
+
+         */
 
         // Go to notification activity
         turnOnReminderBtn = findViewById(R.id.turnOnReminderBtn);
@@ -58,4 +92,17 @@ public class WorkoutSetting extends AppCompatActivity {
             }
         });
     }
+
+    private void setButton(int mode) {
+        if(mode == 0){
+            easyBtn.setBackgroundColor(Color.BLUE);
+        }
+        else if(mode == 1){
+            mediumBtn.setBackgroundColor(Color.BLUE);
+        }
+        else if(mode == 2){
+            hardBtn.setBackgroundColor(Color.BLUE);
+        }
+    }
+
 }
