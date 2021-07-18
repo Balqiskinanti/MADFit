@@ -12,12 +12,14 @@ import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import sg.edu.np.mad.madfit.Model.Mode;
+
 public class WorkoutSetting extends AppCompatActivity {
 
     private static final String TAG = "Workout Setting";
     Button turnOnReminderBtn, easyBtn, mediumBtn, hardBtn;
     BottomNavigationView navigationView;
-    MADFitDBHandler madFitDBHandler;
+    MADFitDBHandler madFitDBHandler = new MADFitDBHandler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +30,17 @@ public class WorkoutSetting extends AppCompatActivity {
         mediumBtn = findViewById(R.id.mediumBtn);
         hardBtn = findViewById(R.id.hardBtn);
 
-        madFitDBHandler = new MADFitDBHandler(WorkoutSetting.this);
-        Log.v(TAG,"db created");
+        easyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Mode dbMode = new Mode();
+                dbMode.setMode(1);
+                madFitDBHandler.addMode(dbMode);
+                Log.v(TAG,"db created");
+            }
+        });
+
         /*
         int mode = dbHandler.getSettingMode();
         setButton(mode);

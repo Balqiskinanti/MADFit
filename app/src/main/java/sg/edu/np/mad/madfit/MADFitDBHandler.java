@@ -7,11 +7,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.util.Log;
 
+import sg.edu.np.mad.madfit.Model.Mode;
+
 public class MADFitDBHandler extends SQLiteOpenHelper{
 
     private static final String DB_NAME = "madWorkout.db"; //filename
     private static final int DB_VER = 1;
-    private static final String TABLE_SETTING = "setting"; //table
+    private static final String TABLE_SETTING = "Setting"; //table
     private static final String COLUMN_MODE = "mode";
     private static final String TAG = "DBHandler";
     public static String COLUMN_ID = "id";
@@ -23,11 +25,10 @@ public class MADFitDBHandler extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         Log.v(TAG,"Table created");
-        String CREATE_SETTING_TABLE = "" +
-                "CREATE TABLE " + TABLE_SETTING + "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_MODE + " TEXT" + ")";
+        String CREATE_SETTING_TABLE = "CREATE TABLE " + TABLE_SETTING + "(" + COLUMN_MODE + " TEXT" + ")";
 
         String create = "CREATE TABLE setting (mode TEXT)";
-        db.execSQL(create);
+        db.execSQL(CREATE_SETTING_TABLE);
 
         for (int i = 0; i < 3; ++i) {
             Log.v("Create Table", "");
@@ -68,14 +69,15 @@ public class MADFitDBHandler extends SQLiteOpenHelper{
     }
 
 
-    public void addMode(int mode) {
+    public void addMode(Mode mode) {
         ContentValues values = new ContentValues();
-        values.put(COLUMN_MODE, mode);
+        values.put(COLUMN_MODE, mode.getMode());
         SQLiteDatabase db = this.getWritableDatabase();
 
         db.insert(TABLE_SETTING, null, values);
         db.close();
     }
+
 
 
 
