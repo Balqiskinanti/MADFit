@@ -48,8 +48,11 @@ public class WorkoutSetting extends AppCompatActivity {
 
 
         //get setting mode in database
+
         int mode = madFitDBHandler.getSettingMode();
         setButton(mode);
+
+
 
         //set mode and store in database
         easyBtn.setOnClickListener(new View.OnClickListener() {

@@ -16,7 +16,6 @@ public class MADFitDBHandler extends SQLiteOpenHelper{
     private static final String TABLE_SETTING = "Setting"; //table
     private static final String COLUMN_MODE = "mode";
     private static final String TAG = "DBHandler";
-    public static String COLUMN_ID = "id";
 
     public MADFitDBHandler(Context context){
                 super(context, DB_NAME, null, DB_VER);
@@ -24,24 +23,31 @@ public class MADFitDBHandler extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        /*
+
         Log.v(TAG,"Table created");
         String CREATE_SETTING_TABLE = "CREATE TABLE " + TABLE_SETTING + "(" + COLUMN_MODE + " TEXT" + ")";
 
         String create = "CREATE TABLE setting (mode TEXT)";
         db.execSQL(CREATE_SETTING_TABLE);
 
-         */
+
+        for (int i = 0; i < 1; ++i) {
+            Log.v("Create Table", "");
+            ContentValues values = new ContentValues();
+            values.put(COLUMN_MODE, "1");
+            db.insert(TABLE_SETTING, null, values);
+        }
+
         //addMode(1);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        /*
+
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_SETTING);
         onCreate(db);
 
-         */
+
     }
 
     //get setting mode in database
@@ -77,8 +83,5 @@ public class MADFitDBHandler extends SQLiteOpenHelper{
         db.insert(TABLE_SETTING, null, values);
         db.close();
     }
-
-
-
 
 }
