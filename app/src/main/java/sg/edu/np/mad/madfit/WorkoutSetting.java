@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -46,9 +47,11 @@ public class WorkoutSetting extends AppCompatActivity {
          */
 
 
+        //get setting mode in database
         int mode = madFitDBHandler.getSettingMode();
         setButton(mode);
 
+        //set mode and store in database
         easyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,6 +59,7 @@ public class WorkoutSetting extends AppCompatActivity {
                 mediumBtn.setBackgroundColor(Color.WHITE);
                 hardBtn.setBackgroundColor(Color.WHITE);
                 madFitDBHandler.saveSettingMode(0);
+                Toast.makeText(WorkoutSetting.this, "SAVED!",Toast.LENGTH_SHORT).show();
             }
         });
         mediumBtn.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +69,7 @@ public class WorkoutSetting extends AppCompatActivity {
                 easyBtn.setBackgroundColor(Color.WHITE);
                 hardBtn.setBackgroundColor(Color.WHITE);
                 madFitDBHandler.saveSettingMode(1);
+                Toast.makeText(WorkoutSetting.this, "SAVED!",Toast.LENGTH_SHORT).show();
             }
         });
         hardBtn.setOnClickListener(new View.OnClickListener() {
@@ -74,11 +79,9 @@ public class WorkoutSetting extends AppCompatActivity {
                 easyBtn.setBackgroundColor(Color.WHITE);
                 mediumBtn.setBackgroundColor(Color.WHITE);
                 madFitDBHandler.saveSettingMode(2);
+                Toast.makeText(WorkoutSetting.this, "SAVED!",Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
 
         // Go to notification activity
         turnOnReminderBtn = findViewById(R.id.turnOnReminderBtn);
@@ -118,6 +121,7 @@ public class WorkoutSetting extends AppCompatActivity {
         });
     }
 
+    //set selected button in database to different color
     private void setButton(int mode) {
         if(mode == 0){
             easyBtn.setBackgroundColor(Color.rgb(88,104,224));
