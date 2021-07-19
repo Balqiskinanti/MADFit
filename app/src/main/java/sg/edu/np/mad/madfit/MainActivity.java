@@ -2,6 +2,7 @@ package sg.edu.np.mad.madfit;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         helloTxt.setText(txt);
 
         // Go to bmi activity
-        TextView calBMI_btn = findViewById(R.id.calBMI_btn);
+        ConstraintLayout calBMI_btn = findViewById(R.id.calBMI_btn);
         calBMI_btn.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
