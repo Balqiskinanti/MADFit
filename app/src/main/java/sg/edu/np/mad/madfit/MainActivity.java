@@ -47,14 +47,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // display BMI
-        TextView myBMI = findViewById(R.id.myBMI);
         if (readBMIData() == true){
             sharedPreferences = getSharedPreferences(GLOBAL_PREFS, MODE_PRIVATE);
-            String sharedBMI = sharedPreferences.getString(MY_BMI,"");
+            String sharedBMI = sharedPreferences.getString(MY_BMI,"0");
 
+            TextView myBMI = findViewById(R.id.myBMI);
             myBMI.setText(sharedBMI);
-        } else {
-            myBMI.setText("0");
         }
 
         // Go to music activity

@@ -19,6 +19,7 @@ public class BmiCalculatorActivity extends AppCompatActivity {
     Button cancelBtn, calBtn;
     String myH, myW;
     double myHeight, myWeight;
+    boolean validInput;
     SharedPreferences sharedPreferences;
     public String GLOBAL_PREFS = "MyPrefs";
     public String MY_HEIGHT = "MyHeight";
@@ -43,19 +44,26 @@ public class BmiCalculatorActivity extends AppCompatActivity {
                 myW = myWeightInput.getText().toString();
 
                 if(myH.isEmpty()){
-                    myHeight = 0.0;
+                    Toast.makeText(BmiCalculatorActivity.this,"Please enter a height",Toast.LENGTH_SHORT).show();
+                    validInput = false;
                 } else {
                     myHeight = Double.parseDouble(myH);
+                    validInput = true;
                 }
                 if(myW.isEmpty()){
-                    myWeight = 0.0;
+                    Toast.makeText(BmiCalculatorActivity.this,"Please enter a weight",Toast.LENGTH_SHORT).show();
+                    validInput = false;
                 } else {
                     myWeight = Double.parseDouble(myW);
+                    validInput = true;
                 }
 
-                double myBMI = calBMI(myHeight, myWeight);
-                String myStatus = bmiStatus(myBMI);
-                bmiAlert(myBMI, myStatus, myHeight, myWeight);
+                if (validInput == true)
+                {
+                    double myBMI = calBMI(myHeight, myWeight);
+                    String myStatus = bmiStatus(myBMI);
+                    bmiAlert(myBMI, myStatus, myHeight, myWeight);
+                }
             }
         });
 
@@ -94,7 +102,7 @@ public class BmiCalculatorActivity extends AppCompatActivity {
         } else if (bmi > 30.0){
             status = "Obese";
         } else {
-            status = "None";
+            status = "No Records";
         }
         return status;
     }

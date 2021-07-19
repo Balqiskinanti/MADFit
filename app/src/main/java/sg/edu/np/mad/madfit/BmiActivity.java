@@ -42,26 +42,22 @@ public class BmiActivity extends AppCompatActivity {
         /*
         Get BMI data from storage and display to User
         */
-        myHeight = findViewById(R.id.height_record);
-        myWeight = findViewById(R.id.weight_record);
-        myBMI = findViewById(R.id.bmi_record);
-        myStatus = findViewById(R.id.status_record);
         if (readBMIData() == true){
             sharedPreferences = getSharedPreferences(GLOBAL_PREFS, MODE_PRIVATE);
-            String sharedHeight = sharedPreferences.getString(MY_HEIGHT,"");
-            String sharedWeight = sharedPreferences.getString(MY_WEIGHT,"");
-            String sharedBMI = sharedPreferences.getString(MY_BMI,"");
-            String sharedStatus = sharedPreferences.getString(MY_STATUS,"");
+            String sharedHeight = sharedPreferences.getString(MY_HEIGHT,"No Records");
+            String sharedWeight = sharedPreferences.getString(MY_WEIGHT,"No Records");
+            String sharedBMI = sharedPreferences.getString(MY_BMI,"No Records");
+            String sharedStatus = sharedPreferences.getString(MY_STATUS,"No Records");
 
-            myHeight.setText(sharedHeight);
-            myWeight.setText(sharedWeight);
+            myHeight = findViewById(R.id.height_record);
+            myWeight = findViewById(R.id.weight_record);
+            myBMI = findViewById(R.id.bmi_record);
+            myStatus = findViewById(R.id.status_record);
+
+            myHeight.setText(sharedHeight + "m");
+            myWeight.setText(sharedWeight + "kg");
             myBMI.setText(sharedBMI);
             myStatus.setText(sharedStatus);
-        } else {
-            myHeight.setText("no records");
-            myWeight.setText("no records");
-            myBMI.setText("no records");
-            myStatus.setText("no records");
         }
 
         // Bottom navigation
