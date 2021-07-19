@@ -25,6 +25,7 @@ import sg.edu.np.mad.madfit.Model.Exercise;
 import sg.edu.np.mad.madfit.R;
 import sg.edu.np.mad.madfit.ViewExercise;
 
+//ExerciseList Recycler View Holder
 class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     public GifImageView image;
@@ -50,6 +51,7 @@ class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClick
     }
 }
 
+//ExerciseList Recycler View Adapter
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
 
     public List<Exercise> exerciseList;
@@ -70,14 +72,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
 
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
+        //gif image
         holder.image.setImageResource(exerciseList.get(position).getImage_id());
+        //exercise name
         holder.text.setText(exerciseList.get(position).getName());
 
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onClick(View view, int position) {
-                //Toast.makeText(context, "Click to " + exerciseList.get(position).getName(),Toast.LENGTH_SHORT).show();
+                //Go to single exercise
                 Intent intent = new Intent(holder.image.getContext(), ViewExercise.class);
+                //Put extra (name and image)
                 intent.putExtra("image_id",exerciseList.get(position).getImage_id());
                 intent.putExtra("name",exerciseList.get(position).getName());
                 holder.image.getContext().startActivity(intent);

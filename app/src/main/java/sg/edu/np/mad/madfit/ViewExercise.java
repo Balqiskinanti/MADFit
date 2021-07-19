@@ -62,7 +62,7 @@ public class ViewExercise extends AppCompatActivity {
         }
 
         // Go to view exercise timer
-        btnSkip = (Button)findViewById(R.id.wSkipBtn);
+        btnSkip = findViewById(R.id.wSkipBtn);
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

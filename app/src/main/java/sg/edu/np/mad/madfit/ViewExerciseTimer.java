@@ -39,6 +39,7 @@ public class ViewExerciseTimer extends AppCompatActivity {
         detail_image = findViewById(R.id.detail_image2);
         startMillis = 20000;
 
+        //workoutTimer
         workoutTimer = new CountDownTimer(startMillis,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -53,15 +54,18 @@ public class ViewExerciseTimer extends AppCompatActivity {
             }
         }.start();
 
+        //pause button
         btnPause = findViewById(R.id.wPauseBtn);
         btnPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(resume){
+                    //Cancel timer when pause
                     btnPause.setText("Resume");
                     workoutTimer.cancel();
                 }
                 else {
+                    //resume timer (start new timer with milliLeft)
                     btnPause.setText("Pause");
                     startMillis = milliLeft;
                     workoutTimer = new CountDownTimer(startMillis,1000) {
@@ -73,6 +77,7 @@ public class ViewExerciseTimer extends AppCompatActivity {
 
                         @Override
                         public void onFinish() {
+                            //Go to exercise finish page
                             Intent intent = new Intent(ViewExerciseTimer.this,ExerciseFinished.class);
                             startActivity(intent);
                             Toast.makeText(ViewExerciseTimer.this, "Finish!!!", Toast.LENGTH_SHORT).show();
@@ -89,6 +94,7 @@ public class ViewExerciseTimer extends AppCompatActivity {
         btnFinished.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Go to exercise finish page
                 Intent intent = new Intent(ViewExerciseTimer.this,ExerciseFinished.class);
                 startActivity(intent);
                 workoutTimer.cancel();
