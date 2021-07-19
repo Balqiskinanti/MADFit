@@ -52,18 +52,27 @@ public class WorkoutSetting extends AppCompatActivity {
         easyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                easyBtn.setBackgroundColor(Color.rgb(88,104,224));
+                mediumBtn.setBackgroundColor(Color.WHITE);
+                hardBtn.setBackgroundColor(Color.WHITE);
                 madFitDBHandler.saveSettingMode(0);
             }
         });
         mediumBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mediumBtn.setBackgroundColor(Color.rgb(88,104,224));
+                easyBtn.setBackgroundColor(Color.WHITE);
+                hardBtn.setBackgroundColor(Color.WHITE);
                 madFitDBHandler.saveSettingMode(1);
             }
         });
         hardBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                hardBtn.setBackgroundColor(Color.rgb(88,104,224));
+                easyBtn.setBackgroundColor(Color.WHITE);
+                mediumBtn.setBackgroundColor(Color.WHITE);
                 madFitDBHandler.saveSettingMode(2);
             }
         });
@@ -111,16 +120,13 @@ public class WorkoutSetting extends AppCompatActivity {
 
     private void setButton(int mode) {
         if(mode == 0){
-            easyBtn.setBackgroundColor(Color.BLUE);
-            Log.v(TAG,""+mode);
+            easyBtn.setBackgroundColor(Color.rgb(88,104,224));
         }
         else if(mode == 1){
-            mediumBtn.setBackgroundColor(Color.BLUE);
-            Log.v(TAG,""+mode);
+            mediumBtn.setBackgroundColor(Color.rgb(88,104,224));
         }
         else if(mode == 2){
-            hardBtn.setBackgroundColor(Color.BLUE);
-            Log.v(TAG,""+mode);
+            hardBtn.setBackgroundColor(Color.rgb(88,104,224));
         }
     }
 
