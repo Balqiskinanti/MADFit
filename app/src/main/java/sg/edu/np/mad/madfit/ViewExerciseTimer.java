@@ -42,6 +42,7 @@ public class ViewExerciseTimer extends AppCompatActivity {
         detail_image = findViewById(R.id.detail_image2);
         //startMillis = 20000;
 
+        //set time limit according to different mode
         int timeLimit = 0;
         if(madFitDBHandler.getSettingMode() == 0){
             timeLimit = Common.TIME_LIMIT_EASY;

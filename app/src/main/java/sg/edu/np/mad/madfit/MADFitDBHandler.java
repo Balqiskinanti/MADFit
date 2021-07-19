@@ -44,6 +44,7 @@ public class MADFitDBHandler extends SQLiteOpenHelper{
          */
     }
 
+    //get setting mode in database
     public int getSettingMode(){
 
         SQLiteDatabase db = getReadableDatabase();
@@ -59,6 +60,7 @@ public class MADFitDBHandler extends SQLiteOpenHelper{
         return c.getInt(c.getColumnIndex("mode"));
     }
 
+    //save setting mode to database
     public void saveSettingMode (int value){
         SQLiteDatabase db = getReadableDatabase();
         String query = "UPDATE Setting SET mode = " + value;

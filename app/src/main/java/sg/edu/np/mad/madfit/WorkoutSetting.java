@@ -47,9 +47,11 @@ public class WorkoutSetting extends AppCompatActivity {
          */
 
 
+        //get setting mode in database
         int mode = madFitDBHandler.getSettingMode();
         setButton(mode);
 
+        //set mode and store in database
         easyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,9 +82,6 @@ public class WorkoutSetting extends AppCompatActivity {
                 Toast.makeText(WorkoutSetting.this, "SAVED!",Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
 
         // Go to notification activity
         turnOnReminderBtn = findViewById(R.id.turnOnReminderBtn);
@@ -122,6 +121,7 @@ public class WorkoutSetting extends AppCompatActivity {
         });
     }
 
+    //set selected button in database to different color
     private void setButton(int mode) {
         if(mode == 0){
             easyBtn.setBackgroundColor(Color.rgb(88,104,224));
