@@ -24,28 +24,24 @@ public class MADFitDBHandler extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        /*
         Log.v(TAG,"Table created");
         String CREATE_SETTING_TABLE = "CREATE TABLE " + TABLE_SETTING + "(" + COLUMN_MODE + " TEXT" + ")";
 
         String create = "CREATE TABLE setting (mode TEXT)";
         db.execSQL(CREATE_SETTING_TABLE);
 
-        for (int i = 0; i < 3; ++i) {
-            Log.v("Create Table", "");
-            ContentValues values = new ContentValues();
-
-            values.put(COLUMN_MODE, 1);
-
-            Log.v("Mode: ", String.valueOf(values));
-            db.insert(TABLE_SETTING, null, values);
-        }
+         */
         //addMode(1);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        /*
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_SETTING);
         onCreate(db);
+
+         */
     }
 
     public int getSettingMode(){
@@ -53,19 +49,21 @@ public class MADFitDBHandler extends SQLiteOpenHelper{
         SQLiteDatabase db = getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
-        String[] sqlSelect = {"Mode"};
+        String[] sqlSelect = {"mode"};
         String sqlTable = "Setting";
 
         qb.setTables(sqlTable);
         Cursor c = qb.query(db, sqlSelect,null,null,null,null,null);
         c.moveToFirst();
-        return c.getInt(c.getColumnIndex("Mode"));
+        db.close();
+        return c.getInt(c.getColumnIndex("mode"));
     }
 
     public void saveSettingMode (int value){
         SQLiteDatabase db = getReadableDatabase();
-        String query = "UPDATE Setting SET Mode = " + value;
+        String query = "UPDATE Setting SET mode = " + value;
         db.execSQL(query);
+        db.close();
     }
 
 

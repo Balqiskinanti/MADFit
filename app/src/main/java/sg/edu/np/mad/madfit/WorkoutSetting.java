@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -30,6 +31,7 @@ public class WorkoutSetting extends AppCompatActivity {
         mediumBtn = findViewById(R.id.mediumBtn);
         hardBtn = findViewById(R.id.hardBtn);
 
+        /*
         easyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,30 +43,32 @@ public class WorkoutSetting extends AppCompatActivity {
             }
         });
 
-        /*
-        int mode = dbHandler.getSettingMode();
+         */
+
+
+        int mode = madFitDBHandler.getSettingMode();
         setButton(mode);
 
         easyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dbHandler.saveSettingMode(0);
+                madFitDBHandler.saveSettingMode(0);
             }
         });
         mediumBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dbHandler.saveSettingMode(1);
+                madFitDBHandler.saveSettingMode(1);
             }
         });
         hardBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dbHandler.saveSettingMode(2);
+                madFitDBHandler.saveSettingMode(2);
             }
         });
 
-         */
+
 
 
         // Go to notification activity
@@ -107,15 +111,15 @@ public class WorkoutSetting extends AppCompatActivity {
 
     private void setButton(int mode) {
         if(mode == 0){
-            //easyBtn.setBackgroundColor(Color.BLUE);
+            easyBtn.setBackgroundColor(Color.BLUE);
             Log.v(TAG,""+mode);
         }
         else if(mode == 1){
-            //mediumBtn.setBackgroundColor(Color.BLUE);
+            mediumBtn.setBackgroundColor(Color.BLUE);
             Log.v(TAG,""+mode);
         }
         else if(mode == 2){
-            //hardBtn.setBackgroundColor(Color.BLUE);
+            hardBtn.setBackgroundColor(Color.BLUE);
             Log.v(TAG,""+mode);
         }
     }
