@@ -1,12 +1,16 @@
 package sg.edu.np.mad.madfit;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 
@@ -15,6 +19,12 @@ public class BmiCalculatorActivity extends AppCompatActivity {
     Button cancelBtn, calBtn;
     String myH, myW;
     double myHeight, myWeight;
+    SharedPreferences sharedPreferences;
+    public String GLOBAL_PREFS = "MyPrefs";
+    public String MY_HEIGHT = "MyHeight";
+    public String MY_WEIGHT = "MyWeight";
+    public String MY_BMI = "MyBMI";
+    public String MY_STATUS = "MyStatus";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +55,7 @@ public class BmiCalculatorActivity extends AppCompatActivity {
 
                 double myBMI = calBMI(myHeight, myWeight);
                 String myStatus = bmiStatus(myBMI);
+                bmiAlert(myBMI, myStatus, myHeight, myWeight);
             }
         });
 
@@ -86,5 +97,47 @@ public class BmiCalculatorActivity extends AppCompatActivity {
             status = "None";
         }
         return status;
+    }
+
+    /*
+    Alert dialog to show BMI & Status, and ask whether to store results
+     */
+    private void bmiAlert(double myBMI, String myStatus, double myHeight, double myWeight){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Your BMI status is " + myStatus + ". Do you wish to save this record?");
+        builder.setTitle("Your BMI is: " + String.format("%.1f", myBMI));
+        builder.setCancelable(false);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                /*Intent displayRecord = new Intent(MainActivity2.this, MainActivity.class);
+                displayRecord.putExtra("Height", myHeight);
+                displayRecord.putExtra("Weight", myWeight);
+                displayRecord.putExtra("BMI", myBMI);
+                displayRecord.putExtra("Status", myStatus);
+                startActivity(displayRecord);*/
+
+                sharedPreferences = getSharedPreferences(GLOBAL_PREFS, MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString(MY_HEIGHT, String.valueOf(myHeight));
+                editor.putString(MY_WEIGHT, String.valueOf(myWeight));
+                editor.putString(MY_BMI, String.valueOf(myBMI));
+                editor.putString(MY_STATUS, myStatus);
+                editor.apply();
+
+                Intent intent = new Intent(BmiCalculatorActivity.this, BmiActivity.class);
+                Toast.makeText(BmiCalculatorActivity.this,"BMI recorded successfully!",Toast.LENGTH_SHORT).show();
+                startActivity(intent);
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(BmiCalculatorActivity.this, BmiActivity.class);
+                startActivity(intent);
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }
