@@ -2,6 +2,7 @@ package sg.edu.np.mad.madfit;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
@@ -56,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Go to music activity
-        Button exploreMusic_btn = findViewById(R.id.exploreMusic_btn);
-        exploreMusic_btn.setOnClickListener(new View.OnClickListener() {
+        CardView musicCard = findViewById(R.id.musicCard);
+        musicCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, MusicActivity.class);
@@ -66,11 +67,21 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Go to notification activity
-        Button setNotification_btn = findViewById(R.id.setNotification_btn);
-        setNotification_btn.setOnClickListener(new View.OnClickListener() {
+        CardView workoutReminderCard = findViewById(R.id.workoutReminderCard);
+        workoutReminderCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, NotificationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //Go to mail activity
+        CardView mailCard = findViewById(R.id.emailNotifCard);
+        mailCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MailActivity.class);
                 startActivity(intent);
             }
         });
