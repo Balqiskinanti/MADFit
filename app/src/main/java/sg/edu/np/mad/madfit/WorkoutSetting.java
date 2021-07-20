@@ -4,12 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -19,33 +22,31 @@ import sg.edu.np.mad.madfit.Model.Mode;
 public class WorkoutSetting extends AppCompatActivity {
 
     private static final String TAG = "Workout Setting";
-    Button turnOnReminderBtn, easyBtn, mediumBtn, hardBtn;
+
+    // instantiate MADFitDBHandler
+    MADFitDBHandler madFitDBHandler;
+
+    // instantiate SharedPreferences
+    SharedPreferences sharedPreferences;
+    public String GLOBAL_PREFS = "MyPrefs";
+    public String MUTE_PUSH_NOTIFS_SETTINGS = "MutePushNotifsSettings";
+
+    // Layout
+    Button easyBtn, mediumBtn, hardBtn;
+    Switch muteReminderSwitch;
     BottomNavigationView navigationView;
-    MADFitDBHandler madFitDBHandler = new MADFitDBHandler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_setting);
 
+        setMuteWorkout();
+
+        madFitDBHandler = new MADFitDBHandler(this);
         easyBtn = findViewById(R.id.easyBtn);
         mediumBtn = findViewById(R.id.mediumBtn);
         hardBtn = findViewById(R.id.hardBtn);
-
-        /*
-        easyBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Mode dbMode = new Mode();
-                dbMode.setMode(1);
-                madFitDBHandler.addMode(dbMode);
-                Log.v(TAG,"db created");
-            }
-        });
-
-         */
-
 
         //get setting mode in database
 
@@ -83,16 +84,6 @@ public class WorkoutSetting extends AppCompatActivity {
                 mediumBtn.setBackgroundColor(Color.WHITE);
                 madFitDBHandler.saveSettingMode(2);
                 Toast.makeText(WorkoutSetting.this, "SAVED!",Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // Go to notification activity
-        turnOnReminderBtn = findViewById(R.id.turnOnReminderBtn);
-        turnOnReminderBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(WorkoutSetting.this,NotificationActivity.class);
-                startActivity(intent);
             }
         });
 
@@ -137,4 +128,30 @@ public class WorkoutSetting extends AppCompatActivity {
         }
     }
 
+    /* Set Mute Workout*/
+    private void setMuteWorkout(){
+        sharedPreferences = getSharedPreferences(GLOBAL_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        muteReminderSwitch = findViewById(R.id.muteReminderSwitch);
+        muteReminderSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isMuted) {
+                if(isMuted){
+                    editor.putBoolean(MUTE_PUSH_NOTIFS_SETTINGS, true);
+                    Toast.makeText(WorkoutSetting.this, "Muted Notification", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    editor.putBoolean(MUTE_PUSH_NOTIFS_SETTINGS, false);
+                    Toast.makeText(WorkoutSetting.this, "Unmuted Notification", Toast.LENGTH_SHORT).show();
+                }
+                editor.apply();
+            }
+        });
+
+        // Get pref bool for first start up
+        if(sharedPreferences.getBoolean(MUTE_PUSH_NOTIFS_SETTINGS,false)){
+            muteReminderSwitch.setChecked(true);
+        }
+    }
 }
