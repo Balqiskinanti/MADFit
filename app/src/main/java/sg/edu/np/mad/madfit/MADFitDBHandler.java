@@ -16,7 +16,6 @@ public class MADFitDBHandler extends SQLiteOpenHelper{
     private static final String TABLE_SETTING = "Setting"; //table
     private static final String COLUMN_MODE = "mode";
     private static final String TAG = "DBHandler";
-    public static String COLUMN_ID = "id";
 
     public MADFitDBHandler(Context context){
                 super(context, DB_NAME, null, DB_VER);
@@ -33,6 +32,17 @@ public class MADFitDBHandler extends SQLiteOpenHelper{
         // set default mode
         String insertDefaultMode = "INSERT INTO "+ TABLE_SETTING + " VALUES (0)";
         db.execSQL(insertDefaultMode);
+         
+      /*
+        for (int i = 0; i < 1; ++i) {
+            Log.v("Create Table", "");
+            ContentValues values = new ContentValues();
+            values.put(COLUMN_MODE, "1");
+            db.insert(TABLE_SETTING, null, values);
+        }
+        */
+
+        //addMode(1);
     }
 
     @Override
