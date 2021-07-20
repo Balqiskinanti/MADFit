@@ -7,12 +7,18 @@ import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -21,31 +27,35 @@ import java.util.Calendar;
 
 public class NotificationActivity extends AppCompatActivity {
 
+    private static final String TAG = "Notification Activity";
+
+    SharedPreferences sharedPreferences;
+    public String GLOBAL_PREFS = "MyPrefs";
+    public String MY_WORKOUT_TIME = "MyWorkoutTime";
+
     BottomNavigationView navigationView;
+    EditText editTextTime;
+    TextView tvMyWorkoutTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
 
-        // Create notification channel
+        sharedPreferences = getSharedPreferences(GLOBAL_PREFS, MODE_PRIVATE);
+        String myTime = sharedPreferences.getString(MY_WORKOUT_TIME,"00:00");
+
+        tvMyWorkoutTime = findViewById(R.id.myWorkoutTime);
+        tvMyWorkoutTime.setText(myTime);
+
+        editTextTime = findViewById(R.id.editTextTime);
+        editTextTime.setText(myTime);
+
+        displayTimePicker();
+
         createNotificationChannel();
 
-        //Send notification 10 seconds after button clicked
-        Button remindBtn = findViewById(R.id.remind_btn);
-        remindBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(NotificationActivity.this, "Reminder set", Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(NotificationActivity.this, ReminderBroadcast.class);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(NotificationActivity.this,0,intent,0);
-                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                long timeAtBtnClick = System.currentTimeMillis();
-                long tenSeconds =  1000 * 10;
-                alarmManager.set(AlarmManager.RTC_WAKEUP,timeAtBtnClick+tenSeconds, pendingIntent);
-            }
-        });
+        setNotification();
 
         // Bottom navigation
         navigationView = findViewById(R.id.bottom_navigation);
@@ -75,9 +85,7 @@ public class NotificationActivity extends AppCompatActivity {
         });
     }
 
-    /*
-    Create notification channel
-     */
+    /*Create notification channel*/
     private void createNotificationChannel(){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             String name = "MADFit Exercise Reminder Channel";
@@ -89,5 +97,59 @@ public class NotificationActivity extends AppCompatActivity {
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
+    }
+
+    /*Display time picker, update edit text time */
+    private void displayTimePicker(){
+        editTextTime = findViewById(R.id.editTextTime);
+        editTextTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(NotificationActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
+                        editTextTime.setText(String.format("%02d:%02d", hourOfDay, minutes));
+                    }
+                }, 21, 00, false);
+                timePickerDialog.show();
+            }
+        });
+    }
+
+    /*Set notification*/
+    public void setNotification(){
+        sharedPreferences = getSharedPreferences(GLOBAL_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        Button remindBtn = findViewById(R.id.remind_btn);
+        remindBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editTextTime = findViewById(R.id.editTextTime);
+                String timeInput = editTextTime.getText().toString();
+                String[] timeParts = timeInput.split(":");
+                String hour = timeParts[0];
+                String minutes = timeParts[1];
+
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTimeInMillis(System.currentTimeMillis());
+                calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(hour));
+                calendar.set(Calendar.MINUTE, Integer.parseInt(minutes));
+
+                Intent intent = new Intent(NotificationActivity.this, ReminderBroadcast.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(NotificationActivity.this,0,intent,0);
+                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,
+                        calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY,
+                        pendingIntent);
+
+                editor.putString(MY_WORKOUT_TIME, timeInput);
+                editor.apply();
+                tvMyWorkoutTime = findViewById(R.id.myWorkoutTime);
+                tvMyWorkoutTime.setText(timeInput);
+
+                Toast.makeText(NotificationActivity.this, "Reminder set", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

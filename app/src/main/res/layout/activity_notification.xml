@@ -6,32 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".NotificationActivity">
 
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="249dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="32dp"
-        android:text="Set Workout Reminder"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_conversion_absoluteHeight="32dp"
-        tools:layout_conversion_absoluteWidth="267dp" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
-        android:layout_width="300dp"
-        android:layout_height="350dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="143dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
         app:cardBackgroundColor="#B988EA"
         app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14">
+        app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout4"
@@ -43,60 +30,59 @@
                 android:id="@+id/textView15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:text="Input your ideal workout time"
                 android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_conversion_absoluteHeight="19dp"
                 tools:layout_conversion_absoluteWidth="182dp" />
 
-            <AnalogClock
-
-                android:id="@+id/analogClock"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView15" />
-
             <EditText
                 android:id="@+id/editTextTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="45dp"
-                android:layout_marginTop="80dp"
-                android:layout_marginEnd="45dp"
-                android:layout_marginBottom="80dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:ems="10"
                 android:inputType="time"
                 android:text="21:00"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#FFFFFF"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/analogClock"
+                app:layout_constraintTop_toBottomOf="@+id/textView34"
                 tools:layout_conversion_absoluteHeight="45dp"
                 tools:layout_conversion_absoluteWidth="210dp" />
+
+            <Button
+                android:id="@+id/remind_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="30dp"
+                android:text="Confirm"
+                app:backgroundTint="#3F51B5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView34" />
+
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="3dp"
+                android:text="Allow 5 minutes of buffer"
+                android:textColor="#E1E1E1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
-
-    <Button
-        android:id="@+id/remind_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Confirm"
-        app:backgroundTint="#3F51B5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -115,5 +101,54 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="297dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="26dp"
+        android:text="Workout Reminder"
+        android:textColor="#3F51B5"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_conversion_absoluteHeight="32dp"
+        tools:layout_conversion_absoluteWidth="267dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="221dp"
+        android:layout_height="271dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:alpha="0.9"
+        app:layout_constraintBottom_toTopOf="@+id/cardView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/girl_workout" />
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="234dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Your last workout reminder was set at "
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    <TextView
+        android:id="@+id/myWorkoutTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="96dp"
+        android:text="00:00"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
