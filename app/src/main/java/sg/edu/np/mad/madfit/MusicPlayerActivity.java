@@ -1,41 +1,76 @@
 package sg.edu.np.mad.madfit;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
+
+import sg.edu.np.mad.madfit.Adapter.ItemMusicPlayerAdapter;
+import sg.edu.np.mad.madfit.Adapter.ListMusicCategoryAdapter;
+import sg.edu.np.mad.madfit.Model.MusicPlayer;
+
 public class MusicPlayerActivity extends AppCompatActivity {
+    private String TAG = "Music Player Activity";
+    BottomNavigationView navigationView;
+    ArrayList<String> musicPlayerArrayList;
+    MADFitDBHandler db= new MADFitDBHandler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music_player);
 
-        // Music dataUrl from https://www.mixcloud.com/
-        WebView webView = findViewById(R.id.webView1);
-        String dataUrl = "<iframe width=\"100%\" height=\"400\" src=\"https://www.mixcloud.com/widget/iframe/?dark=1&feed=%2Fakeymusicfactory%2Fall-sza-selection%2F\" frameborder=\"0\" ></iframe>";
-        loadMusicPlayer(webView, dataUrl);
+        // get list of music player from music category & item id
+        Intent receivingEnd = getIntent();
+        int itemId = receivingEnd.getIntExtra("itemId",1);
+        int catId = receivingEnd.getIntExtra("catId",1);
 
-        WebView webView2 = findViewById(R.id.webView2);
-        String dataUrl2 = "<iframe width=\"100%\" height=\"400\" src=\"https://www.mixcloud.com/widget/iframe/?feed=%2FDJ_Mattrixx%2Fdrake-scorpion-album-mix%2F\" frameborder=\"0\" ></iframe>";
-        loadMusicPlayer(webView2, dataUrl2);
+        MusicPlayer mPlayer = db.getMusicPlayer(catId,itemId);
+        musicPlayerArrayList = mPlayer.getMusicPlayerArrayList();
 
-        WebView webView3 = findViewById(R.id.webView3);
-        String dataUrl3 = "<iframe width=\"100%\" height=\"400\" src=\"https://www.mixcloud.com/widget/iframe/?light=1&feed=%2FDJNUT_N_NICE%2Ftravis-scott-x-don-toliver-astro-in-hell%2F\" frameborder=\"0\" ></iframe>";
-        loadMusicPlayer(webView3, dataUrl3);
-    }
+        // init RV
+        ItemMusicPlayerAdapter musicPlayerAdapter = new ItemMusicPlayerAdapter(musicPlayerArrayList);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        RecyclerView musicRV = findViewById(R.id.musicPlayerRV);
+        musicRV.setLayoutManager(layoutManager);
+        musicRV.setAdapter(musicPlayerAdapter);
 
-    /*
-    Load music player to respective web view
-    */
-    private void loadMusicPlayer(WebView webView, String dataUrl){
-        WebSettings webSettings = webView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-        webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-        webView.getSettings().setLoadWithOverviewMode(true);
-        webView.getSettings().setUseWideViewPort(true);
-        webView.loadData(dataUrl, "text/html", "utf-8");
+        // Bottom navigation
+        navigationView = findViewById(R.id.bottom_navigation);
+        navigationView.setSelectedItemId(R.id.nav_home);
+        navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+
+                    case R.id.nav_home:
+                        Intent intent0 = new Intent(MusicPlayerActivity.this,MainActivity.class);
+                        startActivity(intent0);
+                        break;
+
+                    case R.id.nav_workout:
+                        Intent intent1 = new Intent(MusicPlayerActivity.this,WorkoutActivity.class);
+                        startActivity(intent1);
+                        break;
+
+                    case R.id.nav_food:
+                        Intent intent2 = new Intent(MusicPlayerActivity.this,FoodActivity.class);
+                        startActivity(intent2);
+                        break;
+                }
+                return false;
+            }
+        });
     }
 }
