@@ -11,8 +11,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MADFit">
-        <activity android:name=".DailyTraining"></activity>
+        android:theme="@style/Theme.MADFit"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".MailActivity"></activity>
         <activity android:name=".WorkoutCalendar" />
         <activity android:name=".WorkoutSetting" />
         <activity android:name=".ExerciseFinished" />
