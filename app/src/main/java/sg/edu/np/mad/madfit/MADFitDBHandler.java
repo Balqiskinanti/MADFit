@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import sg.edu.np.mad.madfit.Model.Mode;
 
 public class MADFitDBHandler extends SQLiteOpenHelper{
@@ -14,7 +17,10 @@ public class MADFitDBHandler extends SQLiteOpenHelper{
     private static final String DB_NAME = "madWorkout.db"; //filename
     private static final int DB_VER = 1;
     private static final String TABLE_SETTING = "Setting"; //table
-    private static final String COLUMN_MODE = "mode";
+    private static final String COLUMN_MODE = "mode";   //column
+    private static final String TABLE_DAYS = "WorkoutDays"; //table
+    private static final String COLUMN_ID = "ID";   //column
+    private static final String COLUMN_DAY = "Day";   //column
     private static final String TAG = "DBHandler";
 
     public MADFitDBHandler(Context context){
@@ -32,6 +38,9 @@ public class MADFitDBHandler extends SQLiteOpenHelper{
         // set default mode
         String insertDefaultMode = "INSERT INTO "+ TABLE_SETTING + " VALUES (0)";
         db.execSQL(insertDefaultMode);
+
+        String CREATE_DAY_TABLE = "CREATE TABLE " + TABLE_DAYS + "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_DAY + " TEXT" + ")";
+        db.execSQL(CREATE_DAY_TABLE);
          
       /*
         for (int i = 0; i < 1; ++i) {
@@ -48,6 +57,7 @@ public class MADFitDBHandler extends SQLiteOpenHelper{
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_SETTING);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_DAYS);
         onCreate(db);
     }
 
@@ -81,6 +91,34 @@ public class MADFitDBHandler extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getWritableDatabase();
 
         db.insert(TABLE_SETTING, null, values);
+        db.close();
+    }
+
+    public List<String> getWorkoutDays(){
+
+        SQLiteDatabase db = getReadableDatabase();
+        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
+
+        String[] sqlSelect = {"Day"};
+        String sqlTable = "WorkoutDays";
+
+        qb.setTables(sqlTable);
+        Cursor c = qb.query(db, sqlSelect,null,null,null,null,null);
+
+        List<String> result = new ArrayList<>();
+        if(c.moveToFirst()){
+            do{
+                result.add(c.getString(c.getColumnIndex("Day")));
+            }while (c.moveToNext());
+
+        }
+        return result;
+    }
+
+    public void saveDay (String value){
+        SQLiteDatabase db = getReadableDatabase();
+        String query = String.format("INSERT INTO WorkoutDays(Day) VALUES('%s');",value);
+        db.execSQL(query);
         db.close();
     }
 }
