@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MADFit">
-        <activity android:name=".WorkoutCalendar"></activity>
+        <activity android:name=".DailyTraining"></activity>
+        <activity android:name=".WorkoutCalendar" />
         <activity android:name=".WorkoutSetting" />
         <activity android:name=".ExerciseFinished" />
         <activity android:name=".ViewExerciseTimer" />
