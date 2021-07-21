@@ -54,7 +54,8 @@ public class WorkoutActivity extends AppCompatActivity {
         workStartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(WorkoutActivity.this,ListExercises.class);
+                //here
+                Intent intent = new Intent(WorkoutActivity.this,DailyExercise.class);
                 startActivity(intent);
             }
         });
