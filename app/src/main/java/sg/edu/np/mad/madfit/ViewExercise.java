@@ -30,9 +30,9 @@ public class ViewExercise extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_exercise);
 
-        timer = (TextView)findViewById(R.id.skipTimer);
-        title = (TextView)findViewById(R.id.workTitle);
-        detail_image = (GifImageView)findViewById(R.id.detail_image);
+        timer = findViewById(R.id.skipTimer);
+        title = findViewById(R.id.workTitle);
+        detail_image = findViewById(R.id.detail_image);
 
         // Display countdown timer
         // Go to view exercise timer when finish
