@@ -29,7 +29,9 @@ public class BmiActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bmi);
 
-        // Go to bmi calculator activity
+        /*
+        Go to bmi calculator activity
+        */
         newCalButton = findViewById(R.id.calBMI_button);
         newCalButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +62,9 @@ public class BmiActivity extends AppCompatActivity {
             myStatus.setText(sharedStatus);
         }
 
-        // Bottom navigation
+        /*
+        Bottom navigation
+        */
         navigationView = findViewById(R.id.bottom_navigation);
         navigationView.setSelectedItemId(R.id.nav_home);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

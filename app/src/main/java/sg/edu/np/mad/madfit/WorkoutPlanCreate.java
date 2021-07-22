@@ -27,6 +27,9 @@ public class WorkoutPlanCreate extends AppCompatActivity {
         inputType = findViewById(R.id.planType_Input);
         inputDur = findViewById(R.id.planDuration_Input);
 
+        /*
+        Create new workout plan
+        */
         createBtn = findViewById(R.id.create_btn);
         createBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,7 +39,9 @@ public class WorkoutPlanCreate extends AppCompatActivity {
                 myPlanType = inputType.getText().toString();
                 myPlanDur = inputDur.getText().toString();
 
-                // Add new Plan to Database
+                /*
+                Add new Plan to Database
+                */
                 Plan dbPlan = new Plan();
                 dbPlan.setPlanTitle(myPlanTitle);
                 dbPlan.setPlanDescription(myPlanDesc);
