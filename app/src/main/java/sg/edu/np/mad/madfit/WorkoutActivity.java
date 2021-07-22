@@ -16,7 +16,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class WorkoutActivity extends AppCompatActivity {
 
     BottomNavigationView navigationView;
-    Button workStartButton,workSettingButton,workCalendarButton;
+    Button workStartButton,workSettingButton,workCalendarButton,workPlanButton;
 
     @Override
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
@@ -76,6 +76,16 @@ public class WorkoutActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(WorkoutActivity.this,WorkoutCalendar.class);
+                startActivity(intent);
+            }
+        });
+
+        // Go to workout plan
+        workPlanButton = findViewById(R.id.workPlanBtn);
+        workPlanButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WorkoutActivity.this,WorkoutPlan.class);
                 startActivity(intent);
             }
         });
