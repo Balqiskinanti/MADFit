@@ -35,18 +35,6 @@ public class FoodActivity extends AppCompatActivity {
         calNeeded = findViewById(R.id.caloriesNeeded);
 
         /*
-        Go to Calorie Counter page
-         */
-        calCounterBtn = findViewById(R.id.calCounter_btn);
-        calCounterBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(FoodActivity.this, CalorieCounter.class);
-                startActivity(intent);
-            }
-        });
-
-        /*
         Display Date in dashboard
          */
         TextView currentDT = findViewById(R.id.currentDT);
@@ -58,6 +46,36 @@ public class FoodActivity extends AppCompatActivity {
         List dayWkList = initDayWeek();
         String date = dayWkList.get(dayWeek-1) + " " + day + "/" + (month+1) + "/" + year;
         currentDT.setText(date);
+
+        /*
+        Set Daily Calorie target and insert into TextView in dashboard
+         */
+        setTargetBtn = findViewById(R.id.setTarget_btn);
+        setTargetBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myCal = dailyCalInput.getText().toString();
+                if(myCal.isEmpty()){
+                    calNeeded.setText("0 cals");
+                } else {
+                    calNeeded.setText(myCal + " cals");
+                }
+                Toast.makeText(FoodActivity.this,"Calorie target set successfully!",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        /*
+        Go to Calorie Counter page
+         */
+        calCounterBtn = findViewById(R.id.calCounter_btn);
+        calCounterBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FoodActivity.this, CalorieCounter.class);
+                intent.putExtra("Date", date);
+                startActivity(intent);
+            }
+        });
 
         /*
         Bottom navigation
