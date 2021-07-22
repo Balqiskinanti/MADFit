@@ -2,6 +2,7 @@ package sg.edu.np.mad.madfit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -97,10 +98,11 @@ public class DailyExercise extends AppCompatActivity {
                         setExerciseInformation(ex_id);
                         btnStart.setText("Start");
                     }
+                    else {
+                        showFinished();
+                    }
                 }
-                else {
-                    showFinished();
-                }
+
             }
         });
 
@@ -123,6 +125,7 @@ public class DailyExercise extends AppCompatActivity {
     }
 
     private void showFinished() {
+
         detail_image.setVisibility(View.INVISIBLE);
         btnStart.setVisibility(View.INVISIBLE);
         time.setVisibility(View.INVISIBLE);
@@ -135,6 +138,22 @@ public class DailyExercise extends AppCompatActivity {
 
         //save workout done to DB
         madFitDBHandler.saveDay("" + Calendar.getInstance().getTimeInMillis());
+
+        /*
+        //Go to exercise finish page
+        Intent intent = new Intent(DailyExercise.this,ExerciseFinished.class);
+        startActivity(intent);
+        if(madFitDBHandler.getSettingMode() == 0){
+            exercisesEasyModeCountDown.cancel();
+        }
+        else if(madFitDBHandler.getSettingMode() == 1){
+            exercisesMediumModeCountDown.cancel();
+        }
+        else if(madFitDBHandler.getSettingMode() == 2){
+            exercisesHardModeCountDown.cancel();
+        }
+
+         */
     }
 
     private void showGetReady() {
@@ -204,6 +223,9 @@ public class DailyExercise extends AppCompatActivity {
                 setExerciseInformation(ex_id);
                 btnStart.setText("Start");
             }
+            else {
+                showFinished();
+            }
         }
     }.start();
 
@@ -224,6 +246,9 @@ public class DailyExercise extends AppCompatActivity {
                 setExerciseInformation(ex_id);
                 btnStart.setText("Start");
             }
+            else {
+                showFinished();
+            }
         }
     }.start();
 
@@ -243,6 +268,9 @@ public class DailyExercise extends AppCompatActivity {
 
                 setExerciseInformation(ex_id);
                 btnStart.setText("Start");
+            }
+            else {
+                showFinished();
             }
         }
     }.start();
