@@ -35,7 +35,9 @@ public class BmiCalculatorActivity extends AppCompatActivity {
         myHeightInput = findViewById(R.id.height_input);
         myWeightInput = findViewById(R.id.weight_input);
 
-        //calculate BMI, check Status & Alert Dialog
+        /*
+        Calculate BMI, check Status & Alert Dialog
+        */
         calBtn = findViewById(R.id.cal_btn);
         calBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +69,9 @@ public class BmiCalculatorActivity extends AppCompatActivity {
             }
         });
 
-        // Go to bmi activity
+        /*
+        Go back to BmiActivity
+        */
         cancelBtn = findViewById(R.id.cancel_btn);
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,13 +122,6 @@ public class BmiCalculatorActivity extends AppCompatActivity {
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                /*Intent displayRecord = new Intent(MainActivity2.this, MainActivity.class);
-                displayRecord.putExtra("Height", myHeight);
-                displayRecord.putExtra("Weight", myWeight);
-                displayRecord.putExtra("BMI", myBMI);
-                displayRecord.putExtra("Status", myStatus);
-                startActivity(displayRecord);*/
-
                 sharedPreferences = getSharedPreferences(GLOBAL_PREFS, MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString(MY_HEIGHT, String.valueOf(myHeight));
