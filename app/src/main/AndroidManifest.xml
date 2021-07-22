@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MADFit"
         android:usesCleartextTraffic="true">
-        <activity android:name=".WorkoutPlan"></activity>
+        <activity android:name=".WorkoutPlanCreate"></activity>
+        <activity android:name=".WorkoutPlan" />
         <activity android:name=".DailyExercise" />
         <activity android:name=".DailyTraining" />
         <activity android:name=".MailActivity" />
