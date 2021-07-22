@@ -46,17 +46,6 @@ public class DailyExercise extends AppCompatActivity {
         initData();
 
         madFitDBHandler = new MADFitDBHandler(this);
-        //set time limit according to different mode
-        if(madFitDBHandler.getSettingMode() == 0){
-            timeLimit = Common.TIME_LIMIT_EASY;
-        }
-        else if(madFitDBHandler.getSettingMode() == 1){
-            timeLimit = Common.TIME_LIMIT_MEDIUM;
-        }
-        else if(madFitDBHandler.getSettingMode() == 2){
-            timeLimit = Common.TIME_LIMIT_HARD;
-        }
-
 
         btnStart = findViewById(R.id.startButton);
         detail_image = findViewById(R.id.detail_image2);
@@ -72,7 +61,12 @@ public class DailyExercise extends AppCompatActivity {
         //set data
         progressBar.setMax(list.size());
 
-        setExerciseInformation(ex_id);
+
+        exercisesEasyModeCountDown.cancel();
+        exercisesMediumModeCountDown.cancel();
+        exercisesHardModeCountDown.cancel();
+
+        //setExerciseInformation(ex_id);
 
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,16 +76,24 @@ public class DailyExercise extends AppCompatActivity {
                     btnStart.setText("done");
                 }
                 else if(btnStart.getText().toString().toLowerCase().equals("done")){
-                    exercisesCountDown.cancel();
-                    restTimeCountDown.cancel();
+                    if(madFitDBHandler.getSettingMode() == 0){
+                        exercisesEasyModeCountDown.cancel();
+                    }
+                    else if(madFitDBHandler.getSettingMode() == 1){
+                        exercisesMediumModeCountDown.cancel();
+                    }
+                    else if(madFitDBHandler.getSettingMode() == 2){
+                        exercisesHardModeCountDown.cancel();
+                    }
+                    //restTimeCountDown.cancel();
                     if(ex_id < list.size()){
-                        showRestTime();
+                        //showRestTime();
                         ex_id++;
                         progressBar.setProgress(ex_id);
                         time.setText("");
 
-                        //setExerciseInformation(ex_id);
-                        //btnStart.setText("Start");
+                        setExerciseInformation(ex_id);
+                        btnStart.setText("Start");
                     }
                 }
                 else {
@@ -99,6 +101,8 @@ public class DailyExercise extends AppCompatActivity {
                 }
             }
         });
+
+
 
     }
 
@@ -111,7 +115,7 @@ public class DailyExercise extends AppCompatActivity {
 
         btnStart.setText("Skip");
 
-        restTimeCountDown.start();
+        //restTimeCountDown.start();
 
         txtGetReady.setText("Rest Time");
     }
@@ -161,7 +165,16 @@ public class DailyExercise extends AppCompatActivity {
 
             layoutTutorial.setVisibility(View.INVISIBLE);
 
-            exercisesCountDown.start();
+            if(madFitDBHandler.getSettingMode() == 0){
+                exercisesEasyModeCountDown.start();
+            }
+            else if(madFitDBHandler.getSettingMode() == 1){
+                exercisesMediumModeCountDown.start();
+            }
+            else if(madFitDBHandler.getSettingMode() == 2){
+                exercisesHardModeCountDown.start();
+            }
+
 
             //set data
             detail_image.setImageResource(list.get(ex_id).getImage_id());
@@ -173,7 +186,7 @@ public class DailyExercise extends AppCompatActivity {
     }
 
     //Countdown timer
-    CountDownTimer exercisesCountDown = new CountDownTimer(timeLimit,1000) {
+    CountDownTimer exercisesEasyModeCountDown = new CountDownTimer(Common.TIME_LIMIT_EASY,1000) {
         @Override
         public void onTick(long millisUntilFinished) {
             time.setText("" + millisUntilFinished/1000);
@@ -193,6 +206,47 @@ public class DailyExercise extends AppCompatActivity {
     }.start();
 
     //Countdown timer
+    CountDownTimer exercisesMediumModeCountDown = new CountDownTimer(Common.TIME_LIMIT_MEDIUM,1000) {
+        @Override
+        public void onTick(long millisUntilFinished) {
+            time.setText("" + millisUntilFinished/1000);
+        }
+
+        @Override
+        public void onFinish() {
+            if(ex_id < list.size()){
+                ex_id++;
+                progressBar.setProgress(ex_id);
+                time.setText("");
+
+                setExerciseInformation(ex_id);
+                btnStart.setText("Start");
+            }
+        }
+    }.start();
+
+    //Countdown timer
+    CountDownTimer exercisesHardModeCountDown = new CountDownTimer(Common.TIME_LIMIT_HARD,1000) {
+        @Override
+        public void onTick(long millisUntilFinished) {
+            time.setText("" + millisUntilFinished/1000);
+        }
+
+        @Override
+        public void onFinish() {
+            if(ex_id < list.size()){
+                ex_id++;
+                progressBar.setProgress(ex_id);
+                time.setText("");
+
+                setExerciseInformation(ex_id);
+                btnStart.setText("Start");
+            }
+        }
+    }.start();
+
+    /*
+    //Countdown timer
     CountDownTimer restTimeCountDown = new CountDownTimer(10000,1000) {
         @Override
         public void onTick(long millisUntilFinished) {
@@ -205,6 +259,8 @@ public class DailyExercise extends AppCompatActivity {
             showExercise();
         }
     }.start();
+
+     */
 
 
     private void setExerciseInformation(int id) {
