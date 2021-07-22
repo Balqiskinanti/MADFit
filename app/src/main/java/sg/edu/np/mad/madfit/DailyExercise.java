@@ -61,6 +61,8 @@ public class DailyExercise extends AppCompatActivity {
         //set data
         progressBar.setMax(list.size());
 
+        detail_image.setImageResource(R.drawable.exersice_1);
+
 
         exercisesEasyModeCountDown.cancel();
         exercisesMediumModeCountDown.cancel();
