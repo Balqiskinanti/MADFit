@@ -55,7 +55,7 @@ public class WorkoutActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //here
-                Intent intent = new Intent(WorkoutActivity.this,ListExercises.class);
+                Intent intent = new Intent(WorkoutActivity.this,DailyExercise.class);
                 startActivity(intent);
             }
         });
