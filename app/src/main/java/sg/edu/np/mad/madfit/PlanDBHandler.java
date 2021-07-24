@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 
+import sg.edu.np.mad.madfit.Adapter.WorkoutPlanAdapter;
 import sg.edu.np.mad.madfit.Model.Plan;
 
 public class PlanDBHandler extends SQLiteOpenHelper {
@@ -20,8 +21,11 @@ public class PlanDBHandler extends SQLiteOpenHelper {
     public static String COLUMN_PLANDUR = "PlanDur";
     public static int DATABASE_VERSION = 1;
 
-    public PlanDBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, DATABASE_NAME, factory, DATABASE_VERSION);
+    public PlanDBHandler(Context context) {
+        super(context,
+                DATABASE_NAME,
+                null,
+                DATABASE_VERSION);
     }
 
     @Override
@@ -51,6 +55,12 @@ public class PlanDBHandler extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(TABLE_PLANS, null, values);
+        db.close();
+    }
+
+    public void deletePlan(String Id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_PLANS, "PlanId=" + Id, null);
         db.close();
     }
 
