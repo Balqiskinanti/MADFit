@@ -2,10 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/body_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/body_container"
-    android:background="@color/white"
     tools:context=".MainActivity">
 
 
@@ -88,13 +87,13 @@
                 android:layout_width="160dp"
                 android:layout_height="116dp"
                 android:layout_marginStart="45dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="62dp"
                 android:layout_marginEnd="24dp"
                 app:cardBackgroundColor="#FF87B0"
                 app:cardCornerRadius="7dp"
                 app:layout_constraintEnd_toStartOf="@+id/cardView5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView20">
+                app:layout_constraintTop_toBottomOf="@+id/textView17">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/calBMI_btn"
@@ -184,9 +183,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="250dp"
+                android:layout_marginBottom="8dp"
                 android:text="Your Profile"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/cardView4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.045"
                 app:layout_constraintStart_toStartOf="parent"
@@ -433,17 +434,17 @@
     </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_margin="30dp"
-        android:elevation="2dp"
-        app:menu="@menu/menu"
         android:background="@drawable/round_corner"
-        app:itemRippleColor="@android:color/transparent"
+        android:elevation="2dp"
         app:itemIconSize="30dp"
-        app:labelVisibilityMode="unlabeled"
         app:itemIconTint="@drawable/item_selector"
-        android:id="@+id/bottom_navigation"/>
+        app:itemRippleColor="@android:color/transparent"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/menu" />
 
 </RelativeLayout>

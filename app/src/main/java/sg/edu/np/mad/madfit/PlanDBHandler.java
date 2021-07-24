@@ -64,30 +64,6 @@ public class PlanDBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    /*
-    public boolean deletePlan(int planId) {
-        boolean result = false;
-
-        String query = "SELECT * FROM " + TABLE_PLANS + " WHERE "
-                + COLUMN_PLANID + " = \""
-                + planId + "\"";
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        Cursor cursor = db.rawQuery(query, null);
-
-        Plan plan = new Plan();
-
-        if (cursor.moveToFirst()) {
-            plan.setPlanId(Integer.parseInt(cursor.getString(0)));
-            db.delete(TABLE_PLANS, COLUMN_PLANID + " = ?",
-                    new String[]{String.valueOf(plan.getPlanId())});
-            cursor.close();
-            result = true;
-        }
-        db.close();
-        return result;
-    } */
-
     public ArrayList<Plan> getPlans()
     {
         ArrayList<Plan> list = new ArrayList<Plan> ();
