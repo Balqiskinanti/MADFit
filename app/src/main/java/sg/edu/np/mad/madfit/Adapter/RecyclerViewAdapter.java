@@ -18,6 +18,7 @@ import org.w3c.dom.Text;
 import java.util.List;
 
 import pl.droidsonroids.gif.GifImageView;
+import sg.edu.np.mad.madfit.DailyExercise;
 import sg.edu.np.mad.madfit.Interface.ItemClickListener;
 import sg.edu.np.mad.madfit.ListExercises;
 import sg.edu.np.mad.madfit.MainActivity;
@@ -81,10 +82,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
             @Override
             public void onClick(View view, int position) {
                 //Go to single exercise
-                Intent intent = new Intent(holder.image.getContext(), ViewExercise.class);
+                Intent intent = new Intent(holder.image.getContext(), DailyExercise.class);
                 //Put extra (name and image)
-                intent.putExtra("image_id",exerciseList.get(position).getImage_id());
-                intent.putExtra("name",exerciseList.get(position).getName());
+                //intent.putExtra("image_id",exerciseList.get(position).getImage_id());
+                //intent.putExtra("name",exerciseList.get(position).getName());
                 holder.image.getContext().startActivity(intent);
             }
         });
