@@ -7,6 +7,24 @@
     android:layout_height="match_parent"
     tools:context=".FoodActivity" >
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/round_corner"
+        android:elevation="2dp"
+        app:itemIconSize="30dp"
+        app:itemIconTint="@drawable/item_selector"
+        app:itemRippleColor="@android:color/transparent"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu" />
+
     <TextView
         android:id="@+id/cal_dashboard"
         android:layout_width="wrap_content"
@@ -239,7 +257,7 @@
     </androidx.cardview.widget.CardView>
 
     <EditText
-        android:id="@+id/etDailyCalTarget3"
+        android:id="@+id/etDailyCalTarget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -251,7 +269,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView55" />
 
     <Button
-        android:id="@+id/setTarget_btn3"
+        android:id="@+id/setTarget_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="108dp"
@@ -275,7 +293,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <Button
-        android:id="@+id/calCounter_btn3"
+        android:id="@+id/calCounter_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"

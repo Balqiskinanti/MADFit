@@ -22,8 +22,8 @@ import java.util.List;
 public class FoodActivity extends AppCompatActivity {
     BottomNavigationView navigationView;
     EditText dailyCalInput;
-    TextView calNeeded;
-    String myCal;
+    TextView dateToday, calsNeeded, calsConsumed, myBreakfastCals, myLunchCals, myDinnerCals, myOthersCals;
+    String myTargetCal;
     Button setTargetBtn, calCounterBtn;
 
     @Override
@@ -32,12 +32,12 @@ public class FoodActivity extends AppCompatActivity {
         setContentView(R.layout.activity_food);
 
         dailyCalInput = findViewById(R.id.etDailyCalTarget);
-        calNeeded = findViewById(R.id.caloriesNeeded);
+        calsNeeded = findViewById(R.id.caloriesNeeded);
 
         /*
         Display Date in dashboard
-         */
-        TextView currentDT = findViewById(R.id.currentDT);
+        */
+        dateToday = findViewById(R.id.dateToday);
         Calendar c = Calendar.getInstance();
         int day = c.get(Calendar.DAY_OF_MONTH);
         int month = c.get(Calendar.MONTH);
@@ -45,7 +45,7 @@ public class FoodActivity extends AppCompatActivity {
         int dayWeek = c.get(Calendar.DAY_OF_WEEK);
         List dayWkList = initDayWeek();
         String date = dayWkList.get(dayWeek-1) + " " + day + "/" + (month+1) + "/" + year;
-        currentDT.setText(date);
+        dateToday.setText(date);
 
         /*
         Set Daily Calorie target and insert into TextView in dashboard
@@ -54,11 +54,11 @@ public class FoodActivity extends AppCompatActivity {
         setTargetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myCal = dailyCalInput.getText().toString();
-                if(myCal.isEmpty()){
-                    calNeeded.setText("0 cals");
+                myTargetCal = dailyCalInput.getText().toString();
+                if(myTargetCal.isEmpty()){
+                    calsNeeded.setText("0 cals");
                 } else {
-                    calNeeded.setText(myCal + " cals");
+                    calsNeeded.setText(myTargetCal + " cals");
                 }
                 Toast.makeText(FoodActivity.this,"Calorie target set successfully!",Toast.LENGTH_SHORT).show();
             }
