@@ -27,11 +27,11 @@ public class DailyExercise extends AppCompatActivity {
 
     int image_id;
     String name;
-    TextView title,time,txtGetReady,txtSkipTimer;
+    TextView title,time,txtSkipTimer,txtStart;
     ProgressBar progressBar;
     LinearLayout layoutTutorial;
     GifImageView detail_image;
-    Button btnFinished, btnPause, btnStart;
+    Button btnSkip, btnPause, btnStart;
     BottomNavigationView navigationView;
     //CountDownTimer workoutTimer;
     boolean resume = true;
@@ -77,11 +77,13 @@ public class DailyExercise extends AppCompatActivity {
         madFitDBHandler = new MADFitDBHandler(this);
 
         btnStart = findViewById(R.id.startButton);
+        btnPause = findViewById(R.id.wPauseBtn);
+        btnSkip = findViewById(R.id.skipButton);
         detail_image = findViewById(R.id.detail_image2);
         txtSkipTimer = findViewById(R.id.txtSkipTimer);
-        txtGetReady = findViewById(R.id.txtGetReady);
         time = findViewById(R.id.timer_time);
         title = findViewById(R.id.workoutTitle);
+        txtStart = findViewById(R.id.StartText);
 
         layoutTutorial = findViewById(R.id.layout_tutorial);
 
@@ -149,7 +151,7 @@ public class DailyExercise extends AppCompatActivity {
 
         //restTimeCountDown.start();
 
-        txtGetReady.setText("Rest Time");
+        //txtGetReady.setText("Rest Time");
     }
 
     private void showFinished() {
@@ -160,7 +162,7 @@ public class DailyExercise extends AppCompatActivity {
 
         layoutTutorial.setVisibility(View.VISIBLE);
 
-        txtGetReady.setText("FINISHED!!");
+        //txtGetReady.setText("FINISHED!!");
         txtSkipTimer.setText("Congrats! \nYou are done with today exercises");
         txtSkipTimer.setTextSize(20);
 
@@ -185,13 +187,17 @@ public class DailyExercise extends AppCompatActivity {
     }
 
     private void showGetReady() {
-        detail_image.setVisibility(View.INVISIBLE);
+        detail_image.setVisibility(View.VISIBLE);
         btnStart.setVisibility(View.INVISIBLE);
+        btnPause.setVisibility(View.INVISIBLE);
+        btnSkip.setVisibility(View.VISIBLE);
         time.setVisibility(View.VISIBLE);
 
         layoutTutorial.setVisibility(View.VISIBLE);
 
-        txtGetReady.setText("GET READY!");
+        //txtGetReady.setText("GET READY!");
+        txtStart.setText("GET READY!");
+
         new CountDownTimer(6000,1000){
 
             @Override
@@ -210,7 +216,10 @@ public class DailyExercise extends AppCompatActivity {
         if(ex_id < list.size()){
             detail_image.setVisibility(View.VISIBLE);
             btnStart.setVisibility(View.VISIBLE);
+            btnPause.setVisibility(View.VISIBLE);
+            btnSkip.setVisibility(View.INVISIBLE);
             time.setVisibility(View.VISIBLE);
+            txtStart.setText("START !");
 
             layoutTutorial.setVisibility(View.INVISIBLE);
 
