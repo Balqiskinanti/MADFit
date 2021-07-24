@@ -8,10 +8,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 
-import sg.edu.np.mad.madfit.Adapter.WorkoutPlanAdapter;
 import sg.edu.np.mad.madfit.Model.Plan;
 
 public class PlanDBHandler extends SQLiteOpenHelper {
+
     public static String DATABASE_NAME = "workoutPlans.db";
     public static String TABLE_PLANS = "WorkoutPlans";
     public static String COLUMN_PLANID = "PlanId";
@@ -19,7 +19,7 @@ public class PlanDBHandler extends SQLiteOpenHelper {
     public static String COLUMN_PLANDESC = "PlanDesc";
     public static String COLUMN_PLANTYPE = "PlanType";
     public static String COLUMN_PLANDUR = "PlanDur";
-    public static int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 1;
 
     public PlanDBHandler(Context context) {
         super(context,
@@ -58,15 +58,16 @@ public class PlanDBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    /*
     public void deletePlan(String Id) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_PLANS, "PlanId=" + Id, null);
         db.close();
-    }
+    } */
 
     public ArrayList<Plan> getPlans()
     {
-        ArrayList<Plan> list = new ArrayList<Plan> ();
+        ArrayList<Plan> list = new ArrayList<> ();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM WorkoutPlans", null);
 

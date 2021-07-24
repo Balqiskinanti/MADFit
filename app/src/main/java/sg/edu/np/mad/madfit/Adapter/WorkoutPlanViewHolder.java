@@ -13,7 +13,7 @@ public class WorkoutPlanViewHolder extends RecyclerView.ViewHolder {
     TextView txtDesc;
     TextView txtType;
     TextView txtDuration;
-    Button btnDelPlan;
+    //Button btnDelPlan;
 
     public WorkoutPlanViewHolder(View planView) {
         super(planView);
@@ -21,6 +21,6 @@ public class WorkoutPlanViewHolder extends RecyclerView.ViewHolder {
         txtDesc = planView.findViewById(R.id.text_Desc);
         txtType = planView.findViewById(R.id.text_Type);
         txtDuration = planView.findViewById(R.id.text_Duration);
-        btnDelPlan = planView.findViewById(R.id.btnDelPlan);
+        //btnDelPlan = planView.findViewById(R.id.btnDelPlan);
     }
 }

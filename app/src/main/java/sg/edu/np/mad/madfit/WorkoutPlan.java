@@ -22,6 +22,7 @@ public class WorkoutPlan extends AppCompatActivity {
     BottomNavigationView navigationView;
     Button createNewPlanBtn;
     static ArrayList<Plan> planList;
+    PlanDBHandler planDBHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,13 +44,16 @@ public class WorkoutPlan extends AppCompatActivity {
         /*
         List & RecyclerView for Workout Plans
         */
-        PlanDBHandler planDBHandler = new PlanDBHandler(this);
+        planDBHandler  = new PlanDBHandler(this);
         planList = planDBHandler.getPlans();
-        RecyclerView workoutPlanRV = findViewById(R.id.workoutPlanRV);
-        WorkoutPlanAdapter workoutPlanAdapter = new WorkoutPlanAdapter(this, planList);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        workoutPlanRV.setLayoutManager(linearLayoutManager);
-        workoutPlanRV.setAdapter(workoutPlanAdapter);
+        if (planList != null)
+        {
+            RecyclerView workoutPlanRV = findViewById(R.id.workoutPlanRV);
+            WorkoutPlanAdapter workoutPlanAdapter = new WorkoutPlanAdapter(this, planList);
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+            workoutPlanRV.setLayoutManager(linearLayoutManager);
+            workoutPlanRV.setAdapter(workoutPlanAdapter);
+        }
 
         /*
         Bottom navigation
