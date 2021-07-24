@@ -31,9 +31,6 @@ public class FoodActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food);
 
-        dailyCalInput = findViewById(R.id.etDailyCalTarget);
-        calsNeeded = findViewById(R.id.caloriesNeeded);
-
         /*
         Display Date in dashboard
         */
@@ -50,6 +47,9 @@ public class FoodActivity extends AppCompatActivity {
         /*
         Set Daily Calorie target and insert into TextView in dashboard
          */
+        dailyCalInput = findViewById(R.id.etDailyCalTarget);
+        calsNeeded = findViewById(R.id.caloriesNeeded);
+
         setTargetBtn = findViewById(R.id.setTarget_btn);
         setTargetBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -70,12 +70,12 @@
         </androidx.cardview.widget.CardView>
 
         <Button
-            android:id="@+id/save_btn"
+            android:id="@+id/done_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="32dp"
-            android:text="Save Records"
+            android:text="Done"
             app:backgroundTint="#1CCC15"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

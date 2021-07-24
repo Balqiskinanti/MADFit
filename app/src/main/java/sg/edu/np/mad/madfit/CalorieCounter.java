@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 public class CalorieCounter extends AppCompatActivity {
     TextView dateToday, myBreakfast, myLunch, myDinner, myOthers, foodItem;
-    Button saveBtn, cancelBtn, btnAddBreakfast, btnAddLunch, btnAddDinner, btnAddOthers;
+    Button doneBtn, btnAddBreakfast, btnAddLunch, btnAddDinner, btnAddOthers;
     EditText etFood, etCals;
     String mealType, myFoodInput, myCalsInput;
     boolean validInput;
@@ -73,8 +73,8 @@ public class CalorieCounter extends AppCompatActivity {
         /*
         Navigate back to dashboard
          */
-        saveBtn = findViewById(R.id.save_btn);
-        saveBtn.setOnClickListener(new View.OnClickListener() {
+        doneBtn = findViewById(R.id.done_btn);
+        doneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Save details to DB
