@@ -8,21 +8,6 @@ public class Plan {
     public String planDuration;
     public Plan(){}
 
-    public Plan(int planId, String planTitle, String planDescription, String planType, String planDuration) {
-        this.planId = planId;
-        this.planTitle = planTitle;
-        this.planDescription = planDescription;
-        this.planType = planType;
-        this.planDuration = planDuration;
-    }
-
-    public Plan(String planTitle, String planDescription, String planType, String planDuration) {
-        this.planTitle = planTitle;
-        this.planDescription = planDescription;
-        this.planType = planType;
-        this.planDuration = planDuration;
-    }
-
     public int getPlanId() {
         return planId;
     }

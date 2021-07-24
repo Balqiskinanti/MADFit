@@ -15,7 +15,7 @@ public class WorkoutPlanCreate extends AppCompatActivity {
     Button cancelBtn, createBtn;
     EditText inputTitle, inputDesc, inputType, inputDur;
     String myPlanTitle, myPlanDesc, myPlanType, myPlanDur;
-    PlanDBHandler planDBHandler = new PlanDBHandler(this, null, null , 1);
+    PlanDBHandler planDBHandler = new PlanDBHandler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

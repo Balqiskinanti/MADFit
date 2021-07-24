@@ -16,19 +16,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import sg.edu.np.mad.madfit.Model.Plan;
+import sg.edu.np.mad.madfit.PlanDBHandler;
 import sg.edu.np.mad.madfit.R;
 
 public class WorkoutPlanAdapter extends RecyclerView.Adapter<WorkoutPlanViewHolder>{
-    ArrayList<Plan> data;
+    Context context;
+    ArrayList<Plan> planList;
+    PlanDBHandler planDBHandler;
 
-    public WorkoutPlanAdapter(ArrayList<Plan> input){
-        data = input;
+    public WorkoutPlanAdapter(Context context, ArrayList<Plan> planList){
+        this.context = context;
+        this.planList = planList;
     }
 
     @NonNull
     @Override
     public WorkoutPlanViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View item = LayoutInflater.from(parent.getContext()).inflate(
+        View item = LayoutInflater.from(context).inflate(
                 R.layout.rv_workoutplan,
                 parent,
                 false);
@@ -36,16 +40,26 @@ public class WorkoutPlanAdapter extends RecyclerView.Adapter<WorkoutPlanViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull WorkoutPlanViewHolder planViewHolder, int position) {
-        Plan plan = data.get(position);
-        planViewHolder.txtTitle.setText(plan.planTitle);
-        planViewHolder.txtDesc.setText("Description: " + plan.planDescription);
-        planViewHolder.txtType.setText("Type: " + plan.planType);
-        planViewHolder.txtDuration.setText("Duration: " + plan.planDuration);
+    public void onBindViewHolder(@NonNull WorkoutPlanViewHolder planViewHolder, final int position) {
+        Plan plan = planList.get(position);
+        planViewHolder.txtTitle.setText(plan.getPlanTitle());
+        planViewHolder.txtDesc.setText("Description: " + plan.getPlanDescription());
+        planViewHolder.txtType.setText("Type: " + plan.getPlanType());
+        planViewHolder.txtDuration.setText("Duration: " + plan.getPlanDuration());
+
+        planDBHandler = new PlanDBHandler(context);
+        planViewHolder.btnDelPlan.setOnClickListener(new View.OnClickListener() {;
+            @Override
+            public void onClick(View v) {
+                planDBHandler.deletePlan(String.valueOf(plan.getPlanId()));
+                planList.remove(position);
+                notifyDataSetChanged();
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return planList.size();
     }
 }

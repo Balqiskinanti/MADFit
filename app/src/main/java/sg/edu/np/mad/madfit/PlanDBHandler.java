@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 
+import sg.edu.np.mad.madfit.Adapter.WorkoutPlanAdapter;
 import sg.edu.np.mad.madfit.Model.Plan;
 
 public class PlanDBHandler extends SQLiteOpenHelper {
@@ -20,8 +21,11 @@ public class PlanDBHandler extends SQLiteOpenHelper {
     public static String COLUMN_PLANDUR = "PlanDur";
     public static int DATABASE_VERSION = 1;
 
-    public PlanDBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, DATABASE_NAME, factory, DATABASE_VERSION);
+    public PlanDBHandler(Context context) {
+        super(context,
+                DATABASE_NAME,
+                null,
+                DATABASE_VERSION);
     }
 
     @Override
@@ -54,29 +58,11 @@ public class PlanDBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    /*
-    public boolean deletePlan(int planId) {
-        boolean result = false;
-
-        String query = "SELECT * FROM " + TABLE_PLANS + " WHERE "
-                + COLUMN_PLANID + " = \""
-                + planId + "\"";
+    public void deletePlan(String Id) {
         SQLiteDatabase db = this.getWritableDatabase();
-
-        Cursor cursor = db.rawQuery(query, null);
-
-        Plan plan = new Plan();
-
-        if (cursor.moveToFirst()) {
-            plan.setPlanId(Integer.parseInt(cursor.getString(0)));
-            db.delete(TABLE_PLANS, COLUMN_PLANID + " = ?",
-                    new String[]{String.valueOf(plan.getPlanId())});
-            cursor.close();
-            result = true;
-        }
+        db.delete(TABLE_PLANS, "PlanId=" + Id, null);
         db.close();
-        return result;
-    } */
+    }
 
     public ArrayList<Plan> getPlans()
     {
