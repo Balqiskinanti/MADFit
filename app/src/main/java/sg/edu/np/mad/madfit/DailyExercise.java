@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -109,15 +110,10 @@ public class DailyExercise extends AppCompatActivity {
                     btnStart.setText("done");
                 }
                 else if(btnStart.getText().toString().toLowerCase().equals("done")){
-                    if(madFitDBHandler.getSettingMode() == 0){
-                        exercisesEasyModeCountDown.cancel();
-                    }
-                    else if(madFitDBHandler.getSettingMode() == 1){
-                        exercisesMediumModeCountDown.cancel();
-                    }
-                    else if(madFitDBHandler.getSettingMode() == 2){
-                        exercisesHardModeCountDown.cancel();
-                    }
+                    exercisesEasyModeCountDown.cancel();
+                    exercisesMediumModeCountDown.cancel();
+                    exercisesHardModeCountDown.cancel();
+
                     //restTimeCountDown.cancel();
                     if(ex_id < list.size()){
                         //showRestTime();
@@ -129,7 +125,7 @@ public class DailyExercise extends AppCompatActivity {
                         btnStart.setText("Start");
                     }
                     else {
-                        showFinished();
+                        setExerciseInformation(ex_id);
                     }
                 }
 
@@ -156,34 +152,17 @@ public class DailyExercise extends AppCompatActivity {
 
     private void showFinished() {
 
-        detail_image.setVisibility(View.INVISIBLE);
-        btnStart.setVisibility(View.INVISIBLE);
-        time.setVisibility(View.INVISIBLE);
-
-        layoutTutorial.setVisibility(View.VISIBLE);
-
-        //txtGetReady.setText("FINISHED!!");
-        txtSkipTimer.setText("Congrats! \nYou are done with today exercises");
-        txtSkipTimer.setTextSize(20);
+        Toast.makeText(DailyExercise.this, "FINISHED!",Toast.LENGTH_SHORT).show();
 
         //save workout done to DB
         madFitDBHandler.saveDay("" + Calendar.getInstance().getTimeInMillis());
 
-        /*
         //Go to exercise finish page
         Intent intent = new Intent(DailyExercise.this,ExerciseFinished.class);
         startActivity(intent);
-        if(madFitDBHandler.getSettingMode() == 0){
-            exercisesEasyModeCountDown.cancel();
-        }
-        else if(madFitDBHandler.getSettingMode() == 1){
-            exercisesMediumModeCountDown.cancel();
-        }
-        else if(madFitDBHandler.getSettingMode() == 2){
-            exercisesHardModeCountDown.cancel();
-        }
-
-         */
+        exercisesEasyModeCountDown.cancel();
+        exercisesMediumModeCountDown.cancel();
+        exercisesHardModeCountDown.cancel();
     }
 
     private void showGetReady() {
@@ -233,13 +212,9 @@ public class DailyExercise extends AppCompatActivity {
                 exercisesHardModeCountDown.start();
             }
 
-
             //set data
             detail_image.setImageResource(list.get(ex_id).getImage_id());
             title.setText(list.get(ex_id).getName());
-        }
-        else {
-            showFinished();
         }
     }
 
@@ -261,7 +236,7 @@ public class DailyExercise extends AppCompatActivity {
                 btnStart.setText("Start");
             }
             else {
-                showFinished();
+                setExerciseInformation(ex_id);
             }
         }
     }.start();
@@ -284,8 +259,9 @@ public class DailyExercise extends AppCompatActivity {
                 btnStart.setText("Start");
             }
             else {
-                showFinished();
+                setExerciseInformation(ex_id);
             }
+
         }
     }.start();
 
@@ -307,8 +283,9 @@ public class DailyExercise extends AppCompatActivity {
                 btnStart.setText("Start");
             }
             else {
-                showFinished();
+                setExerciseInformation(ex_id);
             }
+
         }
     }.start();
 
@@ -331,15 +308,23 @@ public class DailyExercise extends AppCompatActivity {
 
 
     private void setExerciseInformation(int id) {
-        detail_image.setImageResource(list.get(id).getImage_id());
-        title.setText(list.get(id).getName());
-        btnStart.setText("Start");
+        if(id < list.size()){
+            detail_image.setImageResource(list.get(id).getImage_id());
+            title.setText(list.get(id).getName());
+            btnStart.setText("Start");
 
-        detail_image.setVisibility(View.VISIBLE);
-        btnStart.setVisibility(View.VISIBLE);
-        time.setVisibility(View.VISIBLE);
+            detail_image.setVisibility(View.VISIBLE);
+            btnStart.setVisibility(View.VISIBLE);
+            btnPause.setVisibility(View.VISIBLE);
+            time.setVisibility(View.VISIBLE);
 
-        layoutTutorial.setVisibility(View.INVISIBLE);
+            layoutTutorial.setVisibility(View.INVISIBLE);
+            btnSkip.setVisibility(View.INVISIBLE);
+        }
+        else {
+            showFinished();
+        }
+
 
     }
 
