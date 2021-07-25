@@ -1,10 +1,6 @@
 package sg.edu.np.mad.madfit.Adapter;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,16 +42,6 @@ public class WorkoutPlanAdapter extends RecyclerView.Adapter<WorkoutPlanViewHold
         planViewHolder.txtDesc.setText("Description: " + plan.getPlanDescription());
         planViewHolder.txtType.setText("Type: " + plan.getPlanType());
         planViewHolder.txtDuration.setText("Duration: " + plan.getPlanDuration());
-
-        planDBHandler = new PlanDBHandler(context);
-        planViewHolder.btnDelPlan.setOnClickListener(new View.OnClickListener() {;
-            @Override
-            public void onClick(View v) {
-                planDBHandler.deletePlan(String.valueOf(plan.getPlanId()));
-                planList.remove(position);
-                notifyDataSetChanged();
-            }
-        });
     }
 
     @Override

@@ -16,6 +16,7 @@ public class WorkoutPlanCreate extends AppCompatActivity {
     EditText inputTitle, inputDesc, inputType, inputDur;
     String myPlanTitle, myPlanDesc, myPlanType, myPlanDur;
     PlanDBHandler planDBHandler = new PlanDBHandler(this);
+    boolean validInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,18 +41,45 @@ public class WorkoutPlanCreate extends AppCompatActivity {
                 myPlanDur = inputDur.getText().toString();
 
                 /*
+                Check for null values
+                 */
+                if (myPlanTitle.isEmpty()){
+                    Toast.makeText(WorkoutPlanCreate.this, "Please enter a title", Toast.LENGTH_SHORT).show();
+                    validInput = false;
+                } else
+                    validInput = true;
+                if (myPlanDesc.isEmpty()){
+                    Toast.makeText(WorkoutPlanCreate.this, "Please enter a description", Toast.LENGTH_SHORT).show();
+                    validInput = false;
+                } else
+                    validInput = true;
+                if (myPlanType.isEmpty()){
+                    Toast.makeText(WorkoutPlanCreate.this, "Please enter exercise type", Toast.LENGTH_SHORT).show();
+                    validInput = false;
+                } else
+                    validInput = true;
+                if (myPlanDur.isEmpty()){
+                    Toast.makeText(WorkoutPlanCreate.this, "Please enter exercise duration", Toast.LENGTH_SHORT).show();
+                    validInput = false;
+                } else
+                    validInput = true;
+
+                /*
                 Add new Plan to Database
                 */
-                Plan dbPlan = new Plan();
-                dbPlan.setPlanTitle(myPlanTitle);
-                dbPlan.setPlanDescription(myPlanDesc);
-                dbPlan.setPlanType(myPlanType);
-                dbPlan.setPlanDuration(myPlanDur);
-                planDBHandler.addPlan(dbPlan);
+                if (validInput == true)
+                {
+                    Plan dbPlan = new Plan();
+                    dbPlan.setPlanTitle(myPlanTitle);
+                    dbPlan.setPlanDescription(myPlanDesc);
+                    dbPlan.setPlanType(myPlanType);
+                    dbPlan.setPlanDuration(myPlanDur);
+                    planDBHandler.addPlan(dbPlan);
 
-                Intent intent = new Intent(WorkoutPlanCreate.this, WorkoutPlan.class);
-                Toast.makeText(WorkoutPlanCreate.this,"Plan created successfully!",Toast.LENGTH_SHORT).show();
-                startActivity(intent);
+                    Intent intent = new Intent(WorkoutPlanCreate.this, WorkoutPlan.class);
+                    Toast.makeText(WorkoutPlanCreate.this,"Plan created successfully!",Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+                }
             }
         });
 
