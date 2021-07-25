@@ -56,8 +56,14 @@ public class BmiActivity extends AppCompatActivity {
             myBMI = findViewById(R.id.bmi_record);
             myStatus = findViewById(R.id.status_record);
 
-            myHeight.setText(sharedHeight + "m");
-            myWeight.setText(sharedWeight + "kg");
+            if (sharedHeight == "No Records")
+                myHeight.setText(sharedHeight);
+            else
+                myHeight.setText(sharedHeight + "m");
+            if (sharedWeight == "No Records")
+                myWeight.setText(sharedWeight);
+            else
+                myWeight.setText(sharedWeight + "kg");
             myBMI.setText(sharedBMI);
             myStatus.setText(sharedStatus);
         }

@@ -46,14 +46,11 @@ public class WorkoutPlan extends AppCompatActivity {
         */
         planDBHandler  = new PlanDBHandler(this);
         planList = planDBHandler.getPlans();
-        if (planList != null)
-        {
-            RecyclerView workoutPlanRV = findViewById(R.id.workoutPlanRV);
-            WorkoutPlanAdapter workoutPlanAdapter = new WorkoutPlanAdapter(this, planList);
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-            workoutPlanRV.setLayoutManager(linearLayoutManager);
-            workoutPlanRV.setAdapter(workoutPlanAdapter);
-        }
+        RecyclerView workoutPlanRV = findViewById(R.id.workoutPlanRV);
+        WorkoutPlanAdapter workoutPlanAdapter = new WorkoutPlanAdapter(this, planList);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        workoutPlanRV.setLayoutManager(linearLayoutManager);
+        workoutPlanRV.setAdapter(workoutPlanAdapter);
 
         /*
         Bottom navigation
