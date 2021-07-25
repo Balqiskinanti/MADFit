@@ -42,18 +42,6 @@ public class WorkoutPlanAdapter extends RecyclerView.Adapter<WorkoutPlanViewHold
         planViewHolder.txtDesc.setText("Description: " + plan.getPlanDescription());
         planViewHolder.txtType.setText("Type: " + plan.getPlanType());
         planViewHolder.txtDuration.setText("Duration: " + plan.getPlanDuration());
-
-        /*
-        planDBHandler = new PlanDBHandler(context);
-        planViewHolder.btnDelPlan.setOnClickListener(new View.OnClickListener() {;
-            @Override
-            public void onClick(View v) {
-                planDBHandler.deletePlan(String.valueOf(plan.getPlanId()));
-                planList.remove(position);
-                Toast.makeText(context, "Plan deleted successfully!", Toast.LENGTH_SHORT).show();
-                notifyDataSetChanged();
-            }
-        }); */
     }
 
     @Override
