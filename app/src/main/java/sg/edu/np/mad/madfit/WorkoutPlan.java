@@ -1,15 +1,20 @@
 package sg.edu.np.mad.madfit;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -21,6 +26,7 @@ import sg.edu.np.mad.madfit.Model.Plan;
 public class WorkoutPlan extends AppCompatActivity {
     BottomNavigationView navigationView;
     Button createNewPlanBtn;
+    TextView clearAllPlans;
     static ArrayList<Plan> planList;
     PlanDBHandler planDBHandler;
 
@@ -28,6 +34,8 @@ public class WorkoutPlan extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_plan);
+
+        planDBHandler  = new PlanDBHandler(this);
 
         /*
         Go to create new plan page
@@ -42,9 +50,41 @@ public class WorkoutPlan extends AppCompatActivity {
         });
 
         /*
+        Clear all plans
+         */
+        clearAllPlans = findViewById(R.id.clearAllPlans);
+        clearAllPlans.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(WorkoutPlan.this);
+                builder.setTitle("Clear All Plans");
+                builder.setMessage("Are you sure to clear all your workout plans?");
+                builder.setCancelable(false);
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        planDBHandler.deleteAllPlans();
+                        Toast.makeText(WorkoutPlan.this, "All plans have been cleared", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(WorkoutPlan.this, WorkoutPlan.class);
+                        startActivity(intent);
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+
+                return false;
+            }
+        });
+
+        /*
         List & RecyclerView for Workout Plans
-        */
-        planDBHandler  = new PlanDBHandler(this);
+         */
         planList = planDBHandler.getPlans();
         RecyclerView workoutPlanRV = findViewById(R.id.workoutPlanRV);
         WorkoutPlanAdapter workoutPlanAdapter = new WorkoutPlanAdapter(this, planList);

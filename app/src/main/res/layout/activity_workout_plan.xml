@@ -53,7 +53,7 @@
         android:id="@+id/workoutPlanRV"
         android:layout_width="390dp"
         android:layout_height="405dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
@@ -69,4 +69,17 @@
         app:layout_constraintHorizontal_bias="0.064"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createNewPlanBtn" />
+
+    <TextView
+        android:id="@+id/clearAllPlans"
+        android:layout_width="68dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="28dp"
+        android:text="Clear All"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.869"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createNewPlanBtn" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -58,6 +58,12 @@ public class PlanDBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void deleteAllPlans(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_PLANS, null, null);
+        db.close();
+    }
+
     public ArrayList<Plan> getPlans()
     {
         ArrayList<Plan> list = new ArrayList<> ();
