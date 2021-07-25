@@ -113,11 +113,11 @@
                     android:id="@+id/btnAddOthers"
                     android:layout_width="157dp"
                     android:layout_height="42dp"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="8dp"
                     android:text="Add new item"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cardView5" />
 
@@ -180,11 +180,11 @@
                     android:id="@+id/btnAddDinner"
                     android:layout_width="157dp"
                     android:layout_height="42dp"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="8dp"
                     android:text="Add new item"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cardView4" />
 
@@ -247,11 +247,11 @@
                     android:id="@+id/btnAddLunch"
                     android:layout_width="157dp"
                     android:layout_height="42dp"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="8dp"
                     android:text="Add new item"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
@@ -315,13 +315,14 @@
                     android:id="@+id/btnAddBreakfast"
                     android:layout_width="157dp"
                     android:layout_height="42dp"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="8dp"
                     android:text="Add new item"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cardView3" />
+                    app:layout_constraintTop_toBottomOf="@+id/cardView3"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
                     android:id="@+id/textView28"

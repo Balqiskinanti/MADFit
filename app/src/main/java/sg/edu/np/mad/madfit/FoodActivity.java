@@ -39,8 +39,6 @@ public class FoodActivity extends AppCompatActivity {
     public String TOTALOTHERS = "TotalOthers";
     public String CALSNEEDED = "CalsNeeded";
 
-    private static final String TAG = "FoodActivity";
-
     @Override
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -219,6 +217,10 @@ public class FoodActivity extends AppCompatActivity {
             ProgressBar progressBar = findViewById(R.id.progressBar);
             progressBar.setMax(100);
             progressBar.setProgress(Integer.valueOf(progress));
+
+            // send congrats Toast when target reached
+            if (progress >= 100)
+                Toast.makeText(this, "Congratulations! You have reached your calorie target for today!", Toast.LENGTH_SHORT).show();
         } else {
             ProgressBar progressBar = findViewById(R.id.progressBar);
             progressBar.setMax(100);
