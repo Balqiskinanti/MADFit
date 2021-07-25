@@ -24,7 +24,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private String TAG = "Music Player Activity";
     BottomNavigationView navigationView;
     ArrayList<String> musicPlayerArrayList;
-    MADFitDBHandler db= new MADFitDBHandler(this);
+    MusicDBHandler db= new MusicDBHandler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

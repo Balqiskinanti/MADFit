@@ -35,7 +35,6 @@ public class NotificationActivity extends AppCompatActivity {
 
     BottomNavigationView navigationView;
     EditText editTextTime;
-    TextView tvMyWorkoutTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +43,6 @@ public class NotificationActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences(GLOBAL_PREFS, MODE_PRIVATE);
         String myTime = sharedPreferences.getString(MY_WORKOUT_TIME,"00:00");
-
-        tvMyWorkoutTime = findViewById(R.id.myWorkoutTime);
-        tvMyWorkoutTime.setText(myTime);
 
         editTextTime = findViewById(R.id.editTextTime);
         editTextTime.setText(myTime);
@@ -110,7 +106,7 @@ public class NotificationActivity extends AppCompatActivity {
                     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
                         editTextTime.setText(String.format("%02d:%02d", hourOfDay, minutes));
                     }
-                }, 21, 00, false);
+                }, 00, 00, false);
                 timePickerDialog.show();
             }
         });
@@ -145,8 +141,6 @@ public class NotificationActivity extends AppCompatActivity {
 
                 editor.putString(MY_WORKOUT_TIME, timeInput);
                 editor.apply();
-                tvMyWorkoutTime = findViewById(R.id.myWorkoutTime);
-                tvMyWorkoutTime.setText(timeInput);
 
                 Toast.makeText(NotificationActivity.this, "Reminder set", Toast.LENGTH_SHORT).show();
             }
