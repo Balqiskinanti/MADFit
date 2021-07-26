@@ -28,7 +28,7 @@
         android:layout_marginStart="179dp"
         android:layout_marginEnd="179dp"
         android:layout_marginBottom="10dp"
-        android:text="Finished"
+        android:text="Total Time"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,13 +57,30 @@
         android:id="@+id/totalTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="48dp"
         android:text="10s"
-        android:textSize="34sp"
+        android:textSize="60sp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView001"
-        app:layout_constraintVertical_bias="0.049" />
+        app:layout_constraintTop_toBottomOf="@+id/finish_image"
+        app:layout_constraintVertical_bias="0.114" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/finish_image"
+        android:layout_width="347dp"
+        android:layout_height="298dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="192dp"
+        android:background="@drawable/finish"
+        android:cropToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView001" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

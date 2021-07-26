@@ -12,11 +12,11 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import pl.droidsonroids.gif.GifImageView;
+
 public class ExerciseFinish extends AppCompatActivity {
 
     BottomNavigationView navigationView;
-    String totalTime;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
