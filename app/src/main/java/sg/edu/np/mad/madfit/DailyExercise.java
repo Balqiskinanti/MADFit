@@ -322,7 +322,6 @@ public class DailyExercise extends AppCompatActivity {
     private void initData() {
         list.add(new Exercise(R.drawable.exersice_1,"Push Up"));
         list.add(new Exercise(R.drawable.exersice_2,"Crunches"));
-        /*
         list.add(new Exercise(R.drawable.exersice_3,"Triceps Dips"));
         list.add(new Exercise(R.drawable.exersice_4,"Bicycle Crunches"));
         list.add(new Exercise(R.drawable.exersice_5,"Leg Raise"));
@@ -336,7 +335,5 @@ public class DailyExercise extends AppCompatActivity {
         list.add(new Exercise(R.drawable.exersice_13,"Bridge"));
         list.add(new Exercise(R.drawable.exersice_14,"Vertical Leg Crunches"));
         list.add(new Exercise(R.drawable.exersice_15,"Vertical Heel Touch"));
-
-         */
     }
 }
