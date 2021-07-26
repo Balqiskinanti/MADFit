@@ -7,13 +7,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ExerciseFinished extends AppCompatActivity {
 
     BottomNavigationView navigationView;
-    int totalTime;
+    String totalTime;
     TextView total;
 
     @Override
@@ -48,14 +49,13 @@ public class ExerciseFinished extends AppCompatActivity {
             }
         });
 
-        /*
-        if(getIntent() != null){
-            totalTime = getIntent().getIntExtra("time",1);
-        }
+        //totalTime = getIntent().getStringExtra("time");
+        int totalTiming = getIntent().getIntExtra("time", 1);
+        Toast.makeText(ExerciseFinished.this, "TotalTime: " + totalTiming, Toast.LENGTH_SHORT).show();
+        //total.findViewById(R.id.totalTiming);
+        //total.setText(totalTiming + "s");
+        //total.setText("Hello");
 
-        total.findViewById(R.id.total);
-        total.setText(""+totalTime);
 
-         */
     }
 }
