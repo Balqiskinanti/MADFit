@@ -86,23 +86,6 @@
             android:textStyle="bold"></TextView>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/wPauseBtn"
-        android:layout_width="121dp"
-        android:layout_height="50dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="54dp"
-        android:text="Work In Progress'"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:backgroundTint="#5868E0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.784" />
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
@@ -139,30 +122,30 @@
         android:id="@+id/startButton"
         android:layout_width="121dp"
         android:layout_height="50dp"
-        android:layout_marginStart="54dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginEnd="146dp"
         android:text="start"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:backgroundTint="#5868E0"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/wPauseBtn"
-        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.783" />
 
     <Button
         android:id="@+id/skipButton"
-        android:visibility="invisible"
         android:layout_width="121dp"
         android:layout_height="50dp"
         android:text="SKIP"
         android:textColor="@color/white"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:backgroundTint="#5868E0"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/wPauseBtn"
-        app:layout_constraintStart_toEndOf="@+id/startButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.783" />
 
