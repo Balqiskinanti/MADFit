@@ -5,26 +5,17 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import org.jetbrains.annotations.NotNull;
-import org.w3c.dom.Text;
 
 import java.util.List;
 
 import pl.droidsonroids.gif.GifImageView;
 import sg.edu.np.mad.madfit.DailyExercise;
 import sg.edu.np.mad.madfit.Interface.ItemClickListener;
-import sg.edu.np.mad.madfit.ListExercises;
-import sg.edu.np.mad.madfit.MainActivity;
 import sg.edu.np.mad.madfit.Model.Exercise;
 import sg.edu.np.mad.madfit.R;
-import sg.edu.np.mad.madfit.ViewExercise;
 
 //ExerciseList Recycler View Holder
 class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{

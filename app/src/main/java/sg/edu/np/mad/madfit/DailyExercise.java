@@ -150,7 +150,7 @@ public class DailyExercise extends AppCompatActivity {
         madFitDBHandler.saveDay("" + Calendar.getInstance().getTimeInMillis());
 
         //Go to exercise finish page
-        Intent intent = new Intent(DailyExercise.this,ExerciseFinished.class);
+        Intent intent = new Intent(DailyExercise.this,ExerciseFinish.class);
         intent.putExtra("time",totalTime);
         startActivity(intent);
         exercisesEasyModeCountDown.cancel();
@@ -322,6 +322,7 @@ public class DailyExercise extends AppCompatActivity {
     private void initData() {
         list.add(new Exercise(R.drawable.exersice_1,"Push Up"));
         list.add(new Exercise(R.drawable.exersice_2,"Crunches"));
+        /*
         list.add(new Exercise(R.drawable.exersice_3,"Triceps Dips"));
         list.add(new Exercise(R.drawable.exersice_4,"Bicycle Crunches"));
         list.add(new Exercise(R.drawable.exersice_5,"Leg Raise"));
@@ -335,5 +336,7 @@ public class DailyExercise extends AppCompatActivity {
         list.add(new Exercise(R.drawable.exersice_13,"Bridge"));
         list.add(new Exercise(R.drawable.exersice_14,"Vertical Leg Crunches"));
         list.add(new Exercise(R.drawable.exersice_15,"Vertical Heel Touch"));
+
+         */
     }
 }
