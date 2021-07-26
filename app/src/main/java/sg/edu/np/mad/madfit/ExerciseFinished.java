@@ -6,12 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ExerciseFinished extends AppCompatActivity {
 
     BottomNavigationView navigationView;
+    int totalTime;
+    TextView total;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,5 +47,15 @@ public class ExerciseFinished extends AppCompatActivity {
                 return false;
             }
         });
+
+        /*
+        if(getIntent() != null){
+            totalTime = getIntent().getIntExtra("time",1);
+        }
+
+        total.findViewById(R.id.total);
+        total.setText(""+totalTime);
+
+         */
     }
 }
