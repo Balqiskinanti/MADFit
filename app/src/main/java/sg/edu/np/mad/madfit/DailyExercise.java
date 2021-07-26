@@ -177,18 +177,19 @@ public class DailyExercise extends AppCompatActivity {
         //txtGetReady.setText("GET READY!");
         txtStart.setText("GET READY!");
 
-        new CountDownTimer(6000,1000){
+        skipTimer.start();
 
+        // Go to view exercise timer
+        btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onTick(long millisUntilFinished) {
-                txtSkipTimer.setText(""+millisUntilFinished/1000);
-            }
-
-            @Override
-            public void onFinish() {
+            public void onClick(View v) {
+                skipTimer.cancel();
                 showExercise();
+                //Toast.makeText(DailyExercise.this, "Skipped",Toast.LENGTH_SHORT).show();
             }
-        }.start();
+        });
+
+
     }
 
     private void showExercise() {
@@ -286,6 +287,19 @@ public class DailyExercise extends AppCompatActivity {
                 setExerciseInformation(ex_id);
             }
 
+        }
+    }.start();
+
+    CountDownTimer skipTimer = new CountDownTimer(6000,1000){
+
+        @Override
+        public void onTick(long millisUntilFinished) {
+            txtSkipTimer.setText(""+millisUntilFinished/1000);
+        }
+
+        @Override
+        public void onFinish() {
+            showExercise();
         }
     }.start();
 
