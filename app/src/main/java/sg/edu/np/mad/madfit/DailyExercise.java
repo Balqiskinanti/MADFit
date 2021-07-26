@@ -26,20 +26,16 @@ import sg.edu.np.mad.madfit.Model.Exercise;
 
 public class DailyExercise extends AppCompatActivity {
 
-    int image_id;
-    String name;
     TextView title,time,txtSkipTimer,txtStart;
     ProgressBar progressBar;
     LinearLayout layoutTutorial;
     GifImageView detail_image;
     Button btnSkip, btnStart;
     BottomNavigationView navigationView;
-    //CountDownTimer workoutTimer;
-    boolean resume = true;
-    long startMillis, milliLeft;
     MADFitDBHandler madFitDBHandler;
 
-    int ex_id = 0, timeLimit = 0;
+    int ex_id = 0, totalTime = 0;
+    long timeLimit = 0;
     List<Exercise> list = new ArrayList<>();
 
     @Override
@@ -110,9 +106,18 @@ public class DailyExercise extends AppCompatActivity {
                     btnStart.setText("done");
                 }
                 else if(btnStart.getText().toString().toLowerCase().equals("done")){
-                    exercisesEasyModeCountDown.cancel();
-                    exercisesMediumModeCountDown.cancel();
-                    exercisesHardModeCountDown.cancel();
+                    if(madFitDBHandler.getSettingMode() == 0){
+                        totalTime += Common.TIME_LIMIT_EASY - timeLimit;
+                        exercisesEasyModeCountDown.cancel();
+                    }
+                    else if(madFitDBHandler.getSettingMode() == 1){
+                        totalTime += Common.TIME_LIMIT_MEDIUM -  timeLimit;
+                        exercisesMediumModeCountDown.cancel();
+                    }
+                    else if(madFitDBHandler.getSettingMode() == 2){
+                        totalTime += Common.TIME_LIMIT_HARD -  timeLimit;
+                        exercisesHardModeCountDown.cancel();
+                    }
 
                     //restTimeCountDown.cancel();
                     if(ex_id < list.size()){
@@ -127,6 +132,7 @@ public class DailyExercise extends AppCompatActivity {
                     else {
                         setExerciseInformation(ex_id);
                     }
+
                 }
 
             }
@@ -137,12 +143,15 @@ public class DailyExercise extends AppCompatActivity {
     private void showFinished() {
 
         Toast.makeText(DailyExercise.this, "FINISHED!",Toast.LENGTH_SHORT).show();
+        totalTime = totalTime/1000;
+        //Toast.makeText(DailyExercise.this, "TotalTime: " + totalTime, Toast.LENGTH_SHORT).show();
 
         //save workout done to DB
         madFitDBHandler.saveDay("" + Calendar.getInstance().getTimeInMillis());
 
         //Go to exercise finish page
-        Intent intent = new Intent(DailyExercise.this,ExerciseFinished.class);
+        Intent intent = new Intent(DailyExercise.this,ExerciseFinish.class);
+        intent.putExtra("time",totalTime);
         startActivity(intent);
         exercisesEasyModeCountDown.cancel();
         exercisesMediumModeCountDown.cancel();
@@ -205,6 +214,7 @@ public class DailyExercise extends AppCompatActivity {
     CountDownTimer exercisesEasyModeCountDown = new CountDownTimer(Common.TIME_LIMIT_EASY,1000) {
         @Override
         public void onTick(long millisUntilFinished) {
+            timeLimit = millisUntilFinished;
             time.setText("" + millisUntilFinished/1000);
         }
 
@@ -221,6 +231,7 @@ public class DailyExercise extends AppCompatActivity {
             else {
                 setExerciseInformation(ex_id);
             }
+            totalTime += Common.TIME_LIMIT_EASY;
         }
     }.start();
 
@@ -228,6 +239,7 @@ public class DailyExercise extends AppCompatActivity {
     CountDownTimer exercisesMediumModeCountDown = new CountDownTimer(Common.TIME_LIMIT_MEDIUM,1000) {
         @Override
         public void onTick(long millisUntilFinished) {
+            timeLimit = millisUntilFinished;
             time.setText("" + millisUntilFinished/1000);
         }
 
@@ -244,6 +256,7 @@ public class DailyExercise extends AppCompatActivity {
             else {
                 setExerciseInformation(ex_id);
             }
+            totalTime += Common.TIME_LIMIT_MEDIUM;
 
         }
     }.start();
@@ -252,6 +265,7 @@ public class DailyExercise extends AppCompatActivity {
     CountDownTimer exercisesHardModeCountDown = new CountDownTimer(Common.TIME_LIMIT_HARD,1000) {
         @Override
         public void onTick(long millisUntilFinished) {
+            timeLimit = millisUntilFinished;
             time.setText("" + millisUntilFinished/1000);
         }
 
@@ -268,7 +282,7 @@ public class DailyExercise extends AppCompatActivity {
             else {
                 setExerciseInformation(ex_id);
             }
-
+            totalTime += Common.TIME_LIMIT_HARD;
         }
     }.start();
 

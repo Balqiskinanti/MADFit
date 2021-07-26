@@ -14,25 +14,52 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MADFit"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CalorieCounter" android:screenOrientation="portrait"/>
-        <activity android:name=".WorkoutPlanCreate" android:screenOrientation="portrait"/>
-        <activity android:name=".WorkoutPlan" android:screenOrientation="portrait"/>
-        <activity android:name=".DailyExercise" android:screenOrientation="portrait"/>
-        <activity android:name=".DailyTraining" android:screenOrientation="portrait"/>
-        <activity android:name=".MailActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".WorkoutCalendar" android:screenOrientation="portrait"/>
-        <activity android:name=".WorkoutSetting" android:screenOrientation="portrait"/>
-        <activity android:name=".ExerciseFinished" android:screenOrientation="portrait"/>
-        <activity android:name=".ViewExerciseTimer" android:screenOrientation="portrait"/>
-        <activity android:name=".ViewExercise" android:screenOrientation="portrait"/>
-        <activity android:name=".NotificationActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".MusicPlayerActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".MusicActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".BmiCalculatorActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".BmiActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ListExercises" android:screenOrientation="portrait"/>
-        <activity android:name=".WorkoutActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".FoodActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ExerciseFinish"></activity>
+        <activity
+            android:name=".CalorieCounter"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WorkoutPlanCreate"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WorkoutPlan"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DailyExercise"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WorkoutCalendar"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WorkoutSetting"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NotificationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MusicPlayerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MusicActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".BmiCalculatorActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".BmiActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ListExercises"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WorkoutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".FoodActivity"
+            android:screenOrientation="portrait" />
 
         <receiver android:name=".ReminderBroadcast" />
 
