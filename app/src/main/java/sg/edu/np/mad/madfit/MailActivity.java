@@ -19,34 +19,27 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import sg.edu.np.mad.madfit.Model.Calories;
+
 public class MailActivity extends AppCompatActivity {
     BottomNavigationView navigationView;
     EditText mEmail;
     Button sendEmail_btn;
+    String mail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mail);
 
-        mEmail = findViewById(R.id.mEmail);
         sendEmail_btn = findViewById(R.id.sendEmail_Btn);
         sendEmail_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isNetworkAvailable()){
-                    if(mEmail.getText().toString().equals("")){
-                        Toast.makeText(MailActivity.this, "Please provide your email", Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        sendMail();
-                    }
-                }
-                else{
-                    noInternetAlert();
-                }
+                getMailAlert();
             }
         });
+
 
         // Bottom navigation
         navigationView = findViewById(R.id.bottom_navigation);
@@ -78,9 +71,7 @@ public class MailActivity extends AppCompatActivity {
     }
 
     /*Execute Sending Email*/
-    private void sendMail() {
-        mEmail = findViewById(R.id.mEmail);
-        String mail = mEmail.getText().toString().trim();
+    private void sendMail(String mail) {
         String message = "";
         String subject = "MADFit Email Subscription";
 
@@ -106,5 +97,38 @@ public class MailActivity extends AppCompatActivity {
         });
         AlertDialog alert = builder.create();
         alert.show();
+    }
+
+    private void getMailAlert(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final View mailInputLayout = this.getLayoutInflater().inflate(R.layout.mail_input, null);
+        builder.setView(mailInputLayout);
+        builder.setTitle("Provide Your E-Mail");
+        builder.setCancelable(false);
+        builder.setPositiveButton("Send", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mEmail = (EditText) mailInputLayout.findViewById(R.id.mEmail);
+                mail = mEmail.getText().toString().trim();
+
+                onClickSendMail(mail);
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    private void onClickSendMail(String mail){
+        if(isNetworkAvailable()){
+            if (mail.isEmpty()){
+                Toast.makeText(MailActivity.this, "Please provide your email", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                sendMail(mail);
+            }
+        }
+        else{
+            noInternetAlert();
+        }
     }
 }
