@@ -219,10 +219,6 @@ public class FoodActivity extends AppCompatActivity {
         calsConsumed = findViewById(R.id.caloriesConsumed);
         calsConsumed.setText(totalCalsConsumed + " cals");
 
-        // remind user to set calorie target
-        if (valueNeeded.equals("0"))
-            Toast.makeText(FoodActivity.this, "Please set a calorie target!", Toast.LENGTH_SHORT).show();
-
         setProgress(Integer.parseInt(valueNeeded), totalCalsConsumed);
     }
 
