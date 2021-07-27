@@ -33,7 +33,7 @@ public class WorkoutSetting extends AppCompatActivity {
 
     // Layout
     Button easyBtn, mediumBtn, hardBtn;
-    Switch muteReminderSwitch;
+    Switch muteReminderSwitch, skipTutorialSwitch;
     BottomNavigationView navigationView;
 
     @Override
@@ -47,12 +47,15 @@ public class WorkoutSetting extends AppCompatActivity {
         easyBtn = findViewById(R.id.easyBtn);
         mediumBtn = findViewById(R.id.mediumBtn);
         hardBtn = findViewById(R.id.hardBtn);
+        skipTutorialSwitch = findViewById(R.id.skipTutorial);
 
         //get setting mode in database
 
         int mode = madFitDBHandler.getSettingMode();
         setButton(mode);
 
+        int skip = madFitDBHandler.getTutorialSkip();
+        setSkipSwitch(skip);
 
 
         //set mode and store in database
@@ -84,6 +87,20 @@ public class WorkoutSetting extends AppCompatActivity {
                 mediumBtn.setBackgroundColor(Color.WHITE);
                 madFitDBHandler.saveSettingMode(2);
                 Toast.makeText(WorkoutSetting.this, "SAVED!",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        skipTutorialSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isMuted) {
+                if(isMuted){
+                    madFitDBHandler.saveTutorialSkip(1);
+                    Toast.makeText(WorkoutSetting.this, "Tutorial off", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    madFitDBHandler.saveTutorialSkip(0);
+                    Toast.makeText(WorkoutSetting.this, "Tutorial on", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -125,6 +142,19 @@ public class WorkoutSetting extends AppCompatActivity {
         }
         else if(mode == 2){
             hardBtn.setBackgroundColor(Color.rgb(88,104,224));
+        }
+    }
+
+    //set switch according to database database
+    private void setSkipSwitch(int skip) {
+        if(skip == 0){
+            skipTutorialSwitch.setChecked(false);
+        }
+        else if(skip == 1){
+            skipTutorialSwitch.setChecked(true);
+        }
+        else {
+            skipTutorialSwitch.setChecked(false);
         }
     }
 

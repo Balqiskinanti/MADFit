@@ -100,7 +100,7 @@
         app:layout_constraintTop_toBottomOf="@+id/easyBtn" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/skipTutorial"
         android:layout_width="362dp"
         android:layout_height="6dp"
         android:layout_marginStart="24dp"
