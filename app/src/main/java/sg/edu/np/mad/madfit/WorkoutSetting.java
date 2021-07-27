@@ -33,7 +33,7 @@ public class WorkoutSetting extends AppCompatActivity {
 
     // Layout
     Button easyBtn, mediumBtn, hardBtn;
-    Switch muteReminderSwitch;
+    Switch muteReminderSwitch, skipTutorialSwitch;
     BottomNavigationView navigationView;
 
     @Override
@@ -47,6 +47,7 @@ public class WorkoutSetting extends AppCompatActivity {
         easyBtn = findViewById(R.id.easyBtn);
         mediumBtn = findViewById(R.id.mediumBtn);
         hardBtn = findViewById(R.id.hardBtn);
+        skipTutorialSwitch = findViewById(R.id.skipTutorial);
 
         //get setting mode in database
 
@@ -84,6 +85,20 @@ public class WorkoutSetting extends AppCompatActivity {
                 mediumBtn.setBackgroundColor(Color.WHITE);
                 madFitDBHandler.saveSettingMode(2);
                 Toast.makeText(WorkoutSetting.this, "SAVED!",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        skipTutorialSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isMuted) {
+                if(isMuted){
+                    madFitDBHandler.saveTutorialSkip(1);
+                    Toast.makeText(WorkoutSetting.this, "Tutorial off", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    madFitDBHandler.saveTutorialSkip(0);
+                    Toast.makeText(WorkoutSetting.this, "Tutorial on", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
