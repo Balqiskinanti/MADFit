@@ -10,7 +10,7 @@ import com.prolificinteractive.materialcalendarview.DayViewFacade;
 import java.util.HashSet;
 
 public class WorkoutDoneDecorator implements DayViewDecorator {
-
+    //workout calendar decorator
     HashSet<CalendarDay> list;
     ColorDrawable colorDrawable;
 

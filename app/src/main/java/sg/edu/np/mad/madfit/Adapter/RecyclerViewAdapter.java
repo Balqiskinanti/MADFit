@@ -67,16 +67,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         //gif image
         holder.image.setImageResource(exerciseList.get(position).getImage_id());
         //exercise name
-        holder.text.setText(exerciseList.get(position).getName());
+        holder.text.setText(exerciseList.get(position).getName() + " x10");
 
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onClick(View view, int position) {
                 //Go to single exercise
                 Intent intent = new Intent(holder.image.getContext(), DailyExercise.class);
-                //Put extra (name and image)
-                //intent.putExtra("image_id",exerciseList.get(position).getImage_id());
-                //intent.putExtra("name",exerciseList.get(position).getName());
                 holder.image.getContext().startActivity(intent);
             }
         });

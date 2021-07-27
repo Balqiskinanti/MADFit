@@ -33,12 +33,15 @@ public class WorkoutCalendar extends AppCompatActivity {
         madFitDBHandler = new MADFitDBHandler(this);
         materialCalendarView = (MaterialCalendarView)findViewById(R.id.calendar);
 
+        //get workout day from database
         List<String> workoutDay = madFitDBHandler.getWorkoutDays();
         HashSet<CalendarDay> convertedList = new HashSet<>();
+        //convert calendar day to date
         for(String value:workoutDay){
             convertedList.add(CalendarDay.from(new Date(Long.parseLong(value))));
         }
 
+        //display on calendar
         materialCalendarView.addDecorator(new WorkoutDoneDecorator(convertedList));
 
         // Bottom navigation

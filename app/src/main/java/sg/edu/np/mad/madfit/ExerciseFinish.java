@@ -24,14 +24,18 @@ public class ExerciseFinish extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_finish);
 
+
         //set text with emoji
         congrats = findViewById(R.id.congrat);
         int unicode = 0X1F389;
         String emoji = getEmoji(unicode);
         congrats.setText("Congrats! " +emoji);
 
+
+        //get int extra total time for exercise
+
         int totalTiming = getIntent().getIntExtra("time", 1);
-        Toast.makeText(ExerciseFinish.this, "TotalTime: " + totalTiming, Toast.LENGTH_SHORT).show();
+        Toast.makeText(ExerciseFinish.this, "Total Time: " + totalTiming, Toast.LENGTH_SHORT).show();
         TextView total = (TextView) findViewById(R.id.totalTime);
 
 
