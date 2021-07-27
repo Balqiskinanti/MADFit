@@ -74,9 +74,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
             public void onClick(View view, int position) {
                 //Go to single exercise
                 Intent intent = new Intent(holder.image.getContext(), DailyExercise.class);
-                //Put extra (name and image)
-                //intent.putExtra("image_id",exerciseList.get(position).getImage_id());
-                //intent.putExtra("name",exerciseList.get(position).getName());
                 holder.image.getContext().startActivity(intent);
             }
         });

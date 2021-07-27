@@ -23,8 +23,9 @@ public class ExerciseFinish extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_finish);
 
+        //get int extra total time for exercise
         int totalTiming = getIntent().getIntExtra("time", 1);
-        Toast.makeText(ExerciseFinish.this, "TotalTime: " + totalTiming, Toast.LENGTH_SHORT).show();
+        Toast.makeText(ExerciseFinish.this, "Total Time: " + totalTiming, Toast.LENGTH_SHORT).show();
         TextView total = (TextView) findViewById(R.id.totalTime);
 
 

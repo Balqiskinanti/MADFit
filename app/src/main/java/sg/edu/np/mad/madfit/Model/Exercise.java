@@ -1,6 +1,7 @@
 package sg.edu.np.mad.madfit.Model;
 
 public class Exercise {
+    //exercise (image and exercise name)
     private int image_id;
     private String name;
 

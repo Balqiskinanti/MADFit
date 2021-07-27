@@ -33,7 +33,7 @@ public class MADFitDBHandler extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        // create table
+        // create setting table for exercise difficult level
         Log.v(TAG,"Table created");
         String CREATE_SETTING_TABLE = "CREATE TABLE " + TABLE_SETTING + "(" + COLUMN_MODE + " TEXT" + ")";
         db.execSQL(CREATE_SETTING_TABLE);
@@ -42,9 +42,11 @@ public class MADFitDBHandler extends SQLiteOpenHelper{
         String insertDefaultMode = "INSERT INTO "+ TABLE_SETTING + " VALUES (0)";
         db.execSQL(insertDefaultMode);
 
+        // create days table for workout calendar
         String CREATE_DAY_TABLE = "CREATE TABLE " + TABLE_DAYS + "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_DAY + " TEXT" + ")";
         db.execSQL(CREATE_DAY_TABLE);
 
+        //create skip tutorial table for turn off tutorial
         String CREATE_TUTORIAL_TABLE = "CREATE TABLE " + TABLE_TUTORIAL + "(" + COLUMN_SKIP + " TEXT" + ")";
         db.execSQL(CREATE_TUTORIAL_TABLE);
 
@@ -52,16 +54,6 @@ public class MADFitDBHandler extends SQLiteOpenHelper{
         String insertDefaultSkip = "INSERT INTO "+ TABLE_TUTORIAL + " VALUES (0)";
         db.execSQL(insertDefaultSkip);
 
-      /*
-        for (int i = 0; i < 1; ++i) {
-            Log.v("Create Table", "");
-            ContentValues values = new ContentValues();
-            values.put(COLUMN_MODE, "1");
-            db.insert(TABLE_SETTING, null, values);
-        }
-        */
-
-        //addMode(1);
     }
 
     @Override
@@ -96,18 +88,7 @@ public class MADFitDBHandler extends SQLiteOpenHelper{
         db.close();
     }
 
-    /*
-    public void addMode(Mode mode) {
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_MODE, mode.getMode());
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        db.insert(TABLE_SETTING, null, values);
-        db.close();
-    }
-
-     */
-
+    //get workout day in database
     public List<String> getWorkoutDays(){
 
         SQLiteDatabase db = getReadableDatabase();
@@ -129,6 +110,7 @@ public class MADFitDBHandler extends SQLiteOpenHelper{
         return result;
     }
 
+    //save workout day in database
     public void saveDay (String value){
         SQLiteDatabase db = getReadableDatabase();
         String query = String.format("INSERT INTO WorkoutDays(Day) VALUES('%s');",value);

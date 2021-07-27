@@ -70,6 +70,7 @@ public class DailyExercise extends AppCompatActivity {
             }
         });
 
+        //init exercise list data
         initData();
 
         madFitDBHandler = new MADFitDBHandler(this);
@@ -81,62 +82,67 @@ public class DailyExercise extends AppCompatActivity {
         time = findViewById(R.id.timer_time);
         title = findViewById(R.id.workoutTitle);
         txtStart = findViewById(R.id.StartText);
-
         layoutTutorial = findViewById(R.id.layout_tutorial);
-
         progressBar = findViewById(R.id.progressBar);
 
         //set data
         progressBar.setMax(list.size());
-
         detail_image.setImageResource(R.drawable.exersice_1);
-
 
         exercisesEasyModeCountDown.cancel();
         exercisesMediumModeCountDown.cancel();
         exercisesHardModeCountDown.cancel();
 
-        //setExerciseInformation(ex_id);
-
+        //start exercise button
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(btnStart.getText().toString().toLowerCase().equals("start")){
-                    if(madFitDBHandler.getTutorialSkip() == 0){
-                        showGetReady();
+                    try {
+                        if(madFitDBHandler.getTutorialSkip() == 0){
+                            showGetReady(); // 0 = display tutorial (show get ready)
+                        }
+                        else {
+                            showExercise(); // 1 = skip tutorial (show exercise)
+                        }
+                        btnStart.setText("done");
+                    } catch (Exception e) {
+                        // This will catch any exception, because they are all descended from Exception
+                        System.out.println("Error " + e.getMessage());
                     }
-                    else {
-                        showExercise();
-                    }
-                    btnStart.setText("done");
                 }
                 else if(btnStart.getText().toString().toLowerCase().equals("done")){
-                    if(madFitDBHandler.getSettingMode() == 0){
-                        totalTime += Common.TIME_LIMIT_EASY - timeLimit;
-                        exercisesEasyModeCountDown.cancel();
-                    }
-                    else if(madFitDBHandler.getSettingMode() == 1){
-                        totalTime += Common.TIME_LIMIT_MEDIUM -  timeLimit;
-                        exercisesMediumModeCountDown.cancel();
-                    }
-                    else if(madFitDBHandler.getSettingMode() == 2){
-                        totalTime += Common.TIME_LIMIT_HARD -  timeLimit;
-                        exercisesHardModeCountDown.cancel();
+                    try {
+                        if(madFitDBHandler.getSettingMode() == 0){
+                            totalTime += Common.TIME_LIMIT_EASY - timeLimit;    //time used for each exercise
+                            exercisesEasyModeCountDown.cancel();
+                        }
+                        else if(madFitDBHandler.getSettingMode() == 1){
+                            totalTime += Common.TIME_LIMIT_MEDIUM -  timeLimit;
+                            exercisesMediumModeCountDown.cancel();
+                        }
+                        else if(madFitDBHandler.getSettingMode() == 2){
+                            totalTime += Common.TIME_LIMIT_HARD -  timeLimit;
+                            exercisesHardModeCountDown.cancel();
+                        }
+
+                        if(ex_id < list.size()){
+                            ex_id++;
+                            progressBar.setProgress(ex_id);
+                            time.setText("");
+
+                            setExerciseInformation(ex_id);
+                            btnStart.setText("Start");
+                        }
+                        else {
+                            setExerciseInformation(ex_id);
+                        }
+
+                    } catch (Exception e) {
+                        // This will catch any exception, because they are all descended from Exception
+                        System.out.println("Error " + e.getMessage());
                     }
 
-                    //restTimeCountDown.cancel();
-                    if(ex_id < list.size()){
-                        //showRestTime();
-                        ex_id++;
-                        progressBar.setProgress(ex_id);
-                        time.setText("");
-
-                        setExerciseInformation(ex_id);
-                        btnStart.setText("Start");
-                    }
-                    else {
-                        setExerciseInformation(ex_id);
-                    }
 
                 }
 
@@ -144,7 +150,7 @@ public class DailyExercise extends AppCompatActivity {
         });
     }
 
-
+    //finish exercise get total time and go to finish page
     private void showFinished() {
 
         Toast.makeText(DailyExercise.this, "FINISHED!",Toast.LENGTH_SHORT).show();
@@ -163,6 +169,7 @@ public class DailyExercise extends AppCompatActivity {
         exercisesHardModeCountDown.cancel();
     }
 
+    //get ready (tutorial)
     private void showGetReady() {
         detail_image.setVisibility(View.VISIBLE);
         btnStart.setVisibility(View.INVISIBLE);
@@ -171,24 +178,23 @@ public class DailyExercise extends AppCompatActivity {
 
         layoutTutorial.setVisibility(View.VISIBLE);
 
-        //txtGetReady.setText("GET READY!");
         txtStart.setText("GET READY!");
 
         skipTimer.start();
 
-        // Go to view exercise timer
+        //skip and go to exercise timer
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 skipTimer.cancel();
                 showExercise();
-                //Toast.makeText(DailyExercise.this, "Skipped",Toast.LENGTH_SHORT).show();
             }
         });
 
 
     }
 
+    //show exercise and start count down timer
     private void showExercise() {
         if(ex_id < list.size()){
             detail_image.setVisibility(View.VISIBLE);
@@ -215,7 +221,7 @@ public class DailyExercise extends AppCompatActivity {
         }
     }
 
-    //Countdown timer
+    //Exercise Countdown timer (easy)
     CountDownTimer exercisesEasyModeCountDown = new CountDownTimer(Common.TIME_LIMIT_EASY,1000) {
         @Override
         public void onTick(long millisUntilFinished) {
@@ -240,7 +246,7 @@ public class DailyExercise extends AppCompatActivity {
         }
     }.start();
 
-    //Countdown timer
+    //Exercise Countdown timer (medium)
     CountDownTimer exercisesMediumModeCountDown = new CountDownTimer(Common.TIME_LIMIT_MEDIUM,1000) {
         @Override
         public void onTick(long millisUntilFinished) {
@@ -266,7 +272,7 @@ public class DailyExercise extends AppCompatActivity {
         }
     }.start();
 
-    //Countdown timer
+    //Exercise Countdown timer (hard)
     CountDownTimer exercisesHardModeCountDown = new CountDownTimer(Common.TIME_LIMIT_HARD,1000) {
         @Override
         public void onTick(long millisUntilFinished) {
@@ -291,6 +297,7 @@ public class DailyExercise extends AppCompatActivity {
         }
     }.start();
 
+    //Skip tutorial countdown timer
     CountDownTimer skipTimer = new CountDownTimer(6000,1000){
 
         @Override
@@ -304,6 +311,7 @@ public class DailyExercise extends AppCompatActivity {
         }
     }.start();
 
+    //set exercise image and name
     private void setExerciseInformation(int id) {
         if(id < list.size()){
             detail_image.setImageResource(list.get(id).getImage_id());
@@ -324,6 +332,7 @@ public class DailyExercise extends AppCompatActivity {
 
     }
 
+    //init exercise list
     private void initData() {
         list.add(new Exercise(R.drawable.exersice_1,"Push Up"));
         list.add(new Exercise(R.drawable.exersice_2,"Crunches"));

@@ -50,10 +50,10 @@ public class WorkoutSetting extends AppCompatActivity {
         skipTutorialSwitch = findViewById(R.id.skipTutorial);
 
         //get setting mode in database
-
         int mode = madFitDBHandler.getSettingMode();
         setButton(mode);
 
+        //get skip tutorial in database
         int skip = madFitDBHandler.getTutorialSkip();
         setSkipSwitch(skip);
 
@@ -90,6 +90,7 @@ public class WorkoutSetting extends AppCompatActivity {
             }
         });
 
+        //set skip and store in database
         skipTutorialSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isMuted) {
