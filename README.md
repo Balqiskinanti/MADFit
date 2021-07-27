@@ -51,5 +51,13 @@ By:
 
 ## Credits
 ### Media
+* Exercise Gif Image
+** https://drive.google.com/drive/folders/1c5dhFYL94yzHKpyAkjt9On8nNTSBz9-q
+* Gif Image
+** https://gfycat.com/threadbareparallelemperorshrimp-vegetables-healthy-workout-muscle-gym
+** https://www.behance.net/gallery/40400159/Character-Fitness-Animation?tracking_source=search_projects_recommended%7CWorkoutanimation
+* Calendar View
+** https://github.com/prolificinteractive/material-calendarview
+
 ### API
 ### Acknowledgement
