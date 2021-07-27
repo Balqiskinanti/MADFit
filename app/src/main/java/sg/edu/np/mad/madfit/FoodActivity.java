@@ -27,8 +27,9 @@ public class FoodActivity extends AppCompatActivity {
     EditText dailyCalInput;
     TextView dateToday, calsNeeded, calsConsumed, myBreakfastCals, myLunchCals, myDinnerCals, myOthersCals;
     String myTargetCal;
-    int totalCalsConsumed, progressPercent;
+    int totalCalsConsumed, progressPercent, cals;
     Button setTargetBtn, calCounterBtn;
+    Boolean validInput;
     CalorieDBHandler calorieDBHandler;
     SharedPreferences sharedPreferences;
     public String GLOBAL_PREFS = "MyPrefs";
@@ -44,9 +45,6 @@ public class FoodActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food);
 
-        //Set calories values
-        setCalsValues();
-
         /*
         Display Date in dashboard
         */
@@ -61,7 +59,7 @@ public class FoodActivity extends AppCompatActivity {
         dateToday.setText(date);
 
         /*
-        Save date to SharedPreferences
+        Save date to SharedPreferences and check if is next day
          */
         SharedPreferences prefs = getSharedPreferences(GLOBAL_PREFS, MODE_PRIVATE);
         String valueDate = prefs.getString(TODAYDATE, " ");
@@ -94,29 +92,45 @@ public class FoodActivity extends AppCompatActivity {
             editor.apply();
         }
 
+        // Set calories values
+        setCalsValues();
+
         /*
         Set Daily Calorie target and insert into TextView in dashboard
          */
         dailyCalInput = findViewById(R.id.etDailyCalTarget);
-
         setTargetBtn = findViewById(R.id.setTarget_btn);
         setTargetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 myTargetCal = dailyCalInput.getText().toString();
 
-                if(myTargetCal.equals("")){
-                    Toast.makeText(FoodActivity.this, "Please set a target!", Toast.LENGTH_SHORT).show();
+                /*
+                check user input
+                 */
+                if (myTargetCal.equals("")) {
+                    Toast.makeText(FoodActivity.this, "Please enter a calorie target!", Toast.LENGTH_SHORT).show();
                 } else {
-                    calsNeeded.setText(myTargetCal + " cals");
+                    try {
+                        cals = Integer.parseInt(myTargetCal);
+                        validInput = true;
+                    } catch (NumberFormatException e) {
+                        Toast.makeText(FoodActivity.this, "Please enter a numerical value for calorie target", Toast.LENGTH_SHORT).show();
+                        validInput = false;
+                    }
 
-                    sharedPreferences = getSharedPreferences(GLOBAL_PREFS, MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString(CALSNEEDED, myTargetCal);
-                    editor.apply();
-                    Toast.makeText(FoodActivity.this,"Calorie target set successfully!",Toast.LENGTH_SHORT).show();
+                    if (validInput == true)
+                    {
+                        calsNeeded.setText(cals + " cals");
 
-                    setProgress(Integer.parseInt(myTargetCal), totalCalsConsumed);
+                        sharedPreferences = getSharedPreferences(GLOBAL_PREFS, MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString(CALSNEEDED, myTargetCal);
+                        editor.apply();
+                        Toast.makeText(FoodActivity.this,"Calorie target set successfully!",Toast.LENGTH_SHORT).show();
+
+                        setProgress(Integer.parseInt(myTargetCal), totalCalsConsumed);
+                    }
                 }
             }
         });
@@ -178,6 +192,9 @@ public class FoodActivity extends AppCompatActivity {
         return dayWkList;
     }
 
+    /*
+    Retrieve data and set values to display
+     */
     private void setCalsValues(){
         SharedPreferences prefs = getSharedPreferences(GLOBAL_PREFS, MODE_PRIVATE);
         String valueBreakfast = prefs.getString(TOTALBREAKFAST, "0");
@@ -202,11 +219,15 @@ public class FoodActivity extends AppCompatActivity {
         calsConsumed = findViewById(R.id.caloriesConsumed);
         calsConsumed.setText(totalCalsConsumed + " cals");
 
+        // remind user to set calorie target
+        if (valueNeeded.equals("0"))
+            Toast.makeText(FoodActivity.this, "Please set a calorie target!", Toast.LENGTH_SHORT).show();
+
         setProgress(Integer.parseInt(valueNeeded), totalCalsConsumed);
     }
 
     /*
-    Set ProgressBar based on calories needed & consumed
+    Set circular ProgressBar based on calories needed & consumed
      */
     private void setProgress(int calsNeeded, int totalCalsConsumed){
         if (totalCalsConsumed != 0 && calsNeeded != 0)

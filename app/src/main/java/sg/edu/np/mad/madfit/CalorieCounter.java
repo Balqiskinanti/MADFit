@@ -116,9 +116,9 @@ public class CalorieCounter extends AppCompatActivity {
         builder.setPositiveButton("Enter", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                etFood = (EditText) fooditemLayout.findViewById(R.id.myFoodInput);
+                etFood = fooditemLayout.findViewById(R.id.myFoodInput);
                 myFoodInput = etFood.getText().toString();
-                etCals = (EditText) fooditemLayout.findViewById(R.id.myCalsInput);
+                etCals = fooditemLayout.findViewById(R.id.myCalsInput);
                 myCalsInput = etCals.getText().toString();
 
                 /*
@@ -132,8 +132,16 @@ public class CalorieCounter extends AppCompatActivity {
                 if (myCalsInput.isEmpty()){
                     Toast.makeText(CalorieCounter.this,"Please enter the calorie value",Toast.LENGTH_SHORT).show();
                     validInput = false;
-                } else
-                    validInput = true;
+                } else {
+                    try {
+                        // check if input is numerical
+                        Integer.parseInt(myCalsInput);
+                        validInput = true;
+                    } catch (NumberFormatException e) {
+                        Toast.makeText(CalorieCounter.this,"Please enter a numerical value for calorie",Toast.LENGTH_SHORT).show();
+                        validInput = false;
+                    }
+                }
 
                 if (validInput == true)
                 {
