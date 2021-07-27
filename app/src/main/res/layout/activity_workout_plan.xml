@@ -29,7 +29,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Workout Plan"
-        android:textSize="24sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="@color/purple_200"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
@@ -42,18 +44,23 @@
         android:id="@+id/createNewPlanBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
+        android:width="250dp"
         android:text="Create New Plan"
+        android:textColor="#FFFFFF"
         app:backgroundTint="#5868E0"
+        app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/workplan_title" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/workoutPlanRV"
-        android:layout_width="390dp"
+        android:layout_width="match_parent"
         android:layout_height="405dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
@@ -62,24 +69,22 @@
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:text="Your Workout Plans:"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.064"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createNewPlanBtn" />
 
     <TextView
         android:id="@+id/clearAllPlans"
-        android:layout_width="68dp"
+        android:layout_width="wrap_content"
         android:layout_height="19dp"
         android:layout_marginTop="28dp"
+        android:layout_marginEnd="24dp"
         android:text="Clear All"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.869"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createNewPlanBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

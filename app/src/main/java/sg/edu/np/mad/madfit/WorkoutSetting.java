@@ -164,17 +164,21 @@ public class WorkoutSetting extends AppCompatActivity {
         sharedPreferences = getSharedPreferences(GLOBAL_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
+        Toast muteToast = Toast.makeText(WorkoutSetting.this, "Muted Notification", Toast.LENGTH_SHORT);
+        Toast unmuteToast = Toast.makeText(WorkoutSetting.this, "Unmuted Notification", Toast.LENGTH_SHORT);
+
         muteReminderSwitch = findViewById(R.id.muteReminderSwitch);
-        muteReminderSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        muteReminderSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isMuted) {
+            public void onClick(View view) {
+                boolean isMuted = muteReminderSwitch.isChecked();
                 if(isMuted){
+                    muteToast.show();
                     editor.putBoolean(MUTE_PUSH_NOTIFS_SETTINGS, true);
-                    Toast.makeText(WorkoutSetting.this, "Muted Notification", Toast.LENGTH_SHORT).show();
                 }
                 else{
+                    unmuteToast.show();
                     editor.putBoolean(MUTE_PUSH_NOTIFS_SETTINGS, false);
-                    Toast.makeText(WorkoutSetting.this, "Unmuted Notification", Toast.LENGTH_SHORT).show();
                 }
                 editor.apply();
             }

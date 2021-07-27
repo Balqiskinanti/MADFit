@@ -17,13 +17,23 @@ import pl.droidsonroids.gif.GifImageView;
 public class ExerciseFinish extends AppCompatActivity {
 
     BottomNavigationView navigationView;
+    TextView congrats;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_finish);
 
+
+        //set text with emoji
+        congrats = findViewById(R.id.congrat);
+        int unicode = 0X1F389;
+        String emoji = getEmoji(unicode);
+        congrats.setText("Congrats! " +emoji);
+
+
         //get int extra total time for exercise
+
         int totalTiming = getIntent().getIntExtra("time", 1);
         Toast.makeText(ExerciseFinish.this, "Total Time: " + totalTiming, Toast.LENGTH_SHORT).show();
         TextView total = (TextView) findViewById(R.id.totalTime);
@@ -62,4 +72,13 @@ public class ExerciseFinish extends AppCompatActivity {
             }
         });
     }
+
+    /*
+    Unicode integer -> String
+    */
+    public String getEmoji(int uni){
+        return new String(Character.toChars(uni));
+    }
+
 }
+

@@ -1,5 +1,6 @@
 package sg.edu.np.mad.madfit;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,14 +8,18 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.text.DecimalFormat;
 
 public class BmiCalculatorActivity extends AppCompatActivity {
+    BottomNavigationView navigationView;
     EditText myHeightInput, myWeightInput;
     Button cancelBtn, calBtn;
     String myH, myW;
@@ -93,7 +98,36 @@ public class BmiCalculatorActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
+
+                /*
+        Bottom navigation
+        */
+        navigationView = findViewById(R.id.bottom_navigation);
+        navigationView.setSelectedItemId(R.id.nav_home);
+        navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+
+                    case R.id.nav_home:
+                        Intent intent3 = new Intent(BmiCalculatorActivity.this,MainActivity.class);
+                        startActivity(intent3);
+                        break;
+
+                    case R.id.nav_workout:
+                        Intent intent1 = new Intent(BmiCalculatorActivity.this,WorkoutActivity.class);
+                        startActivity(intent1);
+                        break;
+
+                    case R.id.nav_food:
+                        Intent intent2 = new Intent(BmiCalculatorActivity.this,FoodActivity.class);
+                        startActivity(intent2);
+                        break;
+                }
+                return false;
+            }
+        });
+}
 
     /*
     Calculate BMI using Height & Weight from User and return BMI
