@@ -2,6 +2,7 @@ package sg.edu.np.mad.madfit;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
@@ -14,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -21,19 +23,24 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView navigationView;
     SharedPreferences sharedPreferences;
+    Switch darkModeSwitch;
     public String GLOBAL_PREFS = "MyPrefs";
     public String MY_BMI = "MyBMI";
+    public String ISDARKMODEON = "IsDarkModeOn";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Dark mode
+        darkMode();
+
         //set hello text with emoji
         TextView helloTxt = findViewById(R.id.textView16);
         int unicode = 0x1F44B;
         String emoji = getEmoji(unicode);
-        String txt = "HELLO! "+ emoji;
+        String txt = "HELLO! " + emoji;
         helloTxt.setText(txt);
 
         // Go to bmi activity
@@ -48,9 +55,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // display BMI
-        if (readBMIData() == true){
+        if (readBMIData() == true) {
             sharedPreferences = getSharedPreferences(GLOBAL_PREFS, MODE_PRIVATE);
-            String sharedBMI = sharedPreferences.getString(MY_BMI,"0");
+            String sharedBMI = sharedPreferences.getString(MY_BMI, "0");
 
             TextView myBMI = findViewById(R.id.myBMI);
             myBMI.setText(sharedBMI);
@@ -92,19 +99,19 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
 
                     case R.id.nav_home:
 
                         break;
 
                     case R.id.nav_workout:
-                        Intent intent1 = new Intent(MainActivity.this,WorkoutActivity.class);
+                        Intent intent1 = new Intent(MainActivity.this, WorkoutActivity.class);
                         startActivity(intent1);
                         break;
 
                     case R.id.nav_food:
-                        Intent intent2 = new Intent(MainActivity.this,FoodActivity.class);
+                        Intent intent2 = new Intent(MainActivity.this, FoodActivity.class);
                         startActivity(intent2);
                         break;
 
@@ -129,5 +136,35 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    /*Handle Dark mode*/
+    private void darkMode(){
+        sharedPreferences = getSharedPreferences(GLOBAL_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        boolean isDarkModeOn = sharedPreferences.getBoolean(ISDARKMODEON, false);
+
+        darkModeSwitch = findViewById(R.id.darkMode);
+        darkModeSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(isDarkModeOn) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    editor.putBoolean(ISDARKMODEON, false);
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    editor.putBoolean(ISDARKMODEON, true);
+                }
+                editor.apply();
+            }
+        });
+
+        if (isDarkModeOn) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            darkModeSwitch.setChecked(true);
+        }
+        else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
     }
 }
