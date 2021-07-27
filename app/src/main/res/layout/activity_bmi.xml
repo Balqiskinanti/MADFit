@@ -82,7 +82,7 @@
             android:id="@+id/height_record"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="52dp"
+            android:layout_marginTop="32dp"
             android:text="- no records -"
             android:textAlignment="textEnd"
             android:textSize="20sp"
@@ -132,8 +132,7 @@
             android:id="@+id/calBMI_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:height="60dp"
+            android:layout_marginTop="24dp"
             android:text="New Calculations"
             app:backgroundTint="#FF87B0"
             app:cornerRadius="15dp"
@@ -141,16 +140,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/status_text" />
 
-        <Button
-            android:id="@+id/home_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Home"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="315dp"
+            android:layout_height="191dp"
+            android:layout_marginTop="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.953" />
+            app:layout_constraintTop_toBottomOf="@+id/calBMI_button"
+            app:srcCompat="@drawable/bmi_chart" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -159,7 +157,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_margin="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/round_corner"
         android:elevation="2dp"
         app:itemIconSize="30dp"

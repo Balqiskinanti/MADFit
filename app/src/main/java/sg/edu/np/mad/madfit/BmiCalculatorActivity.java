@@ -50,19 +50,32 @@ public class BmiCalculatorActivity extends AppCompatActivity {
                 myH = myHeightInput.getText().toString();
                 myW = myWeightInput.getText().toString();
 
+                /*
+                check user input
+                 */
                 if(myH.isEmpty()){
                     Toast.makeText(BmiCalculatorActivity.this,"Please enter a height",Toast.LENGTH_SHORT).show();
                     validInput = false;
                 } else {
-                    myHeight = Double.parseDouble(myH);
-                    validInput = true;
+                    try {
+                        myHeight = Double.parseDouble(myH);
+                        validInput = true;
+                    } catch (NumberFormatException e) {
+                        Toast.makeText(BmiCalculatorActivity.this,"Please enter a numerical value for height",Toast.LENGTH_SHORT).show();
+                        validInput = false;
+                    }
                 }
                 if(myW.isEmpty()){
                     Toast.makeText(BmiCalculatorActivity.this,"Please enter a weight",Toast.LENGTH_SHORT).show();
                     validInput = false;
                 } else {
-                    myWeight = Double.parseDouble(myW);
-                    validInput = true;
+                    try {
+                        myWeight = Double.parseDouble(myW);
+                        validInput = true;
+                    } catch (NumberFormatException e) {
+                        Toast.makeText(BmiCalculatorActivity.this,"Please enter a numerical value for weight",Toast.LENGTH_SHORT).show();
+                        validInput = false;
+                    }
                 }
 
                 if (validInput == true)
