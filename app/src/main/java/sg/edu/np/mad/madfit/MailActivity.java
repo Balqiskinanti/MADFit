@@ -79,6 +79,7 @@ public class MailActivity extends AppCompatActivity {
         javaMailAPI.execute();
     }
 
+    /*check for network*/
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
@@ -99,6 +100,7 @@ public class MailActivity extends AppCompatActivity {
         alert.show();
     }
 
+    /*getting email , start sending email when user clicks send*/
     private void getMailAlert(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         final View mailInputLayout = this.getLayoutInflater().inflate(R.layout.mail_input, null);

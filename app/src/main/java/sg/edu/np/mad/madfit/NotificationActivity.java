@@ -42,10 +42,8 @@ public class NotificationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
 
-        displayTimePicker();
-
         createNotificationChannel();
-
+        displayTimePicker();
 
         // Bottom navigation
         navigationView = findViewById(R.id.bottom_navigation);
@@ -110,10 +108,8 @@ public class NotificationActivity extends AppCompatActivity {
                 TimePickerDialog timePickerDialog = new TimePickerDialog(NotificationActivity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
-                        mHour = hourOfDay;
-                        mMinute = minutes;
-                        setNotification(mHour, mMinute);
-                        saveLastNotifs(mHour + ":" + mMinute);
+                        setNotification(hourOfDay,minutes);
+                        saveNotifs(String.format("%02d:%02d", hourOfDay, minutes));
                     }
                 }, mHour, mMinute, false);
                 timePickerDialog.show();
@@ -138,7 +134,7 @@ public class NotificationActivity extends AppCompatActivity {
         Toast.makeText(NotificationActivity.this, "Reminder set", Toast.LENGTH_SHORT).show();
     }
 
-    public void saveLastNotifs(String timeInput){
+    public void saveNotifs(String timeInput){
         sharedPreferences = getSharedPreferences(GLOBAL_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(MY_WORKOUT_TIME, timeInput);
