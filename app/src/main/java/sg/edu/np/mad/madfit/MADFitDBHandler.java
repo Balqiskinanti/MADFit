@@ -22,6 +22,8 @@ public class MADFitDBHandler extends SQLiteOpenHelper{
     private static final String TABLE_DAYS = "WorkoutDays"; //table
     private static final String COLUMN_ID = "ID";   //column
     private static final String COLUMN_DAY = "Day";   //column
+    private static final String TABLE_TUTORIAL = "Tutorial"; //table
+    private static final String COLUMN_SKIP = "skip";   //column
     private static final String TAG = "DBHandler";
 
     public MADFitDBHandler(Context context){
@@ -43,6 +45,13 @@ public class MADFitDBHandler extends SQLiteOpenHelper{
         String CREATE_DAY_TABLE = "CREATE TABLE " + TABLE_DAYS + "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_DAY + " TEXT" + ")";
         db.execSQL(CREATE_DAY_TABLE);
 
+        String CREATE_TUTORIAL_TABLE = "CREATE TABLE " + TABLE_TUTORIAL + "(" + COLUMN_SKIP + " TEXT" + ")";
+        db.execSQL(CREATE_TUTORIAL_TABLE);
+
+        // set default skip
+        String insertDefaultSkip = "INSERT INTO "+ TABLE_TUTORIAL + " VALUES (0)";
+        db.execSQL(insertDefaultSkip);
+
       /*
         for (int i = 0; i < 1; ++i) {
             Log.v("Create Table", "");
@@ -59,6 +68,7 @@ public class MADFitDBHandler extends SQLiteOpenHelper{
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_SETTING);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_DAYS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TUTORIAL);
         onCreate(db);
     }
 
@@ -86,6 +96,7 @@ public class MADFitDBHandler extends SQLiteOpenHelper{
         db.close();
     }
 
+    /*
     public void addMode(Mode mode) {
         ContentValues values = new ContentValues();
         values.put(COLUMN_MODE, mode.getMode());
@@ -94,6 +105,8 @@ public class MADFitDBHandler extends SQLiteOpenHelper{
         db.insert(TABLE_SETTING, null, values);
         db.close();
     }
+
+     */
 
     public List<String> getWorkoutDays(){
 
@@ -119,6 +132,30 @@ public class MADFitDBHandler extends SQLiteOpenHelper{
     public void saveDay (String value){
         SQLiteDatabase db = getReadableDatabase();
         String query = String.format("INSERT INTO WorkoutDays(Day) VALUES('%s');",value);
+        db.execSQL(query);
+        db.close();
+    }
+
+    //get tutorial skip in database
+    public int getTutorialSkip(){
+
+        SQLiteDatabase db = getReadableDatabase();
+        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
+
+        String[] sqlSelect = {"skip"};
+        String sqlTable = "Tutorial";
+
+        qb.setTables(sqlTable);
+        Cursor c = qb.query(db, sqlSelect,null,null,null,null,null);
+        c.moveToFirst();
+        db.close();
+        return c.getInt(c.getColumnIndex("skip"));
+    }
+
+    //save tutorial skip to database
+    public void saveTutorialSkip (int value){
+        SQLiteDatabase db = getReadableDatabase();
+        String query = "UPDATE Tutorial SET skip = " + value;
         db.execSQL(query);
         db.close();
     }
