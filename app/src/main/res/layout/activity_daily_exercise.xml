@@ -8,11 +8,12 @@
 
     <TextView
         android:id="@+id/StartText"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:text="Start !"
-        android:textColor="#5868E0"
+        android:text="Start Exercise "
+        android:textAlignment="center"
+        android:textColor="@color/purple_200"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,29 +23,23 @@
     <TextView
         android:id="@+id/workoutTitle"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="70dp"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical|center_horizontal"
         android:text="Exercise"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/StartText" />
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/detail_image2"
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="200dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="56dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/layout_tutorial"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.32" />
+        app:layout_constraintTop_toBottomOf="@+id/workoutTitle" />
 
     <ProgressBar
         android:id="@+id/progressBar"
