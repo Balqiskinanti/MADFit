@@ -102,7 +102,12 @@ public class DailyExercise extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(btnStart.getText().toString().toLowerCase().equals("start")){
-                    showGetReady();
+                    if(madFitDBHandler.getTutorialSkip() == 0){
+                        showGetReady();
+                    }
+                    else {
+                        showExercise();
+                    }
                     btnStart.setText("done");
                 }
                 else if(btnStart.getText().toString().toLowerCase().equals("done")){
