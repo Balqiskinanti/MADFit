@@ -26,11 +26,9 @@ By:
 
 ## Features
 ### Existing Features
-
-### Features Left To Implement
 1.  Exercise guide
 2.  Exercise timer
-3.  Exercise history records
+3.  Exercise total time
 4.  Exercise progress calendar
 5.  Exercise plan
 6.  BMI calculator
@@ -39,6 +37,9 @@ By:
 9.  Music player
 10.  Workout reminder
 11. Email Notification
+
+### Features Left To Implement
+
 
 ## Contributions
 ### Proposed Contributions
@@ -52,12 +53,12 @@ By:
 ## Credits
 ### Media
 * Exercise Gif Image
-** https://drive.google.com/drive/folders/1c5dhFYL94yzHKpyAkjt9On8nNTSBz9-q
+  * https://drive.google.com/drive/folders/1c5dhFYL94yzHKpyAkjt9On8nNTSBz9-q
 * Gif Image
-** https://gfycat.com/threadbareparallelemperorshrimp-vegetables-healthy-workout-muscle-gym
-** https://www.behance.net/gallery/40400159/Character-Fitness-Animation?tracking_source=search_projects_recommended%7CWorkoutanimation
+  * https://gfycat.com/threadbareparallelemperorshrimp-vegetables-healthy-workout-muscle-gym
+  * https://www.behance.net/gallery/40400159/Character-Fitness-Animation?tracking_source=search_projects_recommended%7CWorkoutanimation
 * Calendar View
-** https://github.com/prolificinteractive/material-calendarview
+  * https://github.com/prolificinteractive/material-calendarview
 
 ### API
 ### Acknowledgement
