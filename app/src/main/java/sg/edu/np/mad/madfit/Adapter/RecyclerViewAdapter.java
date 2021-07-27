@@ -67,7 +67,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         //gif image
         holder.image.setImageResource(exerciseList.get(position).getImage_id());
         //exercise name
-        holder.text.setText(exerciseList.get(position).getName());
+        holder.text.setText(exerciseList.get(position).getName() + " x10");
 
         holder.setItemClickListener(new ItemClickListener() {
             @Override

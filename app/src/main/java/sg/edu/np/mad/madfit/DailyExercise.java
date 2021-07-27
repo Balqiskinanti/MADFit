@@ -211,7 +211,7 @@ public class DailyExercise extends AppCompatActivity {
 
             //set data
             detail_image.setImageResource(list.get(ex_id).getImage_id());
-            title.setText(list.get(ex_id).getName());
+            title.setText(list.get(ex_id).getName() + " x10");
         }
     }
 
@@ -307,7 +307,7 @@ public class DailyExercise extends AppCompatActivity {
     private void setExerciseInformation(int id) {
         if(id < list.size()){
             detail_image.setImageResource(list.get(id).getImage_id());
-            title.setText(list.get(id).getName());
+            title.setText(list.get(id).getName() + " x10");
             btnStart.setText("Start");
 
             detail_image.setVisibility(View.VISIBLE);
