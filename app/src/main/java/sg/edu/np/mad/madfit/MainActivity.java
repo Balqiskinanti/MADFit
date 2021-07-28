@@ -22,11 +22,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView navigationView;
+    TextView myBMI, myWorkout;
     SharedPreferences sharedPreferences;
     Switch darkModeSwitch;
     public String GLOBAL_PREFS = "MyPrefs";
     public String MY_BMI = "MyBMI";
     public String ISDARKMODEON = "IsDarkModeOn";
+    public String WORKOUTTIME = "MyWorkoutTime";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +61,15 @@ public class MainActivity extends AppCompatActivity {
             sharedPreferences = getSharedPreferences(GLOBAL_PREFS, MODE_PRIVATE);
             String sharedBMI = sharedPreferences.getString(MY_BMI, "0");
 
-            TextView myBMI = findViewById(R.id.myBMI);
+            myBMI = findViewById(R.id.myBMI);
             myBMI.setText(sharedBMI);
         }
+
+        // display workout timing
+        sharedPreferences = getSharedPreferences(GLOBAL_PREFS, MODE_PRIVATE);
+        String sharedWorkoutTime = sharedPreferences.getString(WORKOUTTIME, "0");
+        myWorkout = findViewById(R.id.myWorkout);
+        myWorkout.setText(sharedWorkoutTime + " sec");
 
         // Go to music activity
         CardView musicCard = findViewById(R.id.musicCard);
