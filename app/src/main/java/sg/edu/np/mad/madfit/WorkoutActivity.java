@@ -32,12 +32,12 @@ public class WorkoutActivity extends AppCompatActivity {
         planEmoji = findViewById(R.id.planTV);
         int unicode = 0X1f4DD;
         String emojiPlan = getEmoji(unicode);
-        planEmoji.setText(emojiPlan);
+        planEmoji.setText(emojiPlan + " Plan");
 
         calendarEmoji = findViewById(R.id.calendarTV);
         int unicode2 = 0X1f4C5;
         String emojiCalendar = getEmoji(unicode2);
-        calendarEmoji.setText(emojiCalendar);
+        calendarEmoji.setText(emojiCalendar + " Calendar");
 
         // Bottom navigation
         navigationView = findViewById(R.id.bottom_navigation);

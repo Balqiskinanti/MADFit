@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardBackgroundColor="@color/card_4"
     app:cardCornerRadius="15dp"
+    app:cardBackgroundColor="#EFF2F1"
     app:cardElevation="4dp">
 
     <LinearLayout
@@ -29,7 +29,7 @@
             android:layout_marginLeft="30dp"
             android:text="text"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textColor="#3F51B5"
+            android:textColor="@color/main"
             android:textSize="24sp"
             android:textStyle="bold"></TextView>
 
