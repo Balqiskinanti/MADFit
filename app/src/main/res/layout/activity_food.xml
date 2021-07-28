@@ -5,26 +5,7 @@
     android:id="@+id/body_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FoodActivity" >
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/round_corner"
-        android:elevation="2dp"
-        app:itemIconSize="30dp"
-        app:itemIconTint="@drawable/item_selector"
-        app:itemRippleColor="@android:color/transparent"
-        app:labelVisibilityMode="unlabeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu" />
+    tools:context=".FoodActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -53,7 +34,7 @@
                 android:id="@+id/textView54"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="46dp"
+                android:layout_marginTop="36dp"
                 android:text="Today's Date"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -65,7 +46,7 @@
                 android:id="@+id/cardDate"
                 android:layout_width="236dp"
                 android:layout_height="35dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="32dp"
                 app:cardCornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.84"
@@ -97,7 +78,7 @@
                 android:id="@+id/cardView"
                 android:layout_width="360dp"
                 android:layout_height="289dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginBottom="21dp"
                 app:cardBackgroundColor="@android:color/holo_purple"
                 app:cardCornerRadius="10dp"
@@ -290,7 +271,6 @@
                 android:layout_width="205dp"
                 android:layout_height="43dp"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginBottom="90dp"
                 android:ems="10"
                 android:inputType="textPersonName"
@@ -302,7 +282,7 @@
                 android:id="@+id/setTarget_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="90dp"
+                android:layout_marginBottom="96dp"
                 android:text="Set Target"
                 android:textColor="#FFFFFF"
                 app:backgroundTint="#5868E0"
@@ -343,6 +323,23 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/round_corner"
+        android:elevation="2dp"
+        app:itemIconSize="30dp"
+        app:itemIconTint="@drawable/item_selector"
+        app:itemRippleColor="@android:color/transparent"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/menu" />
 
 
 </RelativeLayout>
