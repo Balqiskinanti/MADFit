@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     public String GLOBAL_PREFS = "MyPrefs";
     public String MY_BMI = "MyBMI";
     public String ISDARKMODEON = "IsDarkModeOn";
-    public String WORKOUTTIME = "MyWorkoutTime";
+    public String WORKOUTTIME = "WorkoutTiming";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
