@@ -30,8 +30,6 @@ By:
 * Logo: ![MADFit Logo](https://github.com/Balqiskinanti/MADFit/blob/main/app/src/main/res/mipmap-xhdpi/ic_launcher.png)
 * Wireframe: https://xd.adobe.com/view/bbe237a4-5c01-440e-a3d7-17a2fb9658b5-eeb1/
 
-## User Guide
-
 ## Features
 ### Existing Features
 1.  __Exercise Guide:__ The guide consists of different workout tutorials that the users can learn and follow during their workout. 
@@ -46,7 +44,8 @@ By:
 10. __Workout Reminder:__ Users can set reminders in our app to remind them to start or complete their workout by selecting their preferred time. At the selected timing, our app will send a reminder notification to the user.
 11. __Email Notification:__ Users will get notified in their email for the latest app updates, interesting articles, etc. When the user enters their email in our app, a welcome email will be sent to them with a link to verify their subscription. 
 
-### Features Left To Implement
+## User Guide
+![madit-userguide](https://user-images.githubusercontent.com/72959939/127746610-190f793b-92b0-410a-a84c-41b76965b122.jpg)
 
 
 ## Contributions
