@@ -54,9 +54,6 @@ No | Feature | Description
 
 ## User Guide
 ![madit-userguide](https://user-images.githubusercontent.com/72959939/127746610-190f793b-92b0-410a-a84c-41b76965b122.jpg)
-
-### App in Dark Mode
-![dark-mode](https://media.giphy.com/media/6bO4Cy78G1sOfwaAyr/giphy.gif)
 [Download App Here](https://play.google.com/store/apps/details?id=sg.edu.np.mad.madfit)
 
 ## Concepts Used
@@ -82,7 +79,7 @@ Responsive layout, multimedia, recycler view, persistent memory, notification, w
 * Icons
     * https://fonts.google.com/icons
 
-### API & Other resources used
+### API & Other Resources Used
 * Email Notification
     * https://javaee.github.io/javamail/docs/api/
     * https://login.mailchimp.com/login/post/
