@@ -1,6 +1,6 @@
 # MADFit :muscle:
 
-MADFit is a health & wellness mobile application that motivates users to take care of their health. The aim is to encourage people to watch their diet and exercise. The audience for our application would be for people interested in fitness.
+MADFit is a health & wellness mobile application that motivates users to take care of their health. The aim is to encourage people to watch their diet and exercise. The audience for our application would be for people interested in keeping fit and healthy.
 
 By:
 * Balqis Kinanti Haldi Heryputri : S10204973
@@ -17,12 +17,14 @@ By:
 
 ## Design Process
 ### User Stories
-* As a user, I want to be able to calculate my BMI so that I will know whether I'm overweight or underweight and can make adjustments to my lifestyle.
+* As a user, I want to calculate my BMI so that I will know whether I'm overweight or underweight and can make adjustments to my lifestyle.
+* As a user, I want to store my BMI value so that I can refer to it in the future.
 * As a user, I want to be able to listen to music while I'm exercising so that I can stay motivated.
 * As a user, I want to keep track of my calorie intake so that I will know whether I'm consuming enough calories for the day.
 * As a user, I want to be able to have a set of workout and exercise that can let me keep myself healthy and fit.
 * As a user, I want to be able to keep track of the time I used for a set of workout.
 * As a user, I want to be able to keep track of the progress of workout based on dates.
+* As a user, I want to receive notifications and reminders so that I will remember to exercise.
 
 ### Logo, Layout & Interface
 * Logo: ![MADFit Logo](https://github.com/Balqiskinanti/MADFit/blob/main/app/src/main/res/mipmap-xhdpi/ic_launcher.png)
@@ -41,7 +43,7 @@ By:
 7.  __Calorie Dashboard:__ This dashbaord will display the user's calorie target, the total amount of calories that have been consumed, as well as calories consumed by meals for the day. There is also a circular progress bar for users to easily determine whether they have met their target for the day. Users will also be able to set their own daily targets below the dashboard.
 8.  __Calorie Counter:__ The Calorie Counter will allow users to enter the food items they have consumed and the calories of the food according to the 4 categories: Breakfast, Lunch, Dinner and Others. The last category is for any informal meals such as snacks or tea break. The total calories for each category will be display in the dashboard in Feature 7.
 9.  __Music Player:__ Users will be able to select music based on the type and length of their workout, such as 1 hour long music for workout marathon and 20 minutes music for quick workout. The music that are available in our app is also further broken down to different categories such as cardio and chill run. 
-10. __Workout Reminder:__ Users can set reminders in our app to remind them to start or complete their workout by selecting their preferred time. At the selected timing, our app will send a workout reminder notification to the user.
+10. __Workout Reminder:__ Users can set reminders in our app to remind them to start or complete their workout by selecting their preferred time. At the selected timing, our app will send a reminder notification to the user.
 11. __Email Notification:__ Users will get notified in their email for the latest app updates, interesting articles, etc. When the user enters their email in our app, a welcome email will be sent to them with a link to verify their subscription. 
 
 ### Features Left To Implement
