@@ -20,6 +20,9 @@ By:
 * As a user, I want to be able to calculate my BMI so that I will know whether I'm overweight or underweight and can make adjustments to my lifestyle.
 * As a user, I want to be able to listen to music while I'm exercising so that I can stay motivated.
 * As a user, I want to keep track of my calorie intake so that I will know whether I'm consuming enough calories for the day.
+* As a user, I want to be able to have a set of workout and exercise that can let me keep myself healthy and fit.
+* As a user, I want to be able to keep track of the time I used for a set of workout.
+* As a user, I want to be able to keep track of the progress of workout based on dates.
 
 ### Logo, Layout & Interface
 * Logo: ![MADFit Logo](https://github.com/Balqiskinanti/MADFit/blob/main/app/src/main/res/mipmap-xhdpi/ic_launcher.png)
