@@ -43,7 +43,7 @@ No | Feature | Description
 7 | __Calorie Dashboard__ | This dashbaord will display the user's calorie target, the total amount of calories that have been consumed, as well as calories consumed by meals for the day. There is also a circular progress bar for users to easily determine whether they have met their target for the day. Users will also be able to set their own daily targets below the dashboard.
 8 | __Calorie Counter__ | The Calorie Counter will allow users to enter the food items they have consumed and the calories of the food according to the 4 categories: Breakfast, Lunch, Dinner and Others. The last category is for any informal meals such as snacks or tea break. The total calories for each category will be display in the dashboard in Feature 7.
 9 | __Music Player__ | Users will be able to select music based on the type and length of their workout, such as 30 minutes long music for workout marathon or 3-10 minutes music for quick workout. The music that are available in our app is also further broken down to different categories such as cardio and chill run. 
-10 | __Workout Reminder__ | Users can set reminders in our app to remind them to start or complete their workout by selecting their preferred time. At the selected timing, our app will send a reminder notification to the user. User can also choose to mute notification under the workout settings.
+10 | __Workout Reminder__ | Users can set reminders in our app to remind them to start or complete their workout by selecting their preferred time. At the selected timing, our app will send a reminder notification to the user. User can also mute notification under the workout settings.
 11 | __Email Notification__ | Users will get notified in their email for the latest app updates, interesting articles, etc. When the user enters their email in our app, a welcome email will be sent to them with a link to verify their subscription. 
 12 | __Dark Mode__ | Users can turn on/off dark mode locally in our app for enhanced experience.
 
@@ -55,14 +55,14 @@ No | Feature | Description
 
 ## User Guide
 ![madit-userguide](https://user-images.githubusercontent.com/72959939/127746610-190f793b-92b0-410a-a84c-41b76965b122.jpg)
-[Download App Here](https://play.google.com/store/apps/details?id=sg.edu.np.mad.madfit)
+[Download MADFit App Here!](https://play.google.com/store/apps/details?id=sg.edu.np.mad.madfit)
 
 ## Concepts Used
 * Responsive layout
 * Multimedia
 * RecyclerView
-* Persistent Memory
-* Notification
+* Persistent Memory 
+* Notification, Toasts & Dialogs
 * Web-based content
 
 ## Credits
