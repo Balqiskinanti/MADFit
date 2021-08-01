@@ -1,6 +1,6 @@
 # MADFit 
 
-MADFit is a health & wellness mobile application that motivates users to take care of their health. The aim is to encourage people to watch their diet and exercise. The audience for our application would be for people interested in keeping fit and healthy. :muscle:
+MADFit is a health & wellness mobile application that motivates users to take care of their health. The aim of our app is to encourage more people to watch their diet and weight, set goals and plans to achieve and exercise frequently. The target audience for our app would be for people interested in keeping fit and healthy, as they will be able to do so with our app. :muscle:
 
 By:
 * Balqis Kinanti Haldi Heryputri : S10204973
@@ -31,7 +31,7 @@ By:
 https://xd.adobe.com/view/bbe237a4-5c01-440e-a3d7-17a2fb9658b5-eeb1/
 
 ## Features
-### Existing Features
+### Existing Features Implemented
 No | Feature | Description
 ------------ | ------------ | ------------
 1 |__Exercise Guide__ | The guide consists of different workout tutorials, in gif format, that the users can learn and follow during their workout. This can be turned off in the workout settings.
@@ -58,7 +58,7 @@ No | Feature | Description
 [Download MADFit App Here!](https://play.google.com/store/apps/details?id=sg.edu.np.mad.madfit)
 
 ## Concepts Used
-* Responsive layout
+* Responsive Layout
 * Multimedia
 * RecyclerView
 * Persistent Memory 
